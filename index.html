@@ -46,6 +46,7 @@ section{padding:35px 5%}
 .about{background:#101827;color:white;text-align:center;line-height:2}
 footer{background:#080e18;color:#aaa;text-align:center;padding:25px;font-size:14px}
 .whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:14px 18px;border-radius:30px;font-weight:bold;z-index:5}
+
 @media(max-width:600px){
 .hero h1{font-size:29px}
 header{justify-content:center}
@@ -81,31 +82,36 @@ nav{justify-content:center}
 <input id="search" type="search" placeholder="🔍 ابحث عن المنتج الذي تريده..." oninput="renderProducts()">
 </div>
 
+<section id="categories">
+<h2 class="section-title">الأقسام</h2>
 
 <div class="categories">
 
-<a class="category" href="category.html?category=أسلاك وكابلات">
-<span class="emoji">🔌</span>أسلاك وكابلات
-</a>
+<button class="category active" onclick="filterCategory('الكل',this)">
+<span class="emoji">🛍️</span>كل المنتجات
+</button>
 
-<a class="category" href="category.html?category=مفاتيح وبرايز">
-<span class="emoji">🔘</span>مفاتيح وبرايز
-</a>
+<button class="category" onclick="filterCategory('فينوس',this)">
+<span class="emoji">🔘</span>فينوس
+</button>
 
-<a class="category" href="category.html?category=إضاءة">
+<button class="category" onclick="filterCategory('خراطيم',this)">
+<span class="emoji">〰️</span>خراطيم
+</button>
+
+<button class="category" onclick="filterCategory('إضاءة',this)">
 <span class="emoji">💡</span>إضاءة
-</a>
+</button>
 
-<a class="category" href="category.html?category=خراطيم ومواسير">
-<span class="emoji">〰️</span>خراطيم ومواسير
-</a>
+<button class="category" onclick="filterCategory('أسلاك وكابلات',this)">
+<span class="emoji">🔌</span>أسلاك وكابلات
+</button>
 
-<a class="category" href="category.html?category=أدوات كهربائية">
+<button class="category" onclick="filterCategory('أدوات كهربائية',this)">
 <span class="emoji">🛠️</span>أدوات كهربائية
-</a>
+</button>
 
 </div>
-
 </section>
 
 <section id="products">
@@ -131,49 +137,93 @@ nav{justify-content:center}
 <p>متجرك الموثوق للأدوات الكهربائية ⚡</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201000000000" target="_blank">واتساب 💬</a>
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
 
 <script>
 
 const products=[
+
 {
 name:"بريزة فينوس",
-category:"مفاتيح وبرايز",
+category:"فينوس",
 price:28,
 image:"https://placehold.co/500x300?text=Venus+Socket"
 },
+
 {
 name:"مفتاح فينوس",
-category:"مفاتيح وبرايز",
+category:"فينوس",
 price:28,
 image:"https://placehold.co/500x300?text=Venus+Switch"
 },
+
 {
 name:"شاسيه فينوس",
-category:"مفاتيح وبرايز",
+category:"فينوس",
 price:12,
 image:"https://placehold.co/500x300?text=Venus+Chassis"
-}
-];
+},
 
+{
+name:"خرطوم كهرباء",
+category:"خراطيم",
+price:10,
+image:"https://placehold.co/500x300?text=Electrical+Hose"
+},
+
+{
+name:"خرطوم مرن",
+category:"خراطيم",
+price:15,
+image:"https://placehold.co/500x300?text=Flexible+Hose"
+},
+
+{
+name:"لمبة LED",
+category:"إضاءة",
+price:35,
+image:"https://placehold.co/500x300?text=LED+Lamp"
+},
+
+{
+name:"سلك كهرباء",
+category:"أسلاك وكابلات",
+price:50,
+image:"https://placehold.co/500x300?text=Electric+Wire"
+},
+
+{
+name:"أداة كهربائية",
+category:"أدوات كهربائية",
+price:100,
+image:"https://placehold.co/500x300?text=Electric+Tool"
+}
+
+];
 
 let selectedCategory="الكل";
 let cart=[];
 
 function renderProducts(){
+
 const search=document.getElementById("search").value.trim().toLowerCase();
+
 const filtered=products.filter(p=>
 (selectedCategory==="الكل"||p.category===selectedCategory)&&
 p.name.toLowerCase().includes(search)
 );
+
 const list=document.getElementById("productList");
 list.innerHTML="";
+
 if(!filtered.length){
-list.innerHTML='<p class="empty">لا توجد منتجات مطابقة للبحث</p>';
+list.innerHTML='<p class="empty">لا توجد منتجات في هذا القسم</p>';
 return;
 }
+
 filtered.forEach(p=>{
 const index=products.indexOf(p);
+
 list.innerHTML+=`
 <div class="product">
 <img src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/500x300?text=Power+Zone'">
@@ -184,13 +234,23 @@ list.innerHTML+=`
 </div>
 </div>`;
 });
+
 }
 
 function filterCategory(category,element){
+
 selectedCategory=category;
-document.querySelectorAll(".category").forEach(c=>c.classList.remove("active"));
+
+document.querySelectorAll(".category").forEach(c=>{
+c.classList.remove("active");
+});
+
 element.classList.add("active");
+
 renderProducts();
+
+document.getElementById("products").scrollIntoView({behavior:"smooth"});
+
 }
 
 function addToCart(index){
@@ -200,13 +260,18 @@ alert("تمت إضافة المنتج إلى السلة");
 }
 
 function updateCart(){
+
 document.getElementById("count").textContent=cart.length;
+
 document.getElementById("cartItems").innerHTML=cart.map((p,i)=>`
 <div class="cart-item">
 <span>${p.name} - ${p.price} جنيه</span>
 <button onclick="removeItem(${i})">حذف</button>
 </div>`).join("");
-document.getElementById("total").textContent=cart.reduce((sum,p)=>sum+p.price,0);
+
+document.getElementById("total").textContent=
+cart.reduce((sum,p)=>sum+p.price,0);
+
 }
 
 function removeItem(index){
@@ -215,24 +280,40 @@ updateCart();
 }
 
 function toggleCart(){
+
 const panel=document.getElementById("cartPanel");
-panel.style.display=panel.style.display==="block"?"none":"block";
-if(panel.style.display==="block")panel.scrollIntoView({behavior:"smooth"});
+
+panel.style.display=
+panel.style.display==="block"?"none":"block";
+
+if(panel.style.display==="block"){
+panel.scrollIntoView({behavior:"smooth"});
+}
+
 }
 
 function checkout(){
+
 if(cart.length===0){
 alert("السلة فارغة!");
 return;
 }
+
 const message="مرحباً، أريد طلب المنتجات التالية:\n"+
 cart.map(p=>p.name+" - "+p.price+" جنيه").join("\n")+
 "\nالإجمالي: "+cart.reduce((sum,p)=>sum+p.price,0)+" جنيه";
-window.open("https://wa.me/201000000000?text="+encodeURIComponent(message),"_blank");
+
+window.open(
+"https://wa.me/201155284381?text="+encodeURIComponent(message),
+"_blank"
+);
+
 }
 
 renderProducts();
+
 </script>
 
 </body>
 </html>
+
