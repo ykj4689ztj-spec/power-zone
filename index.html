@@ -14,47 +14,25 @@ header{background:#101827;color:white;padding:18px 5%;display:flex;justify-conte
 .logo span{color:white}
 nav{display:flex;gap:18px;flex-wrap:wrap}
 nav a{color:white;text-decoration:none;font-size:14px}
-.cart-btn{background:#facc15;color:#111827;padding:10px 16px;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
 .hero{background:linear-gradient(120deg,#101827,#263b59);color:white;text-align:center;padding:75px 20px}
 .hero h1{font-size:38px;margin-bottom:15px}
 .hero h1 span{color:#facc15}
 .hero p{color:#d1d5db;line-height:1.8}
 .hero button{margin-top:25px;padding:14px 28px;background:#facc15;border:0;border-radius:8px;font-weight:bold;cursor:pointer}
-.search{max-width:650px;margin:25px auto;padding:0 15px}
-.search input{width:100%;padding:15px;border:1px solid #ddd;border-radius:10px;font-size:16px}
 section{padding:35px 5%}
 .section-title{text-align:center;font-size:25px;margin-bottom:25px}
-.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.category{background:white;padding:20px 10px;text-align:center;border-radius:12px;cursor:pointer;border:1px solid #eee;font-weight:bold;transition:.2s}
-.category:hover,.category.active{background:#facc15;color:#111827}
-.category .emoji{font-size:28px;display:block;margin-bottom:10px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #0000000b}
-.product img{width:100%;height:165px;object-fit:cover;background:#eee}
-.product-info{padding:15px}
-.product h3{font-size:16px;margin-bottom:10px}
-.price{color:#c18b00;font-weight:bold;font-size:18px;margin-bottom:13px}
-.product button{width:100%;background:#101827;color:white;padding:11px;border:0;border-radius:7px;cursor:pointer}
-.product button:hover{background:#facc15;color:#111827}
-.empty{text-align:center;grid-column:1/-1;padding:30px;color:#777}
-.cart-panel{display:none;background:white;padding:20px;border-radius:12px;margin:20px 5%;box-shadow:0 3px 15px #0002}
-.cart-panel h2{margin-bottom:15px}
-.cart-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #eee}
-.cart-item button{background:#ef4444;color:white;border:0;padding:5px 9px;border-radius:5px}
-.total{font-size:20px;font-weight:bold;margin:20px 0}
-.checkout{background:#16a34a;color:white;padding:13px;border:0;border-radius:8px;width:100%;font-size:16px;cursor:pointer}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px}
+.category{background:white;padding:25px 12px;text-align:center;border-radius:12px;border:1px solid #eee;font-weight:bold;text-decoration:none;color:#172033;transition:.2s;display:block}
+.category:hover{background:#facc15;transform:translateY(-3px)}
+.category .emoji{font-size:32px;display:block;margin-bottom:12px}
 .about{background:#101827;color:white;text-align:center;line-height:2}
 footer{background:#080e18;color:#aaa;text-align:center;padding:25px;font-size:14px}
 .whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:14px 18px;border-radius:30px;font-weight:bold;z-index:5}
-
 @media(max-width:600px){
 .hero h1{font-size:29px}
 header{justify-content:center}
 nav{justify-content:center}
-.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.product img{height:125px}
-.product-info{padding:10px}
-.product h3{font-size:14px}
+.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 }
 </style>
 </head>
@@ -64,72 +42,65 @@ nav{justify-content:center}
 <header>
 <div class="logo">⚡ POWER <span>ZONE</span></div>
 <nav>
-<a href="#home">الرئيسية</a>
+<a href="index.html">الرئيسية</a>
 <a href="#categories">الأقسام</a>
-<a href="#products">المنتجات</a>
 <a href="#about">من نحن</a>
 </nav>
-<button class="cart-btn" onclick="toggleCart()">🛒 السلة (<span id="count">0</span>)</button>
 </header>
 
 <div class="hero" id="home">
 <h1>أهلاً بك في <span>POWER ZONE</span></h1>
-<p>كل احتياجاتك من الأدوات الكهربائية في مكان واحد<br>جودة عالية وأسعار تنافسية</p>
-<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">تسوق الآن</button>
-</div>
-
-<div class="search">
-<input id="search" type="search" placeholder="🔍 ابحث عن المنتج الذي تريده..." oninput="renderProducts()">
+<p>كل احتياجاتك من الأدوات الكهربائية في مكان واحد<br>
+جودة عالية وأسعار تنافسية</p>
+<button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+تصفح الأقسام
+</button>
 </div>
 
 <section id="categories">
-<h2 class="section-title">الأقسام</h2>
+<h2 class="section-title">أقسام المتجر</h2>
 
 <div class="categories">
 
-<button class="category active" onclick="filterCategory('الكل',this)">
-<span class="emoji">🛍️</span>كل المنتجات
-</button>
+<a class="category" href="venus.html">
+<span class="emoji">🔘</span>
+فينوس
+</a>
 
-<button class="category" onclick="filterCategory('فينوس',this)">
-<span class="emoji">🔘</span>فينوس
-</button>
+<a class="category" href="hoses.html">
+<span class="emoji">〰️</span>
+خراطيم ومواسير
+</a>
 
-<button class="category" onclick="filterCategory('خراطيم',this)">
-<span class="emoji">〰️</span>خراطيم
-</button>
+<a class="category" href="lighting.html">
+<span class="emoji">💡</span>
+إضاءة
+</a>
 
-<button class="category" onclick="filterCategory('إضاءة',this)">
-<span class="emoji">💡</span>إضاءة
-</button>
+<a class="category" href="cables.html">
+<span class="emoji">🔌</span>
+أسلاك وكابلات
+</a>
 
-<button class="category" onclick="filterCategory('أسلاك وكابلات',this)">
-<span class="emoji">🔌</span>أسلاك وكابلات
-</button>
+<a class="category" href="tools.html">
+<span class="emoji">🛠️</span>
+أدوات كهربائية
+</a>
 
-<button class="category" onclick="filterCategory('أدوات كهربائية',this)">
-<span class="emoji">🛠️</span>أدوات كهربائية
-</button>
+<a class="category" href="breakers.html">
+<span class="emoji">⚡</span>
+قواطع
+</a>
 
 </div>
 </section>
-
-<section id="products">
-<h2 class="section-title">منتجاتنا</h2>
-<div class="products" id="productList"></div>
-</section>
-
-<div class="cart-panel" id="cartPanel">
-<h2>🛒 سلة المشتريات</h2>
-<div id="cartItems"></div>
-<div class="total">الإجمالي: <span id="total">0</span> جنيه</div>
-<button class="checkout" onclick="checkout()">اطلب الآن عبر واتساب</button>
-</div>
 
 <section class="about" id="about">
 <h2>من نحن - POWER ZONE</h2>
-<p>وجهتك لشراء الأدوات والمستلزمات الكهربائية.<br>
-نسعى لتوفير منتجات متنوعة بجودة ممتازة وأسعار مناسبة.</p>
+<p>
+وجهتك لشراء الأدوات والمستلزمات الكهربائية.<br>
+نسعى لتوفير منتجات متنوعة بجودة ممتازة وأسعار مناسبة.
+</p>
 </section>
 
 <footer>
@@ -137,183 +108,9 @@ nav{justify-content:center}
 <p>متجرك الموثوق للأدوات الكهربائية ⚡</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
-
-<script>
-
-const products=[
-
-{
-name:"بريزة فينوس",
-category:"فينوس",
-price:28,
-image:"https://placehold.co/500x300?text=Venus+Socket"
-},
-
-{
-name:"مفتاح فينوس",
-category:"فينوس",
-price:28,
-image:"https://placehold.co/500x300?text=Venus+Switch"
-},
-
-{
-name:"شاسيه فينوس",
-category:"فينوس",
-price:12,
-image:"https://placehold.co/500x300?text=Venus+Chassis"
-},
-
-{
-name:"خرطوم كهرباء",
-category:"خراطيم",
-price:10,
-image:"https://placehold.co/500x300?text=Electrical+Hose"
-},
-
-{
-name:"خرطوم مرن",
-category:"خراطيم",
-price:15,
-image:"https://placehold.co/500x300?text=Flexible+Hose"
-},
-
-{
-name:"لمبة LED",
-category:"إضاءة",
-price:35,
-image:"https://placehold.co/500x300?text=LED+Lamp"
-},
-
-{
-name:"سلك كهرباء",
-category:"أسلاك وكابلات",
-price:50,
-image:"https://placehold.co/500x300?text=Electric+Wire"
-},
-
-{
-name:"أداة كهربائية",
-category:"أدوات كهربائية",
-price:100,
-image:"https://placehold.co/500x300?text=Electric+Tool"
-}
-
-];
-
-let selectedCategory="الكل";
-let cart=[];
-
-function renderProducts(){
-
-const search=document.getElementById("search").value.trim().toLowerCase();
-
-const filtered=products.filter(p=>
-(selectedCategory==="الكل"||p.category===selectedCategory)&&
-p.name.toLowerCase().includes(search)
-);
-
-const list=document.getElementById("productList");
-list.innerHTML="";
-
-if(!filtered.length){
-list.innerHTML='<p class="empty">لا توجد منتجات في هذا القسم</p>';
-return;
-}
-
-filtered.forEach(p=>{
-const index=products.indexOf(p);
-
-list.innerHTML+=`
-<div class="product">
-<img src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/500x300?text=Power+Zone'">
-<div class="product-info">
-<h3>${p.name}</h3>
-<div class="price">${p.price} جنيه</div>
-<button onclick="addToCart(${index})">أضف إلى السلة +</button>
-</div>
-</div>`;
-});
-
-}
-
-function filterCategory(category,element){
-
-selectedCategory=category;
-
-document.querySelectorAll(".category").forEach(c=>{
-c.classList.remove("active");
-});
-
-element.classList.add("active");
-
-renderProducts();
-
-document.getElementById("products").scrollIntoView({behavior:"smooth"});
-
-}
-
-function addToCart(index){
-cart.push(products[index]);
-updateCart();
-alert("تمت إضافة المنتج إلى السلة");
-}
-
-function updateCart(){
-
-document.getElementById("count").textContent=cart.length;
-
-document.getElementById("cartItems").innerHTML=cart.map((p,i)=>`
-<div class="cart-item">
-<span>${p.name} - ${p.price} جنيه</span>
-<button onclick="removeItem(${i})">حذف</button>
-</div>`).join("");
-
-document.getElementById("total").textContent=
-cart.reduce((sum,p)=>sum+p.price,0);
-
-}
-
-function removeItem(index){
-cart.splice(index,1);
-updateCart();
-}
-
-function toggleCart(){
-
-const panel=document.getElementById("cartPanel");
-
-panel.style.display=
-panel.style.display==="block"?"none":"block";
-
-if(panel.style.display==="block"){
-panel.scrollIntoView({behavior:"smooth"});
-}
-
-}
-
-function checkout(){
-
-if(cart.length===0){
-alert("السلة فارغة!");
-return;
-}
-
-const message="مرحباً، أريد طلب المنتجات التالية:\n"+
-cart.map(p=>p.name+" - "+p.price+" جنيه").join("\n")+
-"\nالإجمالي: "+cart.reduce((sum,p)=>sum+p.price,0)+" جنيه";
-
-window.open(
-"https://wa.me/201155284381?text="+encodeURIComponent(message),
-"_blank"
-);
-
-}
-
-renderProducts();
-
-</script>
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">
+واتساب 💬
+</a>
 
 </body>
 </html>
-
