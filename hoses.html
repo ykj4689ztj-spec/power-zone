@@ -59,6 +59,28 @@ overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
 .add-cart{width:100%;background:#101827;color:white;padding:12px;border:0;border-radius:8px;cursor:pointer;font-size:14px;font-weight:bold;transition:.2s}
 .add-cart:hover{background:#facc15;color:#101827}
 
+.success-message{
+display:none;
+color:#15803d;
+background:#dcfce7;
+border-radius:8px;
+padding:10px;
+margin-top:10px;
+font-size:13px;
+text-align:center;
+}
+
+.error-message{
+display:none;
+color:#b91c1c;
+background:#fee2e2;
+border-radius:8px;
+padding:10px;
+margin-top:10px;
+font-size:13px;
+text-align:center;
+}
+
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
 .whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;z-index:8;box-shadow:0 4px 15px #00000025}
@@ -118,6 +140,8 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية خرطوم كهرباء">
 <button class="add-cart" onclick="addToCart('خرطوم كهرباء',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
 </div>
 </div>
 
@@ -129,6 +153,8 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية خرطوم مرن">
 <button class="add-cart" onclick="addToCart('خرطوم مرن',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
 </div>
 </div>
 
@@ -140,6 +166,8 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية ماسورة كهرباء">
 <button class="add-cart" onclick="addToCart('ماسورة كهرباء',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
 </div>
 </div>
 
@@ -157,53 +185,67 @@ section{padding:38px 4%}
 const cartKey="powerZoneCart";
 
 function getCart(){
-let cart=[];
-
 try{
-cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+const cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+return Array.isArray(cart)?cart:[];
 }catch(error){
-cart=[];
+return [];
 }
-
-if(!Array.isArray(cart)) cart=[];
-
-return cart;
 }
 
 function updateCartCount(){
 const cart=getCart();
-const count=cart.reduce((sum,item)=>sum+Number(item.quantity||item.qty||0),0);
+const count=cart.reduce((sum,item)=>{
+return sum+Number(item.quantity??item.qty??0);
+},0);
+
 document.getElementById("cartCount").textContent=count;
 }
 
 function addToCart(name,button){
 const card=button.closest(".product");
 const input=card.querySelector(".quantity");
+const success=card.querySelector(".success-message");
+const error=card.querySelector(".error-message");
 const qty=Number(input.value);
 
+success.style.display="none";
+error.style.display="none";
+
 if(!Number.isInteger(qty)||qty<1){
-alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+error.textContent="من فضلك أدخل كمية صحيحة تبدأ من 1";
+error.style.display="block";
 input.focus();
 return;
 }
 
 let cart=getCart();
+
+cart=cart.map(item=>({
+...item,
+quantity:Number(item.quantity??item.qty??0)
+}));
+
 let item=cart.find(product=>product.name===name);
 
 if(item){
-item.quantity=Number(item.quantity||item.qty||0)+qty;
-delete item.qty;
+item.quantity+=qty;
 }else{
 cart.push({name:name,quantity:qty});
 }
 
+cart.forEach(item=>delete item.qty);
+
 localStorage.setItem(cartKey,JSON.stringify(cart));
 updateCartCount();
 
-alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
+success.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
+success.style.display="block";
+
 input.value=1;
 }
 
+window.addEventListener("storage",updateCartCount);
 updateCartCount();
 </script>
 
