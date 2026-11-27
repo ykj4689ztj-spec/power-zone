@@ -9,90 +9,205 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+color:#172033;
+line-height:1.7;
+}
 
 header{
-background:#101827;color:white;padding:17px 6%;
-display:flex;justify-content:space-between;align-items:center;
-flex-wrap:wrap;gap:12px;box-shadow:0 4px 18px #00000015
+background:#101827;
+color:white;
+padding:15px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+box-shadow:0 4px 18px #00000018;
+position:sticky;
+top:0;
+z-index:10;
 }
-.logo{color:#facc15;font-size:24px;font-weight:900}
+
+.logo{font-size:25px;font-weight:900;color:#facc15}
+.logo span{color:white}
 header a{color:white;text-decoration:none;font-size:14px}
 header a:hover{color:#facc15}
 
-.container{width:90%;max-width:850px;margin:35px auto}
-.page-title{font-size:27px;margin-bottom:25px;color:#101827}
+.hero{
+background:
+radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),
+linear-gradient(120deg,#101827,#1d3554);
+color:white;
+text-align:center;
+padding:48px 20px;
+}
+.hero-label{
+display:inline-block;
+color:#facc15;
+border:1px solid #facc1555;
+background:#facc1512;
+padding:5px 15px;
+border-radius:30px;
+font-size:12px;
+margin-bottom:12px;
+}
+.hero h1{font-size:32px;color:#facc15;margin-bottom:8px}
+.hero p{color:#d1d9e5;font-size:14px}
+
+.container{
+width:90%;
+max-width:950px;
+margin:35px auto 55px;
+}
+
+.section-title{
+font-size:23px;
+color:#101827;
+margin-bottom:20px;
+}
 
 .cart-item{
-background:white;padding:18px;border-radius:13px;margin-bottom:13px;
-display:flex;justify-content:space-between;align-items:center;
-gap:15px;flex-wrap:wrap;border:1px solid #e9edf2;
-box-shadow:0 3px 12px #00000008
+background:white;
+padding:20px;
+border-radius:14px;
+margin-bottom:13px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+border:1px solid #e9edf2;
+box-shadow:0 4px 15px #10182709;
+transition:.2s;
 }
+.cart-item:hover{box-shadow:0 8px 22px #10182712}
+
 .item-info h3{font-size:17px;margin-bottom:5px}
 .item-info p{color:#a47c00;font-size:14px;font-weight:bold}
 
-.controls{display:flex;align-items:center;gap:9px}
+.controls{
+display:flex;
+align-items:center;
+gap:9px;
+}
 .controls button{
-border:0;background:#e9edf3;padding:7px 13px;
-border-radius:7px;cursor:pointer;font-size:17px
+border:0;
+background:#e9edf3;
+padding:8px 13px;
+border-radius:8px;
+cursor:pointer;
+font-size:17px;
+transition:.2s;
 }
 .controls button:hover{background:#facc15}
 .controls strong{min-width:25px;text-align:center}
-.controls .remove{background:#fee2e2;color:#dc2626;font-size:13px}
+.controls .remove{
+background:#fee2e2;
+color:#dc2626;
+font-size:13px;
+}
 .controls .remove:hover{background:#fecaca}
 
 .summary,.customer-form{
-background:white;padding:23px;border-radius:13px;
-margin-top:22px;border:1px solid #e9edf2;
-box-shadow:0 3px 12px #00000008
+background:white;
+padding:24px;
+border-radius:14px;
+margin-top:22px;
+border:1px solid #e9edf2;
+box-shadow:0 4px 15px #10182709;
 }
-.summary p{margin-bottom:8px}
+
+.summary h2,.customer-form h2{
+font-size:20px;
+color:#101827;
+margin-bottom:15px;
+}
+.summary p{margin-bottom:9px;color:#526071}
 .summary strong{color:#a47c00}
 
-.customer-form h2{margin-bottom:18px;font-size:21px}
 .customer-form label{
-display:block;margin:15px 0 7px;font-weight:bold;font-size:14px
+display:block;
+margin:16px 0 7px;
+font-weight:bold;
+font-size:14px;
 }
 .customer-form input,.customer-form textarea{
-width:100%;padding:13px;border:1px solid #dce1e8;
-border-radius:8px;font-size:16px;font-family:Arial;outline:none
+width:100%;
+padding:13px;
+border:1px solid #dce1e8;
+border-radius:9px;
+font-size:16px;
+font-family:Arial;
+outline:none;
+background:#fbfcfd;
 }
-.customer-form input:focus,.customer-form textarea:focus{border-color:#d6a900}
+.customer-form input:focus,.customer-form textarea:focus{
+border-color:#d6a900;
+background:white;
+}
 .customer-form textarea{min-height:100px;resize:vertical}
 
 .order{
-width:100%;padding:15px;background:#25d366;color:white;
-border:0;border-radius:9px;font-size:16px;font-weight:bold;
-cursor:pointer;margin-top:20px
+width:100%;
+padding:15px;
+background:#25d366;
+color:white;
+border:0;
+border-radius:9px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+margin-top:22px;
+transition:.2s;
 }
-.order:hover{background:#1fbd5b}
+.order:hover{background:#1fbd5b;transform:translateY(-2px)}
 
 .empty{
-background:white;padding:35px 20px;text-align:center;
-border-radius:13px;border:1px solid #e9edf2;line-height:2
+background:white;
+padding:40px 20px;
+text-align:center;
+border-radius:15px;
+border:1px solid #e9edf2;
+line-height:2;
+box-shadow:0 4px 15px #10182709;
 }
-.empty h2{color:#101827}
+.empty h2{color:#101827;margin-bottom:8px}
+.empty p{color:#7b8492;font-size:14px}
 .empty a{
-display:inline-block;margin-top:15px;background:#101827;
-color:#facc15;text-decoration:none;padding:10px 20px;
-border-radius:8px;font-weight:bold
+display:inline-block;
+margin-top:17px;
+background:#101827;
+color:#facc15;
+text-decoration:none;
+padding:11px 23px;
+border-radius:8px;
+font-weight:bold;
 }
 
 footer{
-background:#080e18;color:#9ca3af;text-align:center;
-padding:24px;margin-top:55px;font-size:13px
+background:#080e18;
+color:#9ca3af;
+text-align:center;
+padding:25px;
+font-size:13px;
 }
 footer strong{color:#facc15}
 
 @media(max-width:600px){
-header{padding:15px 4%}
-.container{width:92%;margin:25px auto}
-.page-title{font-size:23px}
-.cart-item{padding:14px}
+header{padding:13px 4%}
+.logo{font-size:22px}
+.hero{padding:42px 15px}
+.hero h1{font-size:27px}
+.container{width:92%;margin:25px auto 40px}
+.section-title{font-size:20px}
+.cart-item{padding:15px}
 .item-info h3{font-size:15px}
 .controls{gap:7px}
 .controls button{padding:7px 11px}
+.summary,.customer-form{padding:18px}
 }
 </style>
 </head>
@@ -100,24 +215,31 @@ header{padding:15px 4%}
 <body>
 
 <header>
-<div class="logo">⚡ POWER ZONE</div>
+<div class="logo">⚡ POWER <span>ZONE</span></div>
 <a href="index.html">← العودة للمتجر</a>
 </header>
 
+<div class="hero">
+<div class="hero-label">POWER ZONE SHOPPING</div>
+<h1>سلة المشتريات 🛒</h1>
+<p>راجع منتجاتك وحدد الكميات المطلوبة قبل إرسال طلبك</p>
+</div>
+
 <div class="container">
 
-<h1 class="page-title">🛒 سلة المشتريات</h1>
+<h2 class="section-title">منتجاتك المختارة</h2>
 
 <div id="cartItems"></div>
 
 <div class="summary" id="summary" style="display:none">
-<p>عدد القطع: <strong id="count">0</strong></p>
+<h2>ملخص الطلب</h2>
+<p>إجمالي عدد القطع: <strong id="count">0</strong></p>
 <p>الأسعار: عند الطلب من المحل</p>
 </div>
 
 <div class="customer-form" id="customerForm" style="display:none">
 
-<h2>📋 بيانات العميل</h2>
+<h2>📋 بيانات التوصيل</h2>
 
 <label for="customerName">الاسم بالكامل</label>
 <input type="text" id="customerName" placeholder="اكتب اسمك بالكامل" autocomplete="name">
@@ -138,6 +260,7 @@ header{padding:15px 4%}
 
 <footer>
 <p><strong>POWER ZONE</strong> © 2026 - جميع الحقوق محفوظة</p>
+<p>متجرك للأدوات الكهربائية ⚡</p>
 </footer>
 
 <script>
@@ -156,7 +279,6 @@ if(!Array.isArray(cart)) cart=[];
 
 cart=cart.map(item=>{
 const quantity=Number(item.quantity ?? item.qty ?? 1);
-
 return {
 ...item,
 quantity:Number.isInteger(quantity)&&quantity>0?quantity:1
@@ -213,7 +335,6 @@ container.innerHTML=cart.map((item,index)=>`
 
 document.getElementById("count").textContent=
 cart.reduce((sum,item)=>sum+item.quantity,0);
-
 }
 
 function escapeHTML(value){
@@ -229,9 +350,7 @@ return {
 }
 
 function changeQty(index,amount){
-
 const cart=getCart();
-
 if(!cart[index]) return;
 
 cart[index].quantity+=amount;
@@ -245,10 +364,8 @@ renderCart();
 }
 
 function removeItem(index){
-
 const cart=getCart();
 cart.splice(index,1);
-
 saveCart(cart);
 renderCart();
 }
