@@ -4,37 +4,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>قسم الإضاءة | Power Zone</title>
+<title>الإضاءة | POWER ZONE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f6f8;color:#172033}
-header{background:#101827;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.logo{font-size:25px;font-weight:bold;color:#facc15}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f6f9;
+  color:#172033;
+}
+
+header{
+  background:#101827;
+  color:white;
+  padding:17px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:bold;
+  color:#facc15;
+}
+
 .logo span{color:white}
-header a{color:white;text-decoration:none}
-.cart-link{background:#263b59;padding:9px 13px;border-radius:7px}
-.hero{background:linear-gradient(120deg,#101827,#263b59);color:white;text-align:center;padding:50px 20px}
-.hero h1{font-size:30px;margin-bottom:12px;color:#facc15}
-.hero p{color:#d1d5db;line-height:1.8}
-section{padding:30px 5%}
-.title{text-align:center;font-size:25px;margin-bottom:25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px}
-.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #0000000b}
-.product img{width:100%;height:165px;object-fit:cover;background:#eee}
-.info{padding:15px}
-.product h3{font-size:16px;margin-bottom:10px}
-.price{color:#c18b00;font-weight:bold;font-size:18px;margin-bottom:12px}
-.quantity{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;margin-bottom:10px;font-size:16px}
-.add-cart{display:block;width:100%;text-align:center;background:#101827;color:white;padding:11px;border:0;text-decoration:none;border-radius:7px;cursor:pointer;font-size:15px}
-.add-cart:hover{background:#facc15;color:#111827}
-footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:14px 18px;border-radius:30px;font-weight:bold}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.cart-link{
+  background:#263b59;
+  padding:10px 14px;
+  border-radius:8px;
+}
+
+.hero{
+  background:linear-gradient(120deg,#101827,#263b59);
+  color:white;
+  text-align:center;
+  padding:65px 20px;
+}
+
+.hero small{
+  color:#facc15;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin:15px 0;
+  color:#facc15;
+}
+
+.hero p{
+  color:#d1d5db;
+  line-height:1.9;
+  font-size:15px;
+}
+
+section{padding:40px 5%}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-heading h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.section-heading p{
+  color:#64748b;
+  font-size:14px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
+
+.product{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  transition:.25s;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px #00000012;
+}
+
+.product img{
+  width:100%;
+  height:185px;
+  object-fit:cover;
+  background:#eee;
+}
+
+.info{padding:17px}
+
+.product h3{
+  font-size:17px;
+  margin-bottom:12px;
+}
+
+.price{
+  color:#a87900;
+  font-weight:bold;
+  font-size:15px;
+  margin-bottom:15px;
+}
+
+.quantity{
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  margin-bottom:12px;
+  font-size:16px;
+  outline:none;
+}
+
+.quantity:focus{border-color:#d6a500}
+
+.add-cart{
+  width:100%;
+  background:#101827;
+  color:white;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.add-cart:hover{
+  background:#facc15;
+  color:#101827;
+}
+
+footer{
+  background:#080e18;
+  color:#aaa;
+  text-align:center;
+  padding:25px;
+  font-size:14px;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#25d366;
+  color:white;
+  text-decoration:none;
+  padding:14px 19px;
+  border-radius:30px;
+  font-weight:bold;
+  z-index:20;
+}
+
 @media(max-width:600px){
-.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.product img{height:125px}
-.info{padding:10px}
-.product h3{font-size:14px}
+  .hero{padding:48px 15px}
+  .hero h1{font-size:27px}
+  .products{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:11px;
+  }
+  .product img{height:125px}
+  .info{padding:11px}
+  .product h3{font-size:14px}
+  .price{font-size:13px}
+  .add-cart{font-size:13px;padding:11px 5px}
+  nav{gap:9px}
+  nav a{font-size:13px}
 }
 </style>
 </head>
@@ -42,116 +209,160 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <body>
 
 <header>
-<div class="logo">⚡ POWER <span>ZONE</span></div>
-<div style="display:flex;gap:15px;align-items:center">
-<a href="index.html">← الرئيسية</a>
-<a class="cart-link" href="cart.html">🛒 السلة (<span id="cartCount">0</span>)</a>
-</div>
+  <div class="logo">⚡ POWER <span>ZONE</span></div>
+
+  <nav>
+    <a href="index.html">← الرئيسية</a>
+    <a class="cart-link" href="cart.html">
+      🛒 السلة (<span id="cartCount">0</span>)
+    </a>
+  </nav>
 </header>
 
 <div class="hero">
-<h1>قسم الإضاءة</h1>
-<p>إضاءة عصرية لكل احتياجاتك<br>جودة عالية وأسعار مناسبة</p>
+  <small>POWER ZONE COLLECTION</small>
+  <h1>قسم الإضاءة</h1>
+  <p>
+    اختار الإضاءة المناسبة لمكانك<br>
+    تشكيلة متنوعة من منتجات الإضاءة العصرية
+  </p>
 </div>
 
 <section>
-<h2 class="title">منتجات الإضاءة</h2>
 
-<div class="products">
+  <div class="section-heading">
+    <h2>منتجات الإضاءة</h2>
+    <p>حدد المنتج والكمية المطلوبة وأضفها إلى سلة المشتريات</p>
+  </div>
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=LED+Lamp" alt="لمبة ليد">
-<div class="info">
-<h3>لمبة LED</h3>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية لمبة LED">
-<button class="add-cart" onclick="addToCart('لمبة LED',this)">🛒 أضف إلى السلة</button>
-</div>
-</div>
+  <div class="products">
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=Spot+Light" alt="سبوت لايت">
-<div class="info">
-<h3>سبوت لايت</h3>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سبوت لايت">
-<button class="add-cart" onclick="addToCart('سبوت لايت',this)">🛒 أضف إلى السلة</button>
-</div>
-</div>
+    <div class="product">
+      <img src="https://placehold.co/500x300?text=LED+Lamp" alt="لمبة LED">
+      <div class="info">
+        <h3>لمبة LED</h3>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية لمبة LED">
+        <button class="add-cart" onclick="addToCart('لمبة LED',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=LED+Panel" alt="بانل ليد">
-<div class="info">
-<h3>بانل LED</h3>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية بانل LED">
-<button class="add-cart" onclick="addToCart('بانل LED',this)">🛒 أضف إلى السلة</button>
-</div>
-</div>
+    <div class="product">
+      <img src="https://placehold.co/500x300?text=Spot+Light" alt="سبوت لايت">
+      <div class="info">
+        <h3>سبوت لايت</h3>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سبوت لايت">
+        <button class="add-cart" onclick="addToCart('سبوت لايت',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=Chandelier" alt="نجفة">
-<div class="info">
-<h3>نجفة</h3>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية نجفة">
-<button class="add-cart" onclick="addToCart('نجفة',this)">🛒 أضف إلى السلة</button>
-</div>
-</div>
+    <div class="product">
+      <img src="https://placehold.co/500x300?text=LED+Panel" alt="بانل LED">
+      <div class="info">
+        <h3>بانل LED</h3>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية بانل LED">
+        <button class="add-cart" onclick="addToCart('بانل LED',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
 
-</div>
+    <div class="product">
+      <img src="https://placehold.co/500x300?text=Chandelier" alt="نجفة">
+      <div class="info">
+        <h3>نجفة</h3>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية نجفة">
+        <button class="add-cart" onclick="addToCart('نجفة',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <footer>
-<p>© 2026 POWER ZONE - جميع الحقوق محفوظة</p>
+  <p>© 2026 POWER ZONE - جميع الحقوق محفوظة</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">
+  واتساب 💬
+</a>
 
 <script>
 const cartKey = "powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey) || "[]");
+  try{
+    const cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
+    return Array.isArray(cart) ? cart : [];
+  }catch(error){
+    return [];
+  }
+}
+
+function saveCart(cart){
+  localStorage.setItem(cartKey,JSON.stringify(cart));
 }
 
 function addToCart(name,button){
 
-const card = button.closest(".product");
-const input = card.querySelector(".quantity");
-const qty = Number(input.value);
+  const card = button.closest(".product");
+  const input = card.querySelector(".quantity");
+  const qty = Number(input.value);
 
-if(!Number.isInteger(qty) || qty < 1){
-alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
-input.focus();
-return;
-}
+  if(!Number.isInteger(qty) || qty < 1){
+    alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+    input.focus();
+    return;
+  }
 
-let cart = getCart();
-let item = cart.find(product => product.name === name);
+  let cart = getCart();
 
-if(item){
-item.qty += qty;
-}else{
-cart.push({name:name,qty:qty});
-}
+  // التوافق مع الكميات القديمة المسجلة باسم qty
+  cart = cart.map(item => ({
+    ...item,
+    quantity: Number(item.quantity ?? item.qty ?? 0)
+  }));
 
-localStorage.setItem(cartKey,JSON.stringify(cart));
+  let item = cart.find(product => product.name === name);
 
-updateCartCount();
+  if(item){
+    item.quantity += qty;
+  }else{
+    cart.push({
+      name:name,
+      quantity:qty
+    });
+  }
 
-alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+  // حذف الخاصية القديمة بعد تحويلها
+  cart.forEach(item => delete item.qty);
 
-input.value = 1;
+  saveCart(cart);
+  updateCartCount();
+
+  alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+
+  input.value = 1;
 }
 
 function updateCartCount(){
 
-let cart = getCart();
+  const cart = getCart();
 
-let count = cart.reduce((sum,item)=>sum + item.qty,0);
+  const count = cart.reduce((sum,item)=>{
+    return sum + Number(item.quantity ?? item.qty ?? 0);
+  },0);
 
-document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartCount").textContent = count;
 }
 
 updateCartCount();
