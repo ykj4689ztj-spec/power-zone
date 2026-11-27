@@ -8,11 +8,7 @@
 <title>POWER ZONE | سانشي SANCHI</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:Arial,sans-serif;
@@ -58,9 +54,7 @@ nav a{
   font-weight:bold;
 }
 
-nav a:hover{
-  color:#facc15;
-}
+nav a:hover{color:#facc15}
 
 .cart-link{
   background:#facc15;
@@ -99,9 +93,7 @@ nav a:hover{
   font-size:26px;
 }
 
-.section-title span{
-  color:#eab308;
-}
+.section-title span{color:#eab308}
 
 .products{
   display:grid;
@@ -117,9 +109,7 @@ nav a:hover{
   transition:.2s;
 }
 
-.product:hover{
-  transform:translateY(-4px);
-}
+.product:hover{transform:translateY(-4px)}
 
 .product-image{
   height:180px;
@@ -167,8 +157,13 @@ nav a:hover{
   cursor:pointer;
 }
 
-.add-btn:hover{
-  background:#eab308;
+.add-btn:hover{background:#eab308}
+
+.message{
+  color:#15803d;
+  font-weight:bold;
+  margin-top:12px;
+  line-height:1.6;
 }
 
 .notice{
@@ -202,23 +197,15 @@ footer{
   margin-top:30px;
 }
 
-footer span{
-  color:#facc15;
-}
+footer span{color:#facc15}
 
 @media(max-width:600px){
   .header-content{
     justify-content:center;
     text-align:center;
   }
-
-  nav{
-    justify-content:center;
-  }
-
-  .hero h1{
-    font-size:26px;
-  }
+  nav{justify-content:center}
+  .hero h1{font-size:26px}
 }
 </style>
 </head>
@@ -228,7 +215,6 @@ footer span{
 <header>
   <div class="header-content">
     <div class="logo">POWER ZONE ⚡</div>
-
     <nav>
       <a href="index.html">الرئيسية</a>
       <a href="cart.html" class="cart-link">
@@ -261,6 +247,7 @@ footer span{
         <button class="add-btn" onclick="addToCart(this,'شنيور سانشي')">
           🛒 إضافة للسلة
         </button>
+        <p class="message"></p>
       </div>
     </div>
 
@@ -273,6 +260,7 @@ footer span{
         <button class="add-btn" onclick="addToCart(this,'صاروخ تجليخ سانشي')">
           🛒 إضافة للسلة
         </button>
+        <p class="message"></p>
       </div>
     </div>
 
@@ -285,6 +273,7 @@ footer span{
         <button class="add-btn" onclick="addToCart(this,'هيلتي سانشي')">
           🛒 إضافة للسلة
         </button>
+        <p class="message"></p>
       </div>
     </div>
 
@@ -297,6 +286,7 @@ footer span{
         <button class="add-btn" onclick="addToCart(this,'منشار كهربائي سانشي')">
           🛒 إضافة للسلة
         </button>
+        <p class="message"></p>
       </div>
     </div>
 
@@ -310,7 +300,8 @@ footer span{
 
   <a class="whatsapp"
      href="https://wa.me/201155284381"
-     target="_blank">
+     target="_blank"
+     rel="noopener noreferrer">
      💬 تواصل معنا على واتساب
   </a>
 
@@ -324,7 +315,12 @@ footer span{
 
 <script>
 function getCart(){
-  return JSON.parse(localStorage.getItem("powerZoneCart") || "[]");
+  try{
+    let cart = JSON.parse(localStorage.getItem("powerZoneCart") || "[]");
+    return Array.isArray(cart) ? cart : [];
+  }catch(e){
+    return [];
+  }
 }
 
 function saveCart(cart){
@@ -344,15 +340,18 @@ function updateCartCount(){
 function addToCart(button,name){
   let product=button.parentElement;
   let quantityInput=product.querySelector(".quantity");
-  let quantity=parseInt(quantityInput.value);
+  let message=product.querySelector(".message");
+  let quantity=Number(quantityInput.value);
 
-  if(!quantity || quantity<1){
-    alert("من فضلك حدد كمية صحيحة");
+  message.textContent="";
+
+  if(!Number.isInteger(quantity) || quantity<1){
+    message.textContent="اكتب كمية صحيحة";
+    message.style.color="#dc2626";
     return;
   }
 
   let cart=getCart();
-
   let existing=cart.find(item=>item.name===name);
 
   if(existing){
@@ -368,7 +367,9 @@ function addToCart(button,name){
   saveCart(cart);
   updateCartCount();
 
-  alert("تم إضافة المنتج للسلة بنجاح ✅");
+  message.style.color="#15803d";
+  message.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
+
   quantityInput.value=1;
 }
 
