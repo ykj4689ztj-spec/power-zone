@@ -37,6 +37,13 @@ color:#facc15
 
 .logo span{color:white}
 
+.header-actions{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap
+}
+
 nav{
 display:flex;
 gap:18px;
@@ -46,6 +53,16 @@ flex-wrap:wrap
 nav a{
 color:white;
 text-decoration:none;
+font-size:14px
+}
+
+.cart-link{
+background:#facc15;
+color:#101827;
+text-decoration:none;
+padding:10px 15px;
+border-radius:8px;
+font-weight:bold;
 font-size:14px
 }
 
@@ -147,6 +164,7 @@ z-index:5
 @media(max-width:600px){
 .hero h1{font-size:29px}
 header{justify-content:center}
+.header-actions{justify-content:center}
 nav{justify-content:center}
 .categories{
 grid-template-columns:repeat(2,minmax(0,1fr));
@@ -161,11 +179,17 @@ gap:10px
 <header>
 <div class="logo">⚡ POWER <span>ZONE</span></div>
 
+<div class="header-actions">
 <nav>
 <a href="index.html">الرئيسية</a>
 <a href="#categories">الأقسام</a>
 <a href="#about">من نحن</a>
 </nav>
+
+<a class="cart-link" href="cart.html">
+🛒 السلة (<span id="cartCount">0</span>)
+</a>
+</div>
 </header>
 
 <div class="hero" id="home">
@@ -240,6 +264,16 @@ target="_blank"
 rel="noopener noreferrer">
 واتساب 💬
 </a>
+
+<script>
+function updateCartCount(){
+const cart=JSON.parse(localStorage.getItem('powerZoneCart'))||[];
+const count=cart.reduce((total,item)=>total+Number(item.quantity||0),0);
+document.getElementById('cartCount').textContent=count;
+}
+
+updateCartCount();
+</script>
 
 </body>
 </html>
