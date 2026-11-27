@@ -59,6 +59,15 @@ overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
 .add-cart{width:100%;background:#101827;color:white;padding:12px;border:0;border-radius:8px;cursor:pointer;font-size:14px;font-weight:bold;transition:.2s}
 .add-cart:hover{background:#facc15;color:#101827}
 
+.message{
+color:#15803d;
+font-weight:bold;
+font-size:13px;
+margin-top:12px;
+text-align:center;
+line-height:1.6;
+}
+
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
 .whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;z-index:8;box-shadow:0 4px 15px #00000025}
@@ -118,6 +127,7 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سلك كهرباء">
 <button class="add-cart" onclick="addToCart('سلك كهرباء',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -129,6 +139,7 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية كابل كهرباء">
 <button class="add-cart" onclick="addToCart('كابل كهرباء',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -140,6 +151,7 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سلك نحاس">
 <button class="add-cart" onclick="addToCart('سلك نحاس',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -151,6 +163,7 @@ section{padding:38px 4%}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية كابل مرن">
 <button class="add-cart" onclick="addToCart('كابل مرن',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -168,7 +181,12 @@ section{padding:38px 4%}
 const cartKey="powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey)||"[]");
+try{
+const cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+return Array.isArray(cart)?cart:[];
+}catch(e){
+return [];
+}
 }
 
 function updateCartCount(){
@@ -180,10 +198,15 @@ document.getElementById("cartCount").textContent=count;
 function addToCart(name,button){
 const card=button.closest(".product");
 const input=card.querySelector(".quantity");
+const message=card.querySelector(".message");
 const qty=Number(input.value);
 
+message.textContent="";
+message.style.color="#15803d";
+
 if(!Number.isInteger(qty)||qty<1){
-alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+message.textContent="من فضلك أدخل كمية صحيحة تبدأ من 1";
+message.style.color="#dc2626";
 input.focus();
 return;
 }
@@ -201,7 +224,7 @@ cart.push({name:name,quantity:qty});
 localStorage.setItem(cartKey,JSON.stringify(cart));
 updateCartCount();
 
-alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
+message.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
 input.value=1;
 }
 
