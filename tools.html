@@ -4,140 +4,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POWER ZONE | الأدوات الكهربائية</title>
+<title>الأدوات الكهربائية | POWER ZONE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
-font-family:Arial,sans-serif;
-background:#f1f5f9;
-color:#172033;
+  font-family:Arial,sans-serif;
+  background:#f4f6f9;
+  color:#172033;
 }
 
 header{
-background:#101827;
-color:white;
-padding:18px 6%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:12px;
+  background:#101827;
+  color:white;
+  padding:17px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .logo{
-font-size:23px;
-font-weight:bold;
-color:#facc15;
+  font-size:25px;
+  font-weight:bold;
+  color:#facc15;
 }
 
-header a{
-color:white;
-text-decoration:none;
+.logo span{color:white}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
 }
 
 .cart-link{
-background:#facc15;
-color:#101827!important;
-padding:10px 15px;
-border-radius:8px;
-font-weight:bold;
+  background:#263b59;
+  padding:10px 14px;
+  border-radius:8px;
 }
 
 .hero{
-background:linear-gradient(135deg,#101827,#1e40af);
-color:white;
-text-align:center;
-padding:65px 20px;
+  background:linear-gradient(120deg,#101827,#263b59);
+  color:white;
+  text-align:center;
+  padding:65px 20px;
+}
+
+.hero small{
+  color:#facc15;
+  font-weight:bold;
+  letter-spacing:2px;
 }
 
 .hero h1{
-font-size:32px;
-margin-bottom:12px;
+  font-size:34px;
+  margin:15px 0;
+  color:#facc15;
 }
 
 .hero p{
-color:#e2e8f0;
-line-height:1.8;
+  color:#d1d5db;
+  line-height:1.9;
+  font-size:15px;
 }
 
-.container{
-width:90%;
-max-width:1100px;
-margin:35px auto;
+section{padding:40px 5%}
+
+.section-heading{
+  text-align:center;
+  margin-bottom:30px;
 }
 
-.section-title{
-margin-bottom:25px;
-font-size:25px;
+.section-heading h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.section-heading p{
+  color:#64748b;
+  font-size:14px;
 }
 
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
 }
 
-.card{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 3px 12px #00000012;
-text-align:center;
-padding-bottom:20px;
+.product{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  transition:.25s;
 }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-background:#e2e8f0;
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 25px #00000012;
 }
 
-.card h3{
-margin:15px 10px 8px;
+.product img{
+  width:100%;
+  height:185px;
+  object-fit:cover;
+  background:#eee;
 }
 
-.card p{
-color:#64748b;
-margin-bottom:12px;
+.info{padding:17px}
+
+.product h3{
+  font-size:17px;
+  margin-bottom:9px;
+}
+
+.description{
+  color:#64748b;
+  font-size:13px;
+  line-height:1.7;
+  min-height:40px;
+  margin-bottom:12px;
 }
 
 .price{
-color:#1d4ed8;
-font-weight:bold;
-margin-bottom:15px;
+  color:#a87900;
+  font-weight:bold;
+  font-size:15px;
+  margin-bottom:15px;
 }
 
 .quantity{
-width:85px;
-padding:9px;
-border:1px solid #cbd5e1;
-border-radius:7px;
-font-size:16px;
-text-align:center;
-margin-bottom:12px;
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  margin-bottom:12px;
+  font-size:16px;
+  outline:none;
 }
 
+.quantity:focus{border-color:#d6a500}
+
 .add-cart{
-display:block;
-margin:auto;
-background:#facc15;
-color:#101827;
-padding:11px 18px;
-border:0;
-border-radius:7px;
-font-weight:bold;
-cursor:pointer;
+  width:100%;
+  background:#101827;
+  color:white;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.add-cart:hover{
+  background:#facc15;
+  color:#101827;
 }
 
 footer{
-background:#101827;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:45px;
+  background:#080e18;
+  color:#aaa;
+  text-align:center;
+  padding:25px;
+  font-size:14px;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#25d366;
+  color:white;
+  text-decoration:none;
+  padding:14px 19px;
+  border-radius:30px;
+  font-weight:bold;
+  z-index:20;
+}
+
+@media(max-width:600px){
+  .hero{padding:48px 15px}
+  .hero h1{font-size:27px}
+  .products{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:11px;
+  }
+  .product img{height:125px}
+  .info{padding:11px}
+  .product h3{font-size:14px}
+  .description{font-size:12px;min-height:48px}
+  .price{font-size:13px}
+  .add-cart{font-size:13px;padding:11px 5px}
+  nav{gap:9px}
+  nav a{font-size:13px}
 }
 </style>
 </head>
@@ -145,107 +218,163 @@ margin-top:45px;
 <body>
 
 <header>
-<div class="logo">POWER ZONE</div>
+  <div class="logo">⚡ POWER <span>ZONE</span></div>
 
-<div style="display:flex;gap:15px;align-items:center">
-<a href="index.html">الرئيسية</a>
-<a class="cart-link" href="cart.html">
-🛒 السلة (<span id="cartCount">0</span>)
-</a>
-</div>
+  <nav>
+    <a href="index.html">← الرئيسية</a>
+    <a class="cart-link" href="cart.html">
+      🛒 السلة (<span id="cartCount">0</span>)
+    </a>
+  </nav>
 </header>
 
-<section class="hero">
-<h1>الأدوات الكهربائية</h1>
-<p>اكتشف مجموعة متنوعة من الأدوات والمعدات الكهربائية</p>
+<div class="hero">
+  <small>POWER ZONE COLLECTION</small>
+  <h1>الأدوات الكهربائية</h1>
+  <p>
+    أدوات ومعدات تساعدك في جميع أعمال الكهرباء والصيانة<br>
+    اختار المنتج وحدد الكمية المطلوبة
+  </p>
+</div>
+
+<section>
+
+  <div class="section-heading">
+    <h2>منتجاتنا</h2>
+    <p>حدد المنتج والكمية المطلوبة وأضفها إلى سلة المشتريات</p>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <img src="https://placehold.co/500x350?text=Electric+Drill" alt="شنيور كهربائي">
+      <div class="info">
+        <h3>شنيور كهربائي</h3>
+        <p class="description">أدوات حفر واستخدامات متعددة</p>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية الشنيور">
+        <button class="add-cart" onclick="addToCart('شنيور كهربائي',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://placehold.co/500x350?text=Angle+Grinder" alt="صاروخ تجليخ">
+      <div class="info">
+        <h3>صاروخ تجليخ</h3>
+        <p class="description">للقطع والتجليخ</p>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية صاروخ التجليخ">
+        <button class="add-cart" onclick="addToCart('صاروخ تجليخ',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://placehold.co/500x350?text=Electric+Screwdriver" alt="مفك كهربائي">
+      <div class="info">
+        <h3>مفك كهربائي</h3>
+        <p class="description">لأعمال الفك والتركيب</p>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية المفك الكهربائي">
+        <button class="add-cart" onclick="addToCart('مفك كهربائي',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://placehold.co/500x350?text=Measuring+Tools" alt="أدوات قياس">
+      <div class="info">
+        <h3>أدوات قياس</h3>
+        <p class="description">أجهزة قياس وفحص كهربائي</p>
+        <div class="price">السعر عند الطلب</div>
+        <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية أدوات القياس">
+        <button class="add-cart" onclick="addToCart('أدوات قياس',this)">
+          🛒 أضف إلى السلة
+        </button>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<div class="container">
-<h2 class="section-title">منتجاتنا</h2>
-
-<div class="products">
-
-<div class="card">
-<img src="https://placehold.co/500x350?text=Electric+Drill" alt="شنيور كهربائي">
-<h3>شنيور كهربائي</h3>
-<p>أدوات حفر واستخدامات متعددة</p>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية الشنيور">
-<button class="add-cart" onclick="addToCart('شنيور كهربائي',this)">🛒 أضف إلى السلة</button>
-</div>
-
-<div class="card">
-<img src="https://placehold.co/500x350?text=Angle+Grinder" alt="صاروخ تجليخ">
-<h3>صاروخ تجليخ</h3>
-<p>للقطع والتجليخ</p>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية صاروخ التجليخ">
-<button class="add-cart" onclick="addToCart('صاروخ تجليخ',this)">🛒 أضف إلى السلة</button>
-</div>
-
-<div class="card">
-<img src="https://placehold.co/500x350?text=Electric+Screwdriver" alt="مفك كهربائي">
-<h3>مفك كهربائي</h3>
-<p>لأعمال الفك والتركيب</p>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية المفك الكهربائي">
-<button class="add-cart" onclick="addToCart('مفك كهربائي',this)">🛒 أضف إلى السلة</button>
-</div>
-
-<div class="card">
-<img src="https://placehold.co/500x350?text=Measuring+Tools" alt="أدوات قياس">
-<h3>أدوات قياس</h3>
-<p>أجهزة قياس وفحص كهربائي</p>
-<div class="price">السعر عند الطلب</div>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية أدوات القياس">
-<button class="add-cart" onclick="addToCart('أدوات قياس',this)">🛒 أضف إلى السلة</button>
-</div>
-
-</div>
-</div>
-
 <footer>
-<p>POWER ZONE © 2026 - جميع الحقوق محفوظة</p>
+  <p>© 2026 POWER ZONE - جميع الحقوق محفوظة</p>
 </footer>
 
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">
+  واتساب 💬
+</a>
+
 <script>
-const cartKey="powerZoneCart";
+const cartKey = "powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey)||"[]");
+  try{
+    const cart = JSON.parse(localStorage.getItem(cartKey) || "[]");
+    return Array.isArray(cart) ? cart : [];
+  }catch(error){
+    return [];
+  }
+}
+
+function saveCart(cart){
+  localStorage.setItem(cartKey,JSON.stringify(cart));
 }
 
 function addToCart(name,button){
-const card=button.closest(".card");
-const input=card.querySelector(".quantity");
-const qty=Number(input.value);
 
-if(!Number.isInteger(qty)||qty<1){
-alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
-input.focus();
-return;
-}
+  const card = button.closest(".product");
+  const input = card.querySelector(".quantity");
+  const qty = Number(input.value);
 
-let cart=getCart();
-let item=cart.find(product=>product.name===name);
+  if(!Number.isInteger(qty) || qty < 1){
+    alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+    input.focus();
+    return;
+  }
 
-if(item){
-item.qty+=qty;
-}else{
-cart.push({name:name,qty:qty});
-}
+  let cart = getCart();
 
-localStorage.setItem(cartKey,JSON.stringify(cart));
-updateCartCount();
+  // تحويل الكميات القديمة من qty إلى quantity
+  cart = cart.map(item => ({
+    ...item,
+    quantity:Number(item.quantity ?? item.qty ?? 0)
+  }));
 
-alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
-input.value=1;
+  let item = cart.find(product => product.name === name);
+
+  if(item){
+    item.quantity += qty;
+  }else{
+    cart.push({
+      name:name,
+      quantity:qty
+    });
+  }
+
+  cart.forEach(item => delete item.qty);
+
+  saveCart(cart);
+  updateCartCount();
+
+  alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+
+  input.value = 1;
 }
 
 function updateCartCount(){
-let cart=getCart();
-let count=cart.reduce((sum,item)=>sum+item.qty,0);
-document.getElementById("cartCount").textContent=count;
+
+  const cart = getCart();
+
+  const count = cart.reduce((sum,item)=>{
+    return sum + Number(item.quantity ?? item.qty ?? 0);
+  },0);
+
+  document.getElementById("cartCount").textContent = count;
 }
 
 updateCartCount();
