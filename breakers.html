@@ -4,263 +4,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POWER ZONE | القواطع الكهربائية</title>
+<meta name="theme-color" content="#101827">
+<title>القواطع الكهربائية | POWER ZONE</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
+
+header{
+background:#101827;color:white;padding:15px 6%;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:14px;box-shadow:0 4px 18px #00000018;
+position:sticky;top:0;z-index:10
+}
+.logo{font-size:25px;font-weight:900;color:#facc15}
+.logo span{color:white}
+.header-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.header-actions a{text-decoration:none}
+.home-link{color:#e5e7eb;font-size:14px}
+.home-link:hover{color:#facc15}
+.cart-link{background:#facc15;color:#101827;padding:10px 15px;border-radius:9px;font-weight:bold;font-size:14px}
+
+.hero{
+background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),linear-gradient(120deg,#101827,#1d3554);
+color:white;text-align:center;padding:65px 20px
+}
+.hero-label{display:inline-block;color:#facc15;background:#facc1512;border:1px solid #facc1555;padding:6px 16px;border-radius:30px;font-size:13px;margin-bottom:15px}
+.hero h1{font-size:36px;color:#facc15;margin-bottom:10px}
+.hero p{color:#d1d9e5;line-height:2;font-size:15px}
+
+.container{padding:50px 6%;max-width:1200px;margin:auto}
+.section-heading{text-align:center;margin-bottom:30px}
+.section-heading small{color:#a47c00;font-weight:bold}
+.section-heading h2{font-size:28px;color:#101827;margin:6px 0}
+.section-heading p{color:#7b8492;font-size:14px}
+
+.products{
+display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+gap:18px
+}
+.card{
+background:white;border:1px solid #e9edf2;border-radius:15px;
+overflow:hidden;box-shadow:0 4px 15px #10182709;
+transition:.25s;text-align:center
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
+.card img{width:100%;height:175px;object-fit:cover;background:#eee;display:block}
+.info{padding:16px}
+.card h3{font-size:16px;color:#172033;margin-bottom:8px}
+.description{color:#7b8492;font-size:13px;min-height:44px;margin-bottom:10px}
+.price{color:#a47c00;font-weight:bold;font-size:16px;margin-bottom:13px}
+.quantity-label{display:block;text-align:right;font-size:13px;color:#6b7280;margin-bottom:6px}
+.quantity{
+display:block;width:100%;padding:11px;border:1px solid #dce1e8;
+border-radius:8px;margin-bottom:12px;font-size:16px;outline:none
+}
+.quantity:focus{border-color:#d6a900}
+.order{
+width:100%;background:#101827;color:white;padding:12px;
+border:0;border-radius:8px;font-weight:bold;cursor:pointer;font-size:14px;transition:.2s
+}
+.order:hover{background:#facc15;color:#101827}
+
+footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
+footer strong{color:#facc15}
+.whatsapp{
+position:fixed;bottom:20px;left:20px;background:#25d366;color:white;
+text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;
+z-index:8;box-shadow:0 4px 15px #00000025
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
+@media(max-width:900px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
-header {
-  background: #101827;
-  color: white;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+@media(max-width:600px){
+header{padding:13px 4%;justify-content:center}
+.header-actions{justify-content:center;gap:13px}
+.hero{padding:50px 15px}
+.hero h1{font-size:29px}
+.hero p{font-size:13px}
+.container{padding:38px 4%}
+.section-heading h2{font-size:24px}
+.products{gap:11px}
+.card img{height:135px}
+.info{padding:11px}
+.card h3{font-size:14px}
+.description{font-size:11px;min-height:42px}
+.price{font-size:14px}
+.quantity{padding:9px}
+.order{font-size:12px;padding:11px}
 }
-
-.logo {
-  font-size: 23px;
-  font-weight: bold;
-  color: #facc15;
-}
-
-header a {
-  color: white;
-  text-decoration: none;
-}
-
-.cart-link {
-  background: #263b59;
-  padding: 9px 13px;
-  border-radius: 7px;
-}
-
-.hero {
-  background: linear-gradient(135deg, #101827, #1e40af);
-  color: white;
-  text-align: center;
-  padding: 65px 20px;
-}
-
-.hero h1 {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.hero p {
-  color: #e2e8f0;
-  line-height: 1.8;
-}
-
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 35px auto;
-}
-
-.section-title {
-  margin-bottom: 25px;
-  font-size: 25px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 12px #00000012;
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  background: #e2e8f0;
-}
-
-.card h3 {
-  margin: 15px 10px 8px;
-}
-
-.card p {
-  color: #64748b;
-  margin-bottom: 12px;
-}
-
-.price {
-  color: #1d4ed8;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.quantity {
-  display: block;
-  width: 85%;
-  margin: 0 auto 12px;
-  padding: 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 7px;
-  font-size: 16px;
-}
-
-.order {
-  display: block;
-  width: 85%;
-  margin: auto;
-  background: #facc15;
-  color: #101827;
-  padding: 12px;
-  border: 0;
-  border-radius: 7px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.order:hover {
-  background: #eab308;
-}
-
-footer {
-  background: #101827;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 45px;
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">POWER ZONE</div>
-
-  <div style="display:flex;gap:15px;align-items:center">
-    <a href="index.html">الصفحة الرئيسية</a>
-    <a class="cart-link" href="cart.html">
-      🛒 السلة (<span id="cartCount">0</span>)
-    </a>
-  </div>
+<div class="logo">⚡ POWER <span>ZONE</span></div>
+<div class="header-actions">
+<a class="home-link" href="index.html">← الرئيسية</a>
+<a class="cart-link" href="cart.html">🛒 السلة (<span id="cartCount">0</span>)</a>
+</div>
 </header>
 
 <section class="hero">
-  <h1>القواطع الكهربائية</h1>
-  <p>مجموعة متنوعة من القواطع ومستلزمات الحماية الكهربائية</p>
+<div class="hero-label">POWER ZONE COLLECTION</div>
+<h1>القواطع الكهربائية</h1>
+<p>مجموعة متنوعة من القواطع ومستلزمات الحماية الكهربائية</p>
 </section>
 
-<div class="container">
-  <h2 class="section-title">منتجاتنا</h2>
+<main class="container">
 
-  <div class="products">
-
-    <div class="card">
-      <img src="https://placehold.co/500x350?text=MCB+Breaker" alt="قاطع أوتوماتيك">
-      <h3>قاطع أوتوماتيك MCB</h3>
-      <p>قواطع لحماية الدوائر الكهربائية</p>
-      <div class="price">السعر عند الطلب</div>
-      <input class="quantity" type="number" min="1" step="1" value="1">
-      <button class="order" onclick="addToCart('قاطع أوتوماتيك MCB',this)">🛒 أضف إلى السلة</button>
-    </div>
-
-    <div class="card">
-      <img src="https://placehold.co/500x350?text=RCCB" alt="قاطع تسريب أرضي">
-      <h3>قاطع تسريب أرضي RCCB</h3>
-      <p>للحماية من تيار التسريب الأرضي</p>
-      <div class="price">السعر عند الطلب</div>
-      <input class="quantity" type="number" min="1" step="1" value="1">
-      <button class="order" onclick="addToCart('قاطع تسريب أرضي RCCB',this)">🛒 أضف إلى السلة</button>
-    </div>
-
-    <div class="card">
-      <img src="https://placehold.co/500x350?text=MCCB" alt="قاطع MCCB">
-      <h3>قاطع MCCB</h3>
-      <p>قواطع للتيارات والأحمال الأكبر</p>
-      <div class="price">السعر عند الطلب</div>
-      <input class="quantity" type="number" min="1" step="1" value="1">
-      <button class="order" onclick="addToCart('قاطع MCCB',this)">🛒 أضف إلى السلة</button>
-    </div>
-
-    <div class="card">
-      <img src="https://placehold.co/500x350?text=Changeover" alt="مفتاح تحويل">
-      <h3>مفتاح تحويل</h3>
-      <p>للتبديل بين مصادر التغذية الكهربائية</p>
-      <div class="price">السعر عند الطلب</div>
-      <input class="quantity" type="number" min="1" step="1" value="1">
-      <button class="order" onclick="addToCart('مفتاح تحويل',this)">🛒 أضف إلى السلة</button>
-    </div>
-
-  </div>
+<div class="section-heading">
+<small>ELECTRICAL BREAKERS</small>
+<h2>منتجاتنا</h2>
+<p>اختر المنتج والكمية المطلوبة وأضفها إلى سلة مشترياتك</p>
 </div>
 
+<div class="products">
+
+<div class="card">
+<img src="https://placehold.co/500x350?text=MCB+Breaker" alt="قاطع أوتوماتيك">
+<div class="info">
+<h3>قاطع أوتوماتيك MCB</h3>
+<p class="description">قواطع لحماية الدوائر الكهربائية</p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1">
+<button class="order" onclick="addToCart('قاطع أوتوماتيك MCB',this)">🛒 أضف إلى السلة</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://placehold.co/500x350?text=RCCB" alt="قاطع تسريب أرضي">
+<div class="info">
+<h3>قاطع تسريب أرضي RCCB</h3>
+<p class="description">للحماية من تيار التسريب الأرضي</p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1">
+<button class="order" onclick="addToCart('قاطع تسريب أرضي RCCB',this)">🛒 أضف إلى السلة</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://placehold.co/500x350?text=MCCB" alt="قاطع MCCB">
+<div class="info">
+<h3>قاطع MCCB</h3>
+<p class="description">قواطع للتيارات والأحمال الأكبر</p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1">
+<button class="order" onclick="addToCart('قاطع MCCB',this)">🛒 أضف إلى السلة</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://placehold.co/500x350?text=Changeover" alt="مفتاح تحويل">
+<div class="info">
+<h3>مفتاح تحويل</h3>
+<p class="description">للتبديل بين مصادر التغذية الكهربائية</p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1">
+<button class="order" onclick="addToCart('مفتاح تحويل',this)">🛒 أضف إلى السلة</button>
+</div>
+</div>
+
+</div>
+</main>
+
 <footer>
-  <p>POWER ZONE © 2026 - جميع الحقوق محفوظة</p>
+<p>© 2026 <strong>POWER ZONE</strong> - جميع الحقوق محفوظة</p>
+<p>متجرك للأدوات الكهربائية ⚡</p>
 </footer>
 
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">واتساب 💬</a>
+
 <script>
-const cartKey = "powerZoneCart";
+const cartKey="powerZoneCart";
 
 function getCart(){
-  return JSON.parse(localStorage.getItem(cartKey) || "[]");
-}
-
-function addToCart(name,button){
-
-  const card = button.closest(".card");
-  const input = card.querySelector(".quantity");
-  const qty = Number(input.value);
-
-  if(!Number.isInteger(qty) || qty < 1){
-    alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
-    input.focus();
-    return;
-  }
-
-  let cart = getCart();
-  let item = cart.find(product => product.name === name);
-
-  if(item){
-    item.qty += qty;
-  }else{
-    cart.push({name:name,qty:qty});
-  }
-
-  localStorage.setItem(cartKey,JSON.stringify(cart));
-
-  updateCartCount();
-
-  alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
-
-  input.value = 1;
+return JSON.parse(localStorage.getItem(cartKey)||"[]");
 }
 
 function updateCartCount(){
+const cart=getCart();
+const count=cart.reduce((sum,item)=>sum+Number(item.quantity||item.qty||0),0);
+document.getElementById("cartCount").textContent=count;
+}
 
-  let cart = getCart();
+function addToCart(name,button){
+const card=button.closest(".card");
+const input=card.querySelector(".quantity");
+const qty=Number(input.value);
 
-  let count = cart.reduce((sum,item)=>sum + item.qty,0);
+if(!Number.isInteger(qty)||qty<1){
+alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+input.focus();
+return;
+}
 
-  document.getElementById("cartCount").textContent = count;
+let cart=getCart();
+let item=cart.find(product=>product.name===name);
+
+if(item){
+item.quantity=Number(item.quantity||item.qty||0)+qty;
+delete item.qty;
+}else{
+cart.push({
+name:name,
+quantity:qty
+});
+}
+
+localStorage.setItem(cartKey,JSON.stringify(cart));
+updateCartCount();
+
+alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
+input.value=1;
 }
 
 updateCartCount();
