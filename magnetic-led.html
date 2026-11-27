@@ -7,131 +7,32 @@
 <title>Magnetic LED | POWER ZONE</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
-
-header {
-  background: #101827;
-  color: white;
-  padding: 22px;
-  text-align: center;
-}
-
-header h1 {
-  color: #38bdf8;
-  margin-bottom: 8px;
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
-
-.back {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #0284c7;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-h2 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-
-.product {
-  background: white;
-  padding: 18px;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px #00000012;
-  text-align: center;
-}
-
-.product img {
-  width: 100%;
-  height: 160px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
-
-.product h3 {
-  margin-bottom: 12px;
-}
-
-.product input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 7px;
-}
-
-.product button {
-  width: 100%;
-  padding: 11px;
-  border: none;
-  border-radius: 7px;
-  background: #0284c7;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.product button:hover {
-  background: #0369a1;
-}
-
-.cart {
-  margin-top: 25px;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-}
-
-.cart button {
-  background: #16a34a;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 7px;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-footer {
-  margin-top: 30px;
-  padding: 20px;
-  text-align: center;
-  background: #101827;
-  color: white;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:#101827;color:white;padding:22px;text-align:center}
+header h1{color:#38bdf8;margin-bottom:8px}
+.container{max-width:1100px;margin:auto;padding:20px}
+.back{display:inline-block;margin-bottom:20px;color:#0284c7;text-decoration:none;font-weight:bold}
+h2{margin-bottom:20px;text-align:center}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.product{background:white;padding:18px;border-radius:12px;box-shadow:0 3px 12px #00000012;text-align:center}
+.product img{width:100%;height:160px;object-fit:contain;margin-bottom:12px}
+.product h3{margin-bottom:12px}
+.product input{width:100%;padding:10px;margin:10px 0;border:1px solid #cbd5e1;border-radius:7px}
+.product button{width:100%;padding:11px;border:none;border-radius:7px;background:#0284c7;color:white;font-weight:bold;cursor:pointer}
+.cart{margin-top:25px;padding:20px;background:white;border-radius:12px}
+.cart li{padding:10px;border-bottom:1px solid #eee;list-style:none}
+.cart button{background:#16a34a;color:white;border:none;padding:12px;border-radius:7px;cursor:pointer;width:100%;margin-top:15px;font-weight:bold}
+.remove{background:#dc2626!important;width:auto!important;padding:5px 10px!important;margin-right:10px}
+footer{margin-top:30px;padding:20px;text-align:center;background:#101827;color:white}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>POWER ZONE</h1>
-  <p>قسم الماجنتك ليد وإكسسواراته</p>
+<h1>POWER ZONE</h1>
+<p>قسم الماجنتك ليد وإكسسواراته</p>
 </header>
 
 <div class="container">
@@ -142,86 +43,114 @@ footer {
 
 <div class="products">
 
-  <div class="product">
-    <img src="https://placehold.co/300x200?text=Magnetic+Track" alt="Magnetic Track">
-    <h3>مسار ماجنتك</h3>
-    <input type="number" min="1" value="1" id="q1">
-    <button onclick="addToCart('مسار ماجنتك', 'q1')">إضافة للطلب</button>
-  </div>
+<div class="product">
+<img src="https://placehold.co/300x200?text=Magnetic+Track" alt="Magnetic Track">
+<h3>مسار ماجنتك</h3>
+<input type="number" min="1" value="1" id="q1">
+<button onclick="addToCart('مسار ماجنتك','q1')">إضافة للطلب</button>
+</div>
 
-  <div class="product">
-    <img src="https://placehold.co/300x200?text=Magnetic+Spot" alt="Magnetic Spot">
-    <h3>كشاف ماجنتك</h3>
-    <input type="number" min="1" value="1" id="q2">
-    <button onclick="addToCart('كشاف ماجنتك', 'q2')">إضافة للطلب</button>
-  </div>
+<div class="product">
+<img src="https://placehold.co/300x200?text=Magnetic+Spot" alt="Magnetic Spot">
+<h3>كشاف ماجنتك</h3>
+<input type="number" min="1" value="1" id="q2">
+<button onclick="addToCart('كشاف ماجنتك','q2')">إضافة للطلب</button>
+</div>
 
-  <div class="product">
-    <img src="https://placehold.co/300x200?text=Magnetic+Linear" alt="Magnetic Linear">
-    <h3>ماجنتك لاينر</h3>
-    <input type="number" min="1" value="1" id="q3">
-    <button onclick="addToCart('ماجنتك لاينر', 'q3')">إضافة للطلب</button>
-  </div>
+<div class="product">
+<img src="https://placehold.co/300x200?text=Magnetic+Linear" alt="Magnetic Linear">
+<h3>ماجنتك لاينر</h3>
+<input type="number" min="1" value="1" id="q3">
+<button onclick="addToCart('ماجنتك لاينر','q3')">إضافة للطلب</button>
+</div>
 
-  <div class="product">
-    <img src="https://placehold.co/300x200?text=Magnetic+Accessories" alt="Magnetic Accessories">
-    <h3>إكسسوارات ماجنتك</h3>
-    <input type="number" min="1" value="1" id="q4">
-    <button onclick="addToCart('إكسسوارات ماجنتك', 'q4')">إضافة للطلب</button>
-  </div>
+<div class="product">
+<img src="https://placehold.co/300x200?text=Magnetic+Accessories" alt="Magnetic Accessories">
+<h3>إكسسوارات ماجنتك</h3>
+<input type="number" min="1" value="1" id="q4">
+<button onclick="addToCart('إكسسوارات ماجنتك','q4')">إضافة للطلب</button>
+</div>
 
 </div>
 
 <div class="cart">
-  <h2>طلباتي</h2>
-  <ul id="cartList"></ul>
-  <button onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
+<h2>طلباتي</h2>
+<ul id="cartList"></ul>
+<button onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
 </div>
 
 </div>
 
 <footer>
-  POWER ZONE - كل ما تحتاجه من الأدوات الكهربائية
+POWER ZONE - كل ما تحتاجه من الأدوات الكهربائية
 </footer>
 
 <script>
-let cart = [];
+const CART_KEY = "powerZoneCart";
 
-function addToCart(name, inputId) {
-  let quantity = Number(document.getElementById(inputId).value);
+function getCart(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    return Array.isArray(saved) ? saved : [];
+  }catch(error){
+    return [];
+  }
+}
 
-  if (!Number.isInteger(quantity) || quantity < 1) {
+function saveCart(cart){
+  localStorage.setItem(CART_KEY,JSON.stringify(cart));
+}
+
+function addToCart(name,inputId){
+  const quantity = Number(document.getElementById(inputId).value);
+
+  if(!Number.isInteger(quantity) || quantity < 1){
     alert("من فضلك أدخل كمية صحيحة");
     return;
   }
 
+  let cart = getCart();
   let item = cart.find(p => p.name === name);
 
-  if (item) {
-    item.quantity += quantity;
-  } else {
-    cart.push({name, quantity});
+  if(item){
+    item.quantity = Number(item.quantity || item.qty || 0) + quantity;
+    delete item.qty;
+  }else{
+    cart.push({name:name,quantity:quantity});
   }
 
+  saveCart(cart);
   renderCart();
+  alert("تمت إضافة المنتج إلى السلة بنجاح ✅");
 }
 
-function renderCart() {
-  let list = document.getElementById("cartList");
+function renderCart(){
+  const cart = getCart();
+  const list = document.getElementById("cartList");
   list.innerHTML = "";
 
-  cart.forEach((item, index) => {
-    let li = document.createElement("li");
-    li.textContent = item.name + " - الكمية: " + item.quantity + " ";
+  const magneticItems = cart.filter(item =>
+    ["مسار ماجنتك","كشاف ماجنتك","ماجنتك لاينر","إكسسوارات ماجنتك"].includes(item.name)
+  );
 
-    let remove = document.createElement("button");
+  if(magneticItems.length === 0){
+    list.innerHTML = "<li>لم تضف أي منتجات من هذا القسم حتى الآن.</li>";
+    return;
+  }
+
+  magneticItems.forEach(item => {
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(
+      item.name + " - الكمية: " + (item.quantity || item.qty || 0)
+    ));
+
+    const remove = document.createElement("button");
     remove.textContent = "حذف";
-    remove.style.width = "auto";
-    remove.style.padding = "5px 10px";
-    remove.style.margin = "5px";
-    remove.style.background = "#dc2626";
-    remove.onclick = () => {
-      cart.splice(index, 1);
+    remove.className = "remove";
+
+    remove.onclick = function(){
+      let updatedCart = getCart().filter(p => p.name !== item.name);
+      saveCart(updatedCart);
       renderCart();
     };
 
@@ -230,24 +159,34 @@ function renderCart() {
   });
 }
 
-function sendOrder() {
-  if (cart.length === 0) {
+function sendOrder(){
+  const cart = getCart();
+
+  const magneticItems = cart.filter(item =>
+    ["مسار ماجنتك","كشاف ماجنتك","ماجنتك لاينر","إكسسوارات ماجنتك"].includes(item.name)
+  );
+
+  if(magneticItems.length === 0){
     alert("أضف منتجات للطلب أولاً");
     return;
   }
 
-  let message = "طلب جديد من POWER ZONE:%0A";
+  let message = "طلب جديد من POWER ZONE - قسم ماجنتك ليد:\n";
 
-  cart.forEach(item => {
-    message += "%0A" + encodeURIComponent(item.name) +
-      " - الكمية: " + item.quantity;
+  magneticItems.forEach(item => {
+    message += "\n" + item.name +
+      " - الكمية: " + (item.quantity || item.qty || 0);
   });
 
-  // استبدل الرقم برقم واتساب المحل بكود مصر
-  let phone = "201XXXXXXXXX";
+  const phone = "201155284381";
 
-  window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 }
+
+renderCart();
 </script>
 
 </body>
