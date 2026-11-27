@@ -9,449 +9,165 @@
 <title>POWER ZONE | متجر الأدوات الكهربائية</title>
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
-body{
-font-family:Arial,sans-serif;
-background:#f4f6f9;
-color:#172033;
-line-height:1.7
-}
+body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
 
 header{
-background:#101827;
-color:white;
-padding:15px 6%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-flex-wrap:wrap;
-box-shadow:0 4px 18px #00000018;
-position:sticky;
-top:0;
-z-index:10
+background:#101827;color:white;padding:15px 6%;
+display:flex;justify-content:space-between;align-items:center;
+gap:15px;flex-wrap:wrap;box-shadow:0 4px 18px #00000018;
+position:sticky;top:0;z-index:10
 }
 
-.logo{
-font-size:25px;
-font-weight:900;
-color:#facc15;
-letter-spacing:.5px
-}
-
+.logo{font-size:25px;font-weight:900;color:#facc15;letter-spacing:.5px}
 .logo span{color:white}
-
-.header-actions{
-display:flex;
-align-items:center;
-gap:22px
-}
-
-nav{
-display:flex;
-gap:22px;
-align-items:center
-}
-
-nav a{
-color:#e5e7eb;
-text-decoration:none;
-font-size:14px;
-transition:.2s
-}
-
+.header-actions{display:flex;align-items:center;gap:22px}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:#e5e7eb;text-decoration:none;font-size:14px;transition:.2s}
 nav a:hover{color:#facc15}
 
 .cart-link{
-background:#facc15;
-color:#101827;
-text-decoration:none;
-padding:10px 17px;
-border-radius:9px;
-font-size:14px;
-font-weight:bold;
-transition:.2s;
-white-space:nowrap
+background:#facc15;color:#101827;text-decoration:none;
+padding:10px 17px;border-radius:9px;font-size:14px;
+font-weight:bold;transition:.2s;white-space:nowrap
 }
-
-.cart-link:hover{
-background:white;
-transform:translateY(-2px)
-}
+.cart-link:hover{background:white;transform:translateY(-2px)}
 
 .hero{
-background:
-radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),
+background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),
 linear-gradient(120deg,#101827,#1d3554);
-color:white;
-padding:85px 7%;
-position:relative;
-overflow:hidden
+color:white;padding:85px 7%;position:relative;overflow:hidden
 }
-
-.hero-content{
-max-width:850px;
-margin:auto;
-text-align:center;
-position:relative;
-z-index:1
-}
-
+.hero-content{max-width:850px;margin:auto;text-align:center;position:relative;z-index:1}
 .hero-label{
-display:inline-block;
-color:#facc15;
-border:1px solid #facc1555;
-background:#facc1512;
-padding:7px 17px;
-border-radius:30px;
-font-size:13px;
-margin-bottom:20px
+display:inline-block;color:#facc15;border:1px solid #facc1555;
+background:#facc1512;padding:7px 17px;border-radius:30px;
+font-size:13px;margin-bottom:20px
 }
-
-.hero h1{
-font-size:43px;
-line-height:1.4;
-margin-bottom:18px;
-font-weight:900
-}
-
+.hero h1{font-size:43px;line-height:1.4;margin-bottom:18px;font-weight:900}
 .hero h1 span{color:#facc15}
-
-.hero p{
-color:#d1d9e5;
-font-size:17px;
-line-height:2;
-max-width:620px;
-margin:auto
-}
+.hero p{color:#d1d9e5;font-size:17px;line-height:2;max-width:620px;margin:auto}
 
 .hero-buttons{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin-top:30px
+display:flex;justify-content:center;gap:12px;
+flex-wrap:wrap;margin-top:30px
 }
-
 .main-btn,.secondary-btn{
-display:inline-block;
-padding:13px 25px;
-border-radius:9px;
-text-decoration:none;
-font-weight:bold;
-transition:.2s
+display:inline-block;padding:13px 25px;border-radius:9px;
+text-decoration:none;font-weight:bold;transition:.2s
 }
-
-.main-btn{
-background:#facc15;
-color:#101827
-}
-
-.secondary-btn{
-border:1px solid #ffffff55;
-color:white
-}
-
-.main-btn:hover,.secondary-btn:hover{
-transform:translateY(-3px)
-}
-
+.main-btn{background:#facc15;color:#101827}
+.secondary-btn{border:1px solid #ffffff55;color:white}
+.main-btn:hover,.secondary-btn:hover{transform:translateY(-3px)}
 .main-btn:hover{background:white}
 .secondary-btn:hover{background:#ffffff15}
 
 .features{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-max-width:1000px;
-margin:-28px auto 0;
-padding:0 5%;
-position:relative;
-z-index:2
+display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
+max-width:1000px;margin:-28px auto 0;padding:0 5%;
+position:relative;z-index:2
 }
-
 .feature{
-background:white;
-border-radius:13px;
-padding:20px 12px;
-text-align:center;
-box-shadow:0 7px 25px #10182712;
+background:white;border-radius:13px;padding:20px 12px;
+text-align:center;box-shadow:0 7px 25px #10182712;
 border:1px solid #edf0f4
 }
-
-.feature-icon{
-font-size:25px;
-margin-bottom:5px
-}
-
-.feature h3{
-font-size:14px;
-color:#101827
-}
-
-.feature p{
-font-size:12px;
-color:#7b8492;
-margin-top:3px
-}
+.feature-icon{font-size:25px;margin-bottom:5px}
+.feature h3{font-size:14px;color:#101827}
+.feature p{font-size:12px;color:#7b8492;margin-top:3px}
 
 section{padding:65px 6%}
-
-.section-heading{
-text-align:center;
-margin-bottom:35px
-}
-
-.section-heading small{
-color:#b58b00;
-font-weight:bold;
-font-size:13px
-}
-
-.section-heading h2{
-font-size:29px;
-color:#101827;
-margin:7px 0
-}
-
-.section-heading p{
-color:#7b8492;
-font-size:14px
-}
+.section-heading{text-align:center;margin-bottom:35px}
+.section-heading small{color:#b58b00;font-weight:bold;font-size:13px}
+.section-heading h2{font-size:29px;color:#101827;margin:7px 0}
+.section-heading p{color:#7b8492;font-size:14px}
 
 .categories{
-display:grid;
-grid-template-columns:repeat(3,minmax(0,1fr));
-gap:18px;
-max-width:1100px;
-margin:auto
+display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+gap:18px;max-width:1100px;margin:auto
 }
-
 .category{
-background:white;
-border:1px solid #e9edf2;
-border-radius:15px;
-padding:27px 17px;
-text-align:center;
-text-decoration:none;
-color:#172033;
-display:block;
-transition:.25s;
-box-shadow:0 3px 12px #10182708;
-position:relative;
-overflow:hidden
+background:white;border:1px solid #e9edf2;border-radius:15px;
+padding:27px 17px;text-align:center;text-decoration:none;
+color:#172033;display:block;transition:.25s;
+box-shadow:0 3px 12px #10182708;position:relative;overflow:hidden
 }
-
 .category:before{
-content:"";
-position:absolute;
-top:0;
-right:0;
-width:100%;
-height:4px;
-background:#facc15;
-transform:scaleX(0);
-transition:.25s
+content:"";position:absolute;top:0;right:0;width:100%;height:4px;
+background:#facc15;transform:scaleX(0);transition:.25s
 }
-
 .category:hover{
-transform:translateY(-6px);
-box-shadow:0 12px 28px #10182715;
+transform:translateY(-6px);box-shadow:0 12px 28px #10182715;
 border-color:#facc15
 }
-
 .category:hover:before{transform:scaleX(1)}
-
 .category .emoji{
-width:65px;
-height:65px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:0 auto 13px;
-border-radius:17px;
-background:#fff8d9;
-font-size:32px
+width:65px;height:65px;display:flex;align-items:center;
+justify-content:center;margin:0 auto 13px;border-radius:17px;
+background:#fff8d9;font-size:32px
 }
-
-.category h3{
-font-size:17px;
-margin-bottom:5px
-}
-
-.category p{
-color:#89919e;
-font-size:12px
-}
-
+.category h3{font-size:17px;margin-bottom:5px}
+.category p{color:#89919e;font-size:12px}
 .category .more{
-display:inline-block;
-margin-top:14px;
-color:#a47c00;
-font-size:13px;
-font-weight:bold
+display:inline-block;margin-top:14px;color:#a47c00;
+font-size:13px;font-weight:bold
 }
 
-.about{
-background:#101827;
-color:white;
-text-align:center;
-padding:55px 6%
-}
-
-.about h2{
-font-size:27px;
-margin-bottom:13px;
-color:#facc15
-}
-
-.about p{
-max-width:650px;
-margin:auto;
-color:#cbd5e1;
-line-height:2
-}
+.about{background:#101827;color:white;text-align:center;padding:55px 6%}
+.about h2{font-size:27px;margin-bottom:13px;color:#facc15}
+.about p{max-width:650px;margin:auto;color:#cbd5e1;line-height:2}
 
 .contact-strip{
-max-width:900px;
-margin:35px auto 0;
-background:#1d2d43;
-border:1px solid #ffffff16;
-border-radius:13px;
-padding:20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap
+max-width:900px;margin:35px auto 0;background:#1d2d43;
+border:1px solid #ffffff16;border-radius:13px;padding:20px;
+display:flex;align-items:center;justify-content:space-between;
+gap:15px;flex-wrap:wrap
 }
-
-.contact-strip p{
-color:#e5e7eb;
-font-size:14px
-}
-
+.contact-strip p{color:#e5e7eb;font-size:14px}
 .contact-strip a{
-background:#25d366;
-color:white;
-text-decoration:none;
-padding:10px 18px;
-border-radius:8px;
-font-weight:bold;
-font-size:13px
+background:#25d366;color:white;text-decoration:none;
+padding:10px 18px;border-radius:8px;font-weight:bold;font-size:13px
 }
 
-footer{
-background:#080e18;
-color:#9ca3af;
-text-align:center;
-padding:25px 15px;
-font-size:13px
-}
-
+footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px 15px;font-size:13px}
 footer strong{color:#facc15}
 
 .whatsapp{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#25d366;
-color:white;
-text-decoration:none;
-padding:13px 18px;
-border-radius:30px;
-font-weight:bold;
-z-index:8;
+position:fixed;bottom:20px;left:20px;background:#25d366;
+color:white;text-decoration:none;padding:13px 18px;
+border-radius:30px;font-weight:bold;z-index:8;
 box-shadow:0 4px 15px #00000025
 }
 
 @media(max-width:700px){
-
-header{
-padding:13px 4%;
-justify-content:center;
-gap:12px
-}
-
+header{padding:13px 4%;justify-content:center;gap:12px}
 .logo{font-size:23px}
-
-.header-actions{
-width:100%;
-justify-content:center;
-gap:13px;
-flex-wrap:wrap
-}
-
+.header-actions{width:100%;justify-content:center;gap:13px;flex-wrap:wrap}
 nav{gap:15px}
-
 nav a{font-size:13px}
-
-.cart-link{
-padding:9px 13px;
-font-size:13px
-}
-
+.cart-link{padding:9px 13px;font-size:13px}
 .hero{padding:65px 6%}
-
 .hero h1{font-size:31px}
-
 .hero p{font-size:14px}
-
 .hero-buttons{gap:9px}
-
-.main-btn,.secondary-btn{
-padding:12px 17px;
-font-size:13px
-}
-
-.features{
-padding:0 4%;
-gap:8px
-}
-
+.main-btn,.secondary-btn{padding:12px 17px;font-size:13px}
+.features{padding:0 4%;gap:8px}
 .feature{padding:15px 6px}
-
 .feature h3{font-size:12px}
-
 .feature p{font-size:10px}
-
 section{padding:48px 4%}
-
 .section-heading h2{font-size:24px}
-
-.categories{
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:11px
-}
-
+.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
 .category{padding:21px 9px}
-
-.category .emoji{
-width:55px;
-height:55px;
-font-size:27px
-}
-
+.category .emoji{width:55px;height:55px;font-size:27px}
 .category h3{font-size:15px}
-
 .category p{font-size:11px}
-
 .category .more{font-size:12px}
-
 .about{padding:42px 5%}
-
 .about h2{font-size:23px}
-
 .contact-strip{justify-content:center;text-align:center}
 }
-
 @media(max-width:360px){
 nav{gap:10px}
 nav a{font-size:12px}
@@ -463,21 +179,16 @@ nav a{font-size:12px}
 <body>
 
 <header>
-
 <div class="logo">⚡ POWER <span>ZONE</span></div>
-
 <div class="header-actions">
-
 <nav>
 <a href="index.html">الرئيسية</a>
 <a href="#categories">الأقسام</a>
 <a href="#about">من نحن</a>
 </nav>
-
 <a class="cart-link" href="cart.html">
 🛒 السلة (<span id="cartCount">0</span>)
 </a>
-
 </div>
 </header>
 
@@ -485,51 +196,35 @@ nav a{font-size:12px}
 
 <div class="hero" id="home">
 <div class="hero-content">
-
 <div class="hero-label">⚡ عالم الأدوات الكهربائية</div>
-
-<h1>
-كل احتياجاتك الكهربائية<br>
-في مكان واحد مع <span>POWER ZONE</span>
-</h1>
-
-<p>
-اكتشف مجموعة متنوعة من الأدوات والمستلزمات الكهربائية
-بجودة مميزة وأسعار تنافسية.
-</p>
-
+<h1>كل احتياجاتك الكهربائية<br>في مكان واحد مع <span>POWER ZONE</span></h1>
+<p>اكتشف مجموعة متنوعة من الأدوات والمستلزمات الكهربائية بجودة مميزة وأسعار تنافسية.</p>
 <div class="hero-buttons">
 <a class="main-btn" href="#categories">تصفح المنتجات ←</a>
 <a class="secondary-btn" href="cart.html">🛒 سلة المشتريات</a>
 </div>
-
 </div>
 </div>
 
 <div class="features">
-
 <div class="feature">
 <div class="feature-icon">⚡</div>
 <h3>منتجات متنوعة</h3>
 <p>كل مستلزماتك في مكان واحد</p>
 </div>
-
 <div class="feature">
 <div class="feature-icon">🛒</div>
 <h3>طلب سهل وسريع</h3>
 <p>اختر منتجاتك وأضفها للسلة</p>
 </div>
-
 <div class="feature">
 <div class="feature-icon">💬</div>
 <h3>تواصل مباشر</h3>
 <p>اطلب واستفسر عبر واتساب</p>
 </div>
-
 </div>
 
 <section id="categories">
-
 <div class="section-heading">
 <small>POWER ZONE COLLECTION</small>
 <h2>أقسام المتجر</h2>
@@ -584,22 +279,18 @@ nav a{font-size:12px}
 </section>
 
 <section class="about" id="about">
-
 <h2>من نحن - POWER ZONE</h2>
-
 <p>
 وجهتك لشراء الأدوات والمستلزمات الكهربائية.
 نسعى لتوفير منتجات متنوعة بجودة ممتازة وأسعار مناسبة،
 مع تجربة تسوق سهلة وسريعة.
 </p>
-
 <div class="contact-strip">
 <p>عندك استفسار أو محتاج مساعدة في طلبك؟</p>
 <a href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">
 تواصل معنا عبر واتساب
 </a>
 </div>
-
 </section>
 
 </main>
@@ -609,18 +300,28 @@ nav a{font-size:12px}
 <p>متجرك للأدوات الكهربائية ⚡</p>
 </footer>
 
-<a class="whatsapp"
-href="https://wa.me/201155284381"
-target="_blank"
-rel="noopener noreferrer">
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">
 واتساب 💬
 </a>
 
 <script>
+const cartKey = "powerZoneCart";
+
 function updateCartCount(){
-const cart=JSON.parse(localStorage.getItem('powerZoneCart'))||[];
-const count=cart.reduce((total,item)=>total+Number(item.quantity||0),0);
-document.getElementById('cartCount').textContent=count;
+  let cart = [];
+
+  try{
+    const saved = JSON.parse(localStorage.getItem(cartKey) || "[]");
+    cart = Array.isArray(saved) ? saved : [];
+  }catch(error){
+    cart = [];
+  }
+
+  const count = cart.reduce((total,item)=>{
+    return total + Math.max(0,Number(item.quantity ?? item.qty ?? 0));
+  },0);
+
+  document.getElementById("cartCount").textContent = count;
 }
 
 updateCartCount();
