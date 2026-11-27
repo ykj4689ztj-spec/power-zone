@@ -29,31 +29,12 @@ header{
   z-index:10;
 }
 
-.logo{
-  font-size:25px;
-  font-weight:bold;
-  color:#facc15;
-}
-
+.logo{font-size:25px;font-weight:bold;color:#facc15}
 .logo span{color:white}
 
-nav{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-}
-
-.cart-link{
-  background:#263b59;
-  padding:10px 14px;
-  border-radius:8px;
-}
+nav{display:flex;align-items:center;gap:12px}
+nav a{color:white;text-decoration:none;font-size:14px}
+.cart-link{background:#263b59;padding:10px 14px;border-radius:8px}
 
 .hero{
   background:linear-gradient(120deg,#101827,#263b59);
@@ -62,40 +43,14 @@ nav a{
   padding:65px 20px;
 }
 
-.hero small{
-  color:#facc15;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
-.hero h1{
-  font-size:34px;
-  margin:15px 0;
-  color:#facc15;
-}
-
-.hero p{
-  color:#d1d5db;
-  line-height:1.9;
-  font-size:15px;
-}
+.hero small{color:#facc15;font-weight:bold;letter-spacing:2px}
+.hero h1{font-size:34px;margin:15px 0;color:#facc15}
+.hero p{color:#d1d5db;line-height:1.9;font-size:15px}
 
 section{padding:40px 5%}
-
-.section-heading{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.section-heading h2{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.section-heading p{
-  color:#64748b;
-  font-size:14px;
-}
+.section-heading{text-align:center;margin-bottom:30px}
+.section-heading h2{font-size:26px;margin-bottom:10px}
+.section-heading p{color:#64748b;font-size:14px}
 
 .products{
   display:grid;
@@ -124,11 +79,7 @@ section{padding:40px 5%}
 }
 
 .info{padding:17px}
-
-.product h3{
-  font-size:17px;
-  margin-bottom:9px;
-}
+.product h3{font-size:17px;margin-bottom:9px}
 
 .description{
   color:#64748b;
@@ -170,9 +121,28 @@ section{padding:40px 5%}
   transition:.2s;
 }
 
-.add-cart:hover{
-  background:#facc15;
-  color:#101827;
+.add-cart:hover{background:#facc15;color:#101827}
+
+.success-message{
+  color:#15803d;
+  background:#dcfce7;
+  border-radius:8px;
+  padding:10px;
+  margin-top:10px;
+  font-size:13px;
+  text-align:center;
+  display:none;
+}
+
+.error-message{
+  color:#b91c1c;
+  background:#fee2e2;
+  border-radius:8px;
+  padding:10px;
+  margin-top:10px;
+  font-size:13px;
+  text-align:center;
+  display:none;
 }
 
 footer{
@@ -199,10 +169,7 @@ footer{
 @media(max-width:600px){
   .hero{padding:48px 15px}
   .hero h1{font-size:27px}
-  .products{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:11px;
-  }
+  .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
   .product img{height:125px}
   .info{padding:11px}
   .product h3{font-size:14px}
@@ -219,7 +186,6 @@ footer{
 
 <header>
   <div class="logo">⚡ POWER <span>ZONE</span></div>
-
   <nav>
     <a href="index.html">← الرئيسية</a>
     <a class="cart-link" href="cart.html">
@@ -238,7 +204,6 @@ footer{
 </div>
 
 <section>
-
   <div class="section-heading">
     <h2>منتجاتنا</h2>
     <p>حدد المنتج والكمية المطلوبة وأضفها إلى سلة المشتريات</p>
@@ -253,9 +218,9 @@ footer{
         <p class="description">أدوات حفر واستخدامات متعددة</p>
         <div class="price">السعر عند الطلب</div>
         <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية الشنيور">
-        <button class="add-cart" onclick="addToCart('شنيور كهربائي',this)">
-          🛒 أضف إلى السلة
-        </button>
+        <button class="add-cart" onclick="addToCart('شنيور كهربائي',this)">🛒 أضف إلى السلة</button>
+        <p class="success-message"></p>
+        <p class="error-message"></p>
       </div>
     </div>
 
@@ -266,9 +231,9 @@ footer{
         <p class="description">للقطع والتجليخ</p>
         <div class="price">السعر عند الطلب</div>
         <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية صاروخ التجليخ">
-        <button class="add-cart" onclick="addToCart('صاروخ تجليخ',this)">
-          🛒 أضف إلى السلة
-        </button>
+        <button class="add-cart" onclick="addToCart('صاروخ تجليخ',this)">🛒 أضف إلى السلة</button>
+        <p class="success-message"></p>
+        <p class="error-message"></p>
       </div>
     </div>
 
@@ -279,9 +244,9 @@ footer{
         <p class="description">لأعمال الفك والتركيب</p>
         <div class="price">السعر عند الطلب</div>
         <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية المفك الكهربائي">
-        <button class="add-cart" onclick="addToCart('مفك كهربائي',this)">
-          🛒 أضف إلى السلة
-        </button>
+        <button class="add-cart" onclick="addToCart('مفك كهربائي',this)">🛒 أضف إلى السلة</button>
+        <p class="success-message"></p>
+        <p class="error-message"></p>
       </div>
     </div>
 
@@ -292,9 +257,9 @@ footer{
         <p class="description">أجهزة قياس وفحص كهربائي</p>
         <div class="price">السعر عند الطلب</div>
         <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية أدوات القياس">
-        <button class="add-cart" onclick="addToCart('أدوات قياس',this)">
-          🛒 أضف إلى السلة
-        </button>
+        <button class="add-cart" onclick="addToCart('أدوات قياس',this)">🛒 أضف إلى السلة</button>
+        <p class="success-message"></p>
+        <p class="error-message"></p>
       </div>
     </div>
 
@@ -305,9 +270,7 @@ footer{
   <p>© 2026 POWER ZONE - جميع الحقوق محفوظة</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">
-  واتساب 💬
-</a>
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
 
 <script>
 const cartKey = "powerZoneCart";
@@ -326,20 +289,24 @@ function saveCart(cart){
 }
 
 function addToCart(name,button){
-
   const card = button.closest(".product");
   const input = card.querySelector(".quantity");
+  const success = card.querySelector(".success-message");
+  const error = card.querySelector(".error-message");
   const qty = Number(input.value);
 
+  success.style.display = "none";
+  error.style.display = "none";
+
   if(!Number.isInteger(qty) || qty < 1){
-    alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+    error.textContent = "من فضلك أدخل كمية صحيحة تبدأ من 1";
+    error.style.display = "block";
     input.focus();
     return;
   }
 
   let cart = getCart();
 
-  // تحويل الكميات القديمة من qty إلى quantity
   cart = cart.map(item => ({
     ...item,
     quantity:Number(item.quantity ?? item.qty ?? 0)
@@ -350,10 +317,7 @@ function addToCart(name,button){
   if(item){
     item.quantity += qty;
   }else{
-    cart.push({
-      name:name,
-      quantity:qty
-    });
+    cart.push({name:name,quantity:qty});
   }
 
   cart.forEach(item => delete item.qty);
@@ -361,15 +325,14 @@ function addToCart(name,button){
   saveCart(cart);
   updateCartCount();
 
-  alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+  success.textContent = "تمت إضافة المنتج إلى السلة بنجاح ✅";
+  success.style.display = "block";
 
   input.value = 1;
 }
 
 function updateCartCount(){
-
   const cart = getCart();
-
   const count = cart.reduce((sum,item)=>{
     return sum + Number(item.quantity ?? item.qty ?? 0);
   },0);
@@ -377,6 +340,7 @@ function updateCartCount(){
   document.getElementById("cartCount").textContent = count;
 }
 
+window.addEventListener("storage",updateCartCount);
 updateCartCount();
 </script>
 
