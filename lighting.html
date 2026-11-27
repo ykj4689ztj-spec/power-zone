@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قسم الإضاءة | Power Zone</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f6f8;color:#172033}
@@ -12,6 +13,7 @@ header{background:#101827;color:white;padding:18px 5%;display:flex;justify-conte
 .logo{font-size:25px;font-weight:bold;color:#facc15}
 .logo span{color:white}
 header a{color:white;text-decoration:none}
+.cart-link{background:#263b59;padding:9px 13px;border-radius:7px}
 .hero{background:linear-gradient(120deg,#101827,#263b59);color:white;text-align:center;padding:50px 20px}
 .hero h1{font-size:30px;margin-bottom:12px;color:#facc15}
 .hero p{color:#d1d5db;line-height:1.8}
@@ -23,8 +25,9 @@ section{padding:30px 5%}
 .info{padding:15px}
 .product h3{font-size:16px;margin-bottom:10px}
 .price{color:#c18b00;font-weight:bold;font-size:18px;margin-bottom:12px}
-.product a{display:block;text-align:center;background:#101827;color:white;padding:11px;text-decoration:none;border-radius:7px}
-.product a:hover{background:#facc15;color:#111827}
+.quantity{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;margin-bottom:10px;font-size:16px}
+.add-cart{display:block;width:100%;text-align:center;background:#101827;color:white;padding:11px;border:0;text-decoration:none;border-radius:7px;cursor:pointer;font-size:15px}
+.add-cart:hover{background:#facc15;color:#111827}
 footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 .whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:14px 18px;border-radius:30px;font-weight:bold}
 @media(max-width:600px){
@@ -35,11 +38,15 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">⚡ POWER <span>ZONE</span></div>
+<div style="display:flex;gap:15px;align-items:center">
 <a href="index.html">← الرئيسية</a>
+<a class="cart-link" href="cart.html">🛒 السلة (<span id="cartCount">0</span>)</a>
+</div>
 </header>
 
 <div class="hero">
@@ -49,6 +56,7 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 
 <section>
 <h2 class="title">منتجات الإضاءة</h2>
+
 <div class="products">
 
 <div class="product">
@@ -56,7 +64,8 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>لمبة LED</h3>
 <div class="price">السعر عند الطلب</div>
-<a href="https://wa.me/201155284381?text=عايز%20أطلب%20لمبة%20LED" target="_blank">اطلب عبر واتساب</a>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية لمبة LED">
+<button class="add-cart" onclick="addToCart('لمبة LED',this)">🛒 أضف إلى السلة</button>
 </div>
 </div>
 
@@ -65,7 +74,8 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>سبوت لايت</h3>
 <div class="price">السعر عند الطلب</div>
-<a href="https://wa.me/201155284381?text=عايز%20أطلب%20سبوت%20لايت" target="_blank">اطلب عبر واتساب</a>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سبوت لايت">
+<button class="add-cart" onclick="addToCart('سبوت لايت',this)">🛒 أضف إلى السلة</button>
 </div>
 </div>
 
@@ -74,7 +84,8 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>بانل LED</h3>
 <div class="price">السعر عند الطلب</div>
-<a href="https://wa.me/201155284381?text=عايز%20أطلب%20بانل%20LED" target="_blank">اطلب عبر واتساب</a>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية بانل LED">
+<button class="add-cart" onclick="addToCart('بانل LED',this)">🛒 أضف إلى السلة</button>
 </div>
 </div>
 
@@ -83,7 +94,8 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>نجفة</h3>
 <div class="price">السعر عند الطلب</div>
-<a href="https://wa.me/201155284381?text=عايز%20أستفسر%20عن%20نجفة" target="_blank">اطلب عبر واتساب</a>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية نجفة">
+<button class="add-cart" onclick="addToCart('نجفة',this)">🛒 أضف إلى السلة</button>
 </div>
 </div>
 
@@ -95,6 +107,55 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 </footer>
 
 <a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
+
+<script>
+const cartKey = "powerZoneCart";
+
+function getCart(){
+return JSON.parse(localStorage.getItem(cartKey) || "[]");
+}
+
+function addToCart(name,button){
+
+const card = button.closest(".product");
+const input = card.querySelector(".quantity");
+const qty = Number(input.value);
+
+if(!Number.isInteger(qty) || qty < 1){
+alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+input.focus();
+return;
+}
+
+let cart = getCart();
+let item = cart.find(product => product.name === name);
+
+if(item){
+item.qty += qty;
+}else{
+cart.push({name:name,qty:qty});
+}
+
+localStorage.setItem(cartKey,JSON.stringify(cart));
+
+updateCartCount();
+
+alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+
+input.value = 1;
+}
+
+function updateCartCount(){
+
+let cart = getCart();
+
+let count = cart.reduce((sum,item)=>sum + item.qty,0);
+
+document.getElementById("cartCount").textContent = count;
+}
+
+updateCartCount();
+</script>
 
 </body>
 </html>
