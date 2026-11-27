@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سلة المشتريات | POWER ZONE</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f1f5f9;
+color:#172033;
+}
+
+header{
+background:#101827;
+color:white;
+padding:20px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#facc15;
+font-size:23px;
+font-weight:bold;
+}
+
+header a{
+color:white;
+text-decoration:none;
+}
+
+.container{
+width:90%;
+max-width:850px;
+margin:35px auto;
+}
+
+h1{
+margin-bottom:25px;
+}
+
+.cart-item{
+background:white;
+padding:18px;
+border-radius:12px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+box-shadow:0 3px 10px #00000010;
+}
+
+.item-info h3{
+margin-bottom:8px;
+}
+
+.item-info p{
+color:#64748b;
+}
+
+.controls{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.controls button{
+border:0;
+background:#e2e8f0;
+padding:8px 13px;
+border-radius:6px;
+cursor:pointer;
+font-size:17px;
+}
+
+.remove{
+background:#fee2e2!important;
+color:#dc2626;
+}
+
+.summary{
+background:white;
+padding:22px;
+border-radius:12px;
+margin-top:25px;
+}
+
+.summary p{
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.order{
+width:100%;
+padding:15px;
+background:#25d366;
+color:white;
+border:0;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.empty{
+background:white;
+padding:35px;
+text-align:center;
+border-radius:12px;
+line-height:2;
+}
+
+.empty a{
+display:inline-block;
+margin-top:15px;
+color:#1d4ed8;
+}
+
+footer{
+background:#101827;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">⚡ POWER ZONE</div>
+<a href="index.html">العودة للمتجر</a>
+</header>
+
+<div class="container">
+
+<h1>🛒 سلة المشتريات</h1>
+
+<div id="cartItems"></div>
+
+<div class="summary" id="summary" style="display:none">
+<p>عدد المنتجات: <strong id="count">0</strong></p>
+<p>الأسعار: عند الطلب من المحل</p>
+<button class="order" onclick="sendOrder()">
+إرسال الطلب على واتساب
+</button>
+</div>
+
+</div>
+
+<footer>
+POWER ZONE © 2026 - جميع الحقوق محفوظة
+</footer>
+
+<script>
+const cartKey = "powerZoneCart";
+
+function getCart(){
+return JSON.parse(localStorage.getItem(cartKey) || "[]");
+}
+
+function saveCart(cart){
+localStorage.setItem(cartKey,JSON.stringify(cart));
+}
+
+function renderCart(){
+const cart = getCart();
+const container = document.getElementById("cartItems");
+const summary = document.getElementById("summary");
+
+if(cart.length === 0){
+container.innerHTML = `
+<div class="empty">
+<h2>سلتك فارغة حالياً 🛒</h2>
+<p>ابدأ بتصفح منتجات POWER ZONE وأضف المنتجات التي تريدها.</p>
+<a href="index.html">تصفح المتجر</a>
+</div>`;
+summary.style.display = "none";
+return;
+}
+
+summary.style.display = "block";
+
+container.innerHTML = cart.map((item,index)=>`
+<div class="cart-item">
+<div class="item-info">
+<h3>${escapeHTML(item.name)}</h3>
+<p>السعر: عند الطلب</p>
+</div>
+
+<div class="controls">
+<button onclick="changeQty(${index},-1)">−</button>
+<strong>${item.qty}</strong>
+<button onclick="changeQty(${index},1)">+</button>
+<button class="remove" onclick="removeItem(${index})">حذف</button>
+</div>
+</div>
+`).join("");
+
+document.getElementById("count").textContent =
+cart.reduce((sum,item)=>sum + item.qty,0);
+}
+
+function escapeHTML(value){
+return String(value).replace(/[&<>"']/g,function(char){
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+}[char];
+});
+}
+
+function changeQty(index,amount){
+const cart = getCart();
+cart[index].qty += amount;
+
+if(cart[index].qty <= 0){
+cart.splice(index,1);
+}
+
+saveCart(cart);
+renderCart();
+}
+
+function removeItem(index){
+const cart = getCart();
+cart.splice(index,1);
+saveCart(cart);
+renderCart();
+}
+
+function sendOrder(){
+const cart = getCart();
+
+if(cart.length === 0) return;
+
+let message = "السلام عليكم، عايز أطلب المنتجات دي من POWER ZONE:%0A%0A";
+
+cart.forEach(item=>{
+message += "- " + encodeURIComponent(item.name) +
+" | الكمية: " + item.qty + "%0A";
+});
+
+message += "%0Aمن فضلكم أكدوا الأسعار والتوافر.";
+
+window.open(
+"https://wa.me/201155284381?text=" + message,
+"_blank"
+);
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
