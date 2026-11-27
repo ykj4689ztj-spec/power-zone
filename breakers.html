@@ -67,6 +67,15 @@ border:0;border-radius:8px;font-weight:bold;cursor:pointer;font-size:14px;transi
 }
 .order:hover{background:#facc15;color:#101827}
 
+.message{
+color:#15803d;
+font-weight:bold;
+font-size:13px;
+margin-top:12px;
+text-align:center;
+line-height:1.6;
+}
+
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
 .whatsapp{
@@ -133,6 +142,7 @@ header{padding:13px 4%;justify-content:center}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1">
 <button class="order" onclick="addToCart('قاطع أوتوماتيك MCB',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -145,6 +155,7 @@ header{padding:13px 4%;justify-content:center}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1">
 <button class="order" onclick="addToCart('قاطع تسريب أرضي RCCB',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -157,6 +168,7 @@ header{padding:13px 4%;justify-content:center}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1">
 <button class="order" onclick="addToCart('قاطع MCCB',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -169,6 +181,7 @@ header{padding:13px 4%;justify-content:center}
 <label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1">
 <button class="order" onclick="addToCart('مفتاح تحويل',this)">🛒 أضف إلى السلة</button>
+<p class="message" aria-live="polite"></p>
 </div>
 </div>
 
@@ -186,22 +199,33 @@ header{padding:13px 4%;justify-content:center}
 const cartKey="powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey)||"[]");
+try{
+const cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+return Array.isArray(cart)?cart:[];
+}catch(e){
+return [];
+}
 }
 
 function updateCartCount(){
 const cart=getCart();
-const count=cart.reduce((sum,item)=>sum+Number(item.quantity||item.qty||0),0);
+const count=cart.reduce((sum,item)=>{
+return sum+Number(item.quantity||item.qty||0);
+},0);
 document.getElementById("cartCount").textContent=count;
 }
 
 function addToCart(name,button){
 const card=button.closest(".card");
 const input=card.querySelector(".quantity");
+const message=card.querySelector(".message");
 const qty=Number(input.value);
 
+message.textContent="";
+
 if(!Number.isInteger(qty)||qty<1){
-alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+message.style.color="#dc2626";
+message.textContent="من فضلك أدخل كمية صحيحة تبدأ من 1";
 input.focus();
 return;
 }
@@ -222,7 +246,9 @@ quantity:qty
 localStorage.setItem(cartKey,JSON.stringify(cart));
 updateCartCount();
 
-alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
+message.style.color="#15803d";
+message.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
+
 input.value=1;
 }
 
