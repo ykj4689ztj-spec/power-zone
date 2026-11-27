@@ -26,6 +26,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .logo {
@@ -37,6 +39,12 @@ header {
 header a {
   color: white;
   text-decoration: none;
+}
+
+.cart-link {
+  background: #263b59;
+  padding: 9px 13px;
+  border-radius: 7px;
 }
 
 .hero {
@@ -104,14 +112,32 @@ header a {
   margin-bottom: 15px;
 }
 
+.quantity {
+  display: block;
+  width: 85%;
+  margin: 0 auto 12px;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
 .order {
-  display: inline-block;
+  display: block;
+  width: 85%;
+  margin: auto;
   background: #facc15;
   color: #101827;
-  padding: 10px 22px;
+  padding: 12px;
+  border: 0;
   border-radius: 7px;
-  text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.order:hover {
+  background: #eab308;
 }
 
 footer {
@@ -121,6 +147,7 @@ footer {
   padding: 20px;
   margin-top: 45px;
 }
+
 </style>
 </head>
 
@@ -128,7 +155,13 @@ footer {
 
 <header>
   <div class="logo">POWER ZONE</div>
-  <a href="index.html">الصفحة الرئيسية</a>
+
+  <div style="display:flex;gap:15px;align-items:center">
+    <a href="index.html">الصفحة الرئيسية</a>
+    <a class="cart-link" href="cart.html">
+      🛒 السلة (<span id="cartCount">0</span>)
+    </a>
+  </div>
 </header>
 
 <section class="hero">
@@ -146,7 +179,8 @@ footer {
       <h3>قاطع أوتوماتيك MCB</h3>
       <p>قواطع لحماية الدوائر الكهربائية</p>
       <div class="price">السعر عند الطلب</div>
-      <a class="order" href="https://wa.me/201155284381?text=عايز%20استفسر%20عن%20قاطع%20MCB">اطلب عبر واتساب</a>
+      <input class="quantity" type="number" min="1" step="1" value="1">
+      <button class="order" onclick="addToCart('قاطع أوتوماتيك MCB',this)">🛒 أضف إلى السلة</button>
     </div>
 
     <div class="card">
@@ -154,7 +188,8 @@ footer {
       <h3>قاطع تسريب أرضي RCCB</h3>
       <p>للحماية من تيار التسريب الأرضي</p>
       <div class="price">السعر عند الطلب</div>
-      <a class="order" href="https://wa.me/201155284381?text=عايز%20استفسر%20عن%20قاطع%20RCCB">اطلب عبر واتساب</a>
+      <input class="quantity" type="number" min="1" step="1" value="1">
+      <button class="order" onclick="addToCart('قاطع تسريب أرضي RCCB',this)">🛒 أضف إلى السلة</button>
     </div>
 
     <div class="card">
@@ -162,7 +197,8 @@ footer {
       <h3>قاطع MCCB</h3>
       <p>قواطع للتيارات والأحمال الأكبر</p>
       <div class="price">السعر عند الطلب</div>
-      <a class="order" href="https://wa.me/201155284381?text=عايز%20استفسر%20عن%20قاطع%20MCCB">اطلب عبر واتساب</a>
+      <input class="quantity" type="number" min="1" step="1" value="1">
+      <button class="order" onclick="addToCart('قاطع MCCB',this)">🛒 أضف إلى السلة</button>
     </div>
 
     <div class="card">
@@ -170,7 +206,8 @@ footer {
       <h3>مفتاح تحويل</h3>
       <p>للتبديل بين مصادر التغذية الكهربائية</p>
       <div class="price">السعر عند الطلب</div>
-      <a class="order" href="https://wa.me/201155284381?text=عايز%20استفسر%20عن%20مفتاح%20التحويل">اطلب عبر واتساب</a>
+      <input class="quantity" type="number" min="1" step="1" value="1">
+      <button class="order" onclick="addToCart('مفتاح تحويل',this)">🛒 أضف إلى السلة</button>
     </div>
 
   </div>
@@ -179,6 +216,55 @@ footer {
 <footer>
   <p>POWER ZONE © 2026 - جميع الحقوق محفوظة</p>
 </footer>
+
+<script>
+const cartKey = "powerZoneCart";
+
+function getCart(){
+  return JSON.parse(localStorage.getItem(cartKey) || "[]");
+}
+
+function addToCart(name,button){
+
+  const card = button.closest(".card");
+  const input = card.querySelector(".quantity");
+  const qty = Number(input.value);
+
+  if(!Number.isInteger(qty) || qty < 1){
+    alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
+    input.focus();
+    return;
+  }
+
+  let cart = getCart();
+  let item = cart.find(product => product.name === name);
+
+  if(item){
+    item.qty += qty;
+  }else{
+    cart.push({name:name,qty:qty});
+  }
+
+  localStorage.setItem(cartKey,JSON.stringify(cart));
+
+  updateCartCount();
+
+  alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
+
+  input.value = 1;
+}
+
+function updateCartCount(){
+
+  let cart = getCart();
+
+  let count = cart.reduce((sum,item)=>sum + item.qty,0);
+
+  document.getElementById("cartCount").textContent = count;
+}
+
+updateCartCount();
+</script>
 
 </body>
 </html>
