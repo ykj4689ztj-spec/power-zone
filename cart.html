@@ -41,9 +41,7 @@ max-width:850px;
 margin:35px auto;
 }
 
-h1{
-margin-bottom:25px;
-}
+h1{margin-bottom:25px}
 
 .cart-item{
 background:white;
@@ -58,13 +56,8 @@ flex-wrap:wrap;
 box-shadow:0 3px 10px #00000010;
 }
 
-.item-info h3{
-margin-bottom:8px;
-}
-
-.item-info p{
-color:#64748b;
-}
+.item-info h3{margin-bottom:8px}
+.item-info p{color:#64748b}
 
 .controls{
 display:flex;
@@ -86,16 +79,42 @@ background:#fee2e2!important;
 color:#dc2626;
 }
 
-.summary{
+.summary,.customer-form{
 background:white;
 padding:22px;
 border-radius:12px;
 margin-top:25px;
+box-shadow:0 3px 10px #00000010;
 }
 
 .summary p{
 margin-bottom:15px;
 line-height:1.8;
+}
+
+.customer-form h2{
+margin-bottom:20px;
+}
+
+.customer-form label{
+display:block;
+margin:15px 0 8px;
+font-weight:bold;
+}
+
+.customer-form input,
+.customer-form textarea{
+width:100%;
+padding:13px;
+border:1px solid #cbd5e1;
+border-radius:8px;
+font-size:16px;
+font-family:Arial;
+}
+
+.customer-form textarea{
+min-height:100px;
+resize:vertical;
 }
 
 .order{
@@ -108,6 +127,7 @@ border-radius:8px;
 font-size:17px;
 font-weight:bold;
 cursor:pointer;
+margin-top:20px;
 }
 
 .empty{
@@ -131,6 +151,7 @@ text-align:center;
 padding:20px;
 margin-top:50px;
 }
+
 </style>
 </head>
 
@@ -148,11 +169,27 @@ margin-top:50px;
 <div id="cartItems"></div>
 
 <div class="summary" id="summary" style="display:none">
-<p>عدد المنتجات: <strong id="count">0</strong></p>
+<p>عدد القطع: <strong id="count">0</strong></p>
 <p>الأسعار: عند الطلب من المحل</p>
+</div>
+
+<div class="customer-form" id="customerForm" style="display:none">
+
+<h2>📋 بيانات العميل</h2>
+
+<label for="customerName">الاسم بالكامل</label>
+<input type="text" id="customerName" placeholder="اكتب اسمك بالكامل">
+
+<label for="customerPhone">رقم الموبايل</label>
+<input type="tel" id="customerPhone" placeholder="01xxxxxxxxx">
+
+<label for="customerAddress">العنوان بالتفصيل</label>
+<textarea id="customerAddress" placeholder="اكتب عنوان التوصيل بالتفصيل"></textarea>
+
 <button class="order" onclick="sendOrder()">
 إرسال الطلب على واتساب
 </button>
+
 </div>
 
 </div>
@@ -173,22 +210,28 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 }
 
 function renderCart(){
+
 const cart = getCart();
 const container = document.getElementById("cartItems");
 const summary = document.getElementById("summary");
+const customerForm = document.getElementById("customerForm");
 
 if(cart.length === 0){
+
 container.innerHTML = `
 <div class="empty">
 <h2>سلتك فارغة حالياً 🛒</h2>
 <p>ابدأ بتصفح منتجات POWER ZONE وأضف المنتجات التي تريدها.</p>
 <a href="index.html">تصفح المتجر</a>
 </div>`;
+
 summary.style.display = "none";
+customerForm.style.display = "none";
 return;
 }
 
 summary.style.display = "block";
+customerForm.style.display = "block";
 
 container.innerHTML = cart.map((item,index)=>`
 <div class="cart-item">
@@ -208,6 +251,7 @@ container.innerHTML = cart.map((item,index)=>`
 
 document.getElementById("count").textContent =
 cart.reduce((sum,item)=>sum + item.qty,0);
+
 }
 
 function escapeHTML(value){
@@ -223,7 +267,9 @@ return {
 }
 
 function changeQty(index,amount){
+
 const cart = getCart();
+
 cart[index].qty += amount;
 
 if(cart[index].qty <= 0){
@@ -232,33 +278,67 @@ cart.splice(index,1);
 
 saveCart(cart);
 renderCart();
+
 }
 
 function removeItem(index){
+
 const cart = getCart();
 cart.splice(index,1);
+
 saveCart(cart);
 renderCart();
+
 }
 
 function sendOrder(){
+
 const cart = getCart();
 
-if(cart.length === 0) return;
+if(cart.length === 0){
+alert("السلة فارغة");
+return;
+}
 
-let message = "السلام عليكم، عايز أطلب المنتجات دي من POWER ZONE:%0A%0A";
+const name = document.getElementById("customerName").value.trim();
+const phone = document.getElementById("customerPhone").value.trim();
+const address = document.getElementById("customerAddress").value.trim();
+
+if(!name || !phone || !address){
+alert("من فضلك أكمل جميع بيانات العميل");
+return;
+}
+
+const normalizedPhone = phone.replace(/[\s-]/g,"");
+
+if(!/^01[0125][0-9]{8}$/.test(normalizedPhone)){
+alert("من فضلك أدخل رقم موبايل مصري صحيح");
+return;
+}
+
+let message =
+"طلب جديد من متجر POWER ZONE\n\n" +
+"اسم العميل: " + name + "\n" +
+"رقم الموبايل: " + normalizedPhone + "\n" +
+"العنوان: " + address + "\n\n" +
+"المنتجات المطلوبة:\n";
 
 cart.forEach(item=>{
-message += "- " + encodeURIComponent(item.name) +
-" | الكمية: " + item.qty + "%0A";
+message +=
+"- " + item.name +
+" | الكمية: " + item.qty + "\n";
 });
 
-message += "%0Aمن فضلكم أكدوا الأسعار والتوافر.";
+message +=
+"\nالأسعار: عند الطلب\n" +
+"من فضلكم أكدوا الأسعار والتوافر.";
 
-window.open(
-"https://wa.me/201155284381?text=" + message,
-"_blank"
-);
+const whatsappURL =
+"https://wa.me/201155284381?text=" +
+encodeURIComponent(message);
+
+window.open(whatsappURL,"_blank");
+
 }
 
 renderCart();
