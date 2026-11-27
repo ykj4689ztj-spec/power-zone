@@ -4,154 +4,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
 <title>سلة المشتريات | POWER ZONE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f1f5f9;
-color:#172033;
-}
+body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
 
 header{
-background:#101827;
-color:white;
-padding:20px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
+background:#101827;color:white;padding:17px 6%;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:12px;box-shadow:0 4px 18px #00000015
 }
+.logo{color:#facc15;font-size:24px;font-weight:900}
+header a{color:white;text-decoration:none;font-size:14px}
+header a:hover{color:#facc15}
 
-.logo{
-color:#facc15;
-font-size:23px;
-font-weight:bold;
-}
-
-header a{
-color:white;
-text-decoration:none;
-}
-
-.container{
-width:90%;
-max-width:850px;
-margin:35px auto;
-}
-
-h1{margin-bottom:25px}
+.container{width:90%;max-width:850px;margin:35px auto}
+.page-title{font-size:27px;margin-bottom:25px;color:#101827}
 
 .cart-item{
-background:white;
-padding:18px;
-border-radius:12px;
-margin-bottom:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-flex-wrap:wrap;
-box-shadow:0 3px 10px #00000010;
+background:white;padding:18px;border-radius:13px;margin-bottom:13px;
+display:flex;justify-content:space-between;align-items:center;
+gap:15px;flex-wrap:wrap;border:1px solid #e9edf2;
+box-shadow:0 3px 12px #00000008
 }
+.item-info h3{font-size:17px;margin-bottom:5px}
+.item-info p{color:#a47c00;font-size:14px;font-weight:bold}
 
-.item-info h3{margin-bottom:8px}
-.item-info p{color:#64748b}
-
-.controls{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
+.controls{display:flex;align-items:center;gap:9px}
 .controls button{
-border:0;
-background:#e2e8f0;
-padding:8px 13px;
-border-radius:6px;
-cursor:pointer;
-font-size:17px;
+border:0;background:#e9edf3;padding:7px 13px;
+border-radius:7px;cursor:pointer;font-size:17px
 }
-
-.remove{
-background:#fee2e2!important;
-color:#dc2626;
-}
+.controls button:hover{background:#facc15}
+.controls strong{min-width:25px;text-align:center}
+.controls .remove{background:#fee2e2;color:#dc2626;font-size:13px}
+.controls .remove:hover{background:#fecaca}
 
 .summary,.customer-form{
-background:white;
-padding:22px;
-border-radius:12px;
-margin-top:25px;
-box-shadow:0 3px 10px #00000010;
+background:white;padding:23px;border-radius:13px;
+margin-top:22px;border:1px solid #e9edf2;
+box-shadow:0 3px 12px #00000008
 }
+.summary p{margin-bottom:8px}
+.summary strong{color:#a47c00}
 
-.summary p{
-margin-bottom:15px;
-line-height:1.8;
-}
-
-.customer-form h2{
-margin-bottom:20px;
-}
-
+.customer-form h2{margin-bottom:18px;font-size:21px}
 .customer-form label{
-display:block;
-margin:15px 0 8px;
-font-weight:bold;
+display:block;margin:15px 0 7px;font-weight:bold;font-size:14px
 }
-
-.customer-form input,
-.customer-form textarea{
-width:100%;
-padding:13px;
-border:1px solid #cbd5e1;
-border-radius:8px;
-font-size:16px;
-font-family:Arial;
+.customer-form input,.customer-form textarea{
+width:100%;padding:13px;border:1px solid #dce1e8;
+border-radius:8px;font-size:16px;font-family:Arial;outline:none
 }
-
-.customer-form textarea{
-min-height:100px;
-resize:vertical;
-}
+.customer-form input:focus,.customer-form textarea:focus{border-color:#d6a900}
+.customer-form textarea{min-height:100px;resize:vertical}
 
 .order{
-width:100%;
-padding:15px;
-background:#25d366;
-color:white;
-border:0;
-border-radius:8px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-margin-top:20px;
+width:100%;padding:15px;background:#25d366;color:white;
+border:0;border-radius:9px;font-size:16px;font-weight:bold;
+cursor:pointer;margin-top:20px
 }
+.order:hover{background:#1fbd5b}
 
 .empty{
-background:white;
-padding:35px;
-text-align:center;
-border-radius:12px;
-line-height:2;
+background:white;padding:35px 20px;text-align:center;
+border-radius:13px;border:1px solid #e9edf2;line-height:2
 }
-
+.empty h2{color:#101827}
 .empty a{
-display:inline-block;
-margin-top:15px;
-color:#1d4ed8;
+display:inline-block;margin-top:15px;background:#101827;
+color:#facc15;text-decoration:none;padding:10px 20px;
+border-radius:8px;font-weight:bold
 }
 
 footer{
-background:#101827;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:50px;
+background:#080e18;color:#9ca3af;text-align:center;
+padding:24px;margin-top:55px;font-size:13px
 }
+footer strong{color:#facc15}
 
+@media(max-width:600px){
+header{padding:15px 4%}
+.container{width:92%;margin:25px auto}
+.page-title{font-size:23px}
+.cart-item{padding:14px}
+.item-info h3{font-size:15px}
+.controls{gap:7px}
+.controls button{padding:7px 11px}
+}
 </style>
 </head>
 
@@ -159,12 +101,12 @@ margin-top:50px;
 
 <header>
 <div class="logo">⚡ POWER ZONE</div>
-<a href="index.html">العودة للمتجر</a>
+<a href="index.html">← العودة للمتجر</a>
 </header>
 
 <div class="container">
 
-<h1>🛒 سلة المشتريات</h1>
+<h1 class="page-title">🛒 سلة المشتريات</h1>
 
 <div id="cartItems"></div>
 
@@ -178,16 +120,16 @@ margin-top:50px;
 <h2>📋 بيانات العميل</h2>
 
 <label for="customerName">الاسم بالكامل</label>
-<input type="text" id="customerName" placeholder="اكتب اسمك بالكامل">
+<input type="text" id="customerName" placeholder="اكتب اسمك بالكامل" autocomplete="name">
 
 <label for="customerPhone">رقم الموبايل</label>
-<input type="tel" id="customerPhone" placeholder="01xxxxxxxxx">
+<input type="tel" id="customerPhone" placeholder="01xxxxxxxxx" inputmode="tel" autocomplete="tel">
 
 <label for="customerAddress">العنوان بالتفصيل</label>
-<textarea id="customerAddress" placeholder="اكتب عنوان التوصيل بالتفصيل"></textarea>
+<textarea id="customerAddress" placeholder="اكتب عنوان التوصيل بالتفصيل" autocomplete="street-address"></textarea>
 
 <button class="order" onclick="sendOrder()">
-إرسال الطلب على واتساب
+إرسال الطلب على واتساب 💬
 </button>
 
 </div>
@@ -195,14 +137,34 @@ margin-top:50px;
 </div>
 
 <footer>
-POWER ZONE © 2026 - جميع الحقوق محفوظة
+<p><strong>POWER ZONE</strong> © 2026 - جميع الحقوق محفوظة</p>
 </footer>
 
 <script>
-const cartKey = "powerZoneCart";
+const cartKey="powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey) || "[]");
+let cart=[];
+
+try{
+cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+}catch(error){
+cart=[];
+}
+
+if(!Array.isArray(cart)) cart=[];
+
+cart=cart.map(item=>{
+const quantity=Number(item.quantity ?? item.qty ?? 1);
+
+return {
+...item,
+quantity:Number.isInteger(quantity)&&quantity>0?quantity:1
+};
+});
+
+saveCart(cart);
+return cart;
 }
 
 function saveCart(cart){
@@ -211,29 +173,29 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 
 function renderCart(){
 
-const cart = getCart();
-const container = document.getElementById("cartItems");
-const summary = document.getElementById("summary");
-const customerForm = document.getElementById("customerForm");
+const cart=getCart();
+const container=document.getElementById("cartItems");
+const summary=document.getElementById("summary");
+const customerForm=document.getElementById("customerForm");
 
-if(cart.length === 0){
+if(cart.length===0){
 
-container.innerHTML = `
+container.innerHTML=`
 <div class="empty">
 <h2>سلتك فارغة حالياً 🛒</h2>
 <p>ابدأ بتصفح منتجات POWER ZONE وأضف المنتجات التي تريدها.</p>
 <a href="index.html">تصفح المتجر</a>
 </div>`;
 
-summary.style.display = "none";
-customerForm.style.display = "none";
+summary.style.display="none";
+customerForm.style.display="none";
 return;
 }
 
-summary.style.display = "block";
-customerForm.style.display = "block";
+summary.style.display="block";
+customerForm.style.display="block";
 
-container.innerHTML = cart.map((item,index)=>`
+container.innerHTML=cart.map((item,index)=>`
 <div class="cart-item">
 <div class="item-info">
 <h3>${escapeHTML(item.name)}</h3>
@@ -241,16 +203,16 @@ container.innerHTML = cart.map((item,index)=>`
 </div>
 
 <div class="controls">
-<button onclick="changeQty(${index},-1)">−</button>
-<strong>${item.qty}</strong>
-<button onclick="changeQty(${index},1)">+</button>
+<button onclick="changeQty(${index},-1)" aria-label="تقليل الكمية">−</button>
+<strong>${item.quantity}</strong>
+<button onclick="changeQty(${index},1)" aria-label="زيادة الكمية">+</button>
 <button class="remove" onclick="removeItem(${index})">حذف</button>
 </div>
 </div>
 `).join("");
 
-document.getElementById("count").textContent =
-cart.reduce((sum,item)=>sum + item.qty,0);
+document.getElementById("count").textContent=
+cart.reduce((sum,item)=>sum+item.quantity,0);
 
 }
 
@@ -268,77 +230,74 @@ return {
 
 function changeQty(index,amount){
 
-const cart = getCart();
+const cart=getCart();
 
-cart[index].qty += amount;
+if(!cart[index]) return;
 
-if(cart[index].qty <= 0){
+cart[index].quantity+=amount;
+
+if(cart[index].quantity<=0){
 cart.splice(index,1);
 }
 
 saveCart(cart);
 renderCart();
-
 }
 
 function removeItem(index){
 
-const cart = getCart();
+const cart=getCart();
 cart.splice(index,1);
 
 saveCart(cart);
 renderCart();
-
 }
 
 function sendOrder(){
 
-const cart = getCart();
+const cart=getCart();
 
-if(cart.length === 0){
+if(cart.length===0){
 alert("السلة فارغة");
 return;
 }
 
-const name = document.getElementById("customerName").value.trim();
-const phone = document.getElementById("customerPhone").value.trim();
-const address = document.getElementById("customerAddress").value.trim();
+const name=document.getElementById("customerName").value.trim();
+const phone=document.getElementById("customerPhone").value.trim();
+const address=document.getElementById("customerAddress").value.trim();
 
-if(!name || !phone || !address){
+if(!name||!phone||!address){
 alert("من فضلك أكمل جميع بيانات العميل");
 return;
 }
 
-const normalizedPhone = phone.replace(/[\s-]/g,"");
+const normalizedPhone=phone.replace(/[\s-]/g,"");
 
 if(!/^01[0125][0-9]{8}$/.test(normalizedPhone)){
 alert("من فضلك أدخل رقم موبايل مصري صحيح");
 return;
 }
 
-let message =
-"طلب جديد من متجر POWER ZONE\n\n" +
-"اسم العميل: " + name + "\n" +
-"رقم الموبايل: " + normalizedPhone + "\n" +
-"العنوان: " + address + "\n\n" +
+let message=
+"طلب جديد من متجر POWER ZONE\n\n"+
+"اسم العميل: "+name+"\n"+
+"رقم الموبايل: "+normalizedPhone+"\n"+
+"العنوان: "+address+"\n\n"+
 "المنتجات المطلوبة:\n";
 
 cart.forEach(item=>{
-message +=
-"- " + item.name +
-" | الكمية: " + item.qty + "\n";
+message+="- "+item.name+
+" | الكمية: "+item.quantity+"\n";
 });
 
-message +=
-"\nالأسعار: عند الطلب\n" +
+message+=
+"\nالأسعار: عند الطلب\n"+
 "من فضلكم أكدوا الأسعار والتوافر.";
 
-const whatsappURL =
-"https://wa.me/201155284381?text=" +
-encodeURIComponent(message);
+const whatsappURL=
+"https://wa.me/201155284381?text="+encodeURIComponent(message);
 
 window.open(whatsappURL,"_blank");
-
 }
 
 renderCart();
