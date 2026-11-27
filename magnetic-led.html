@@ -4,199 +4,379 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Magnetic LED | POWER ZONE</title>
+<meta name="theme-color" content="#101827">
+<title>الماجنتك ليد | POWER ZONE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
-header{background:#101827;color:white;padding:22px;text-align:center}
-header h1{color:#38bdf8;margin-bottom:8px}
-.container{max-width:1100px;margin:auto;padding:20px}
-.back{display:inline-block;margin-bottom:20px;color:#0284c7;text-decoration:none;font-weight:bold}
-h2{margin-bottom:20px;text-align:center}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.product{background:white;padding:18px;border-radius:12px;box-shadow:0 3px 12px #00000012;text-align:center}
-.product img{width:100%;height:160px;object-fit:contain;margin-bottom:12px}
-.product h3{margin-bottom:12px}
-.product input{width:100%;padding:10px;margin:10px 0;border:1px solid #cbd5e1;border-radius:7px}
-.product button{width:100%;padding:11px;border:none;border-radius:7px;background:#0284c7;color:white;font-weight:bold;cursor:pointer}
-.success-message{color:green;font-weight:bold;margin-top:10px}
-.cart{margin-top:25px;padding:20px;background:white;border-radius:12px}
-.cart li{padding:10px;border-bottom:1px solid #eee;list-style:none}
-.cart button{background:#16a34a;color:white;border:none;padding:12px;border-radius:7px;cursor:pointer;width:100%;margin-top:15px;font-weight:bold}
-.remove{background:#dc2626!important;width:auto!important;padding:5px 10px!important;margin-right:10px}
-footer{margin-top:30px;padding:20px;text-align:center;background:#101827;color:white}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
+
+header{
+background:#101827;color:white;padding:15px 6%;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:14px;box-shadow:0 4px 18px #00000018;
+position:sticky;top:0;z-index:10
+}
+.logo{font-size:25px;font-weight:900;color:#facc15}
+.logo span{color:white}
+.header-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.header-actions a{text-decoration:none}
+.home-link{color:#e5e7eb;font-size:14px}
+.home-link:hover{color:#facc15}
+.cart-link{background:#facc15;color:#101827;padding:10px 15px;border-radius:9px;font-weight:bold;font-size:14px}
+
+.hero{
+background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),linear-gradient(120deg,#101827,#1d3554);
+color:white;text-align:center;padding:65px 20px
+}
+.hero-label{
+display:inline-block;color:#facc15;background:#facc1512;
+border:1px solid #facc1555;padding:6px 16px;
+border-radius:30px;font-size:13px;margin-bottom:15px
+}
+.hero h1{font-size:36px;color:#facc15;margin-bottom:10px}
+.hero p{color:#d1d9e5;line-height:2;font-size:15px}
+
+section{padding:45px 6%}
+.section-heading{text-align:center;margin-bottom:30px}
+.section-heading small{color:#a47c00;font-weight:bold}
+.section-heading h2{font-size:28px;color:#101827;margin:6px 0}
+.section-heading p{color:#7b8492;font-size:14px}
+
+.products{
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:18px;
+max-width:1100px;
+margin:auto
+}
+
+.product{
+background:white;border:1px solid #e9edf2;border-radius:15px;
+overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
+}
+.product:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
+.product img{width:100%;height:180px;object-fit:contain;background:white;display:block;padding:10px}
+.info{padding:17px}
+.product h3{font-size:17px;color:#172033;margin-bottom:12px}
+.price{color:#a47c00;font-weight:bold;font-size:15px;margin-bottom:13px}
+.quantity-label{display:block;font-size:13px;color:#6b7280;margin-bottom:6px}
+.quantity{width:100%;padding:11px;border:1px solid #dce1e8;border-radius:8px;margin-bottom:12px;font-size:16px;outline:none}
+.quantity:focus{border-color:#d6a900}
+
+.add-cart{
+width:100%;background:#101827;color:white;padding:12px;
+border:0;border-radius:8px;cursor:pointer;font-size:14px;
+font-weight:bold;transition:.2s
+}
+.add-cart:hover{background:#facc15;color:#101827}
+
+.success-message,.error-message{
+display:none;padding:10px;border-radius:8px;
+margin-top:10px;font-size:13px;text-align:center
+}
+.success-message{color:#15803d;background:#dcfce7}
+.error-message{color:#b91c1c;background:#fee2e2}
+
+.cart-section{
+max-width:1000px;margin:0 auto 40px;
+padding:25px;background:white;border:1px solid #e9edf2;
+border-radius:15px;box-shadow:0 4px 15px #10182709
+}
+.cart-section h2{text-align:center;color:#101827;margin-bottom:20px}
+.cart-list{list-style:none}
+.cart-list li{
+display:flex;justify-content:space-between;align-items:center;
+gap:10px;padding:13px 5px;border-bottom:1px solid #e9edf2;
+font-size:14px
+}
+.empty-cart{text-align:center;color:#7b8492;padding:15px}
+.remove{
+background:#dc2626;color:white;border:0;
+padding:7px 12px;border-radius:7px;cursor:pointer
+}
+.send-order{
+width:100%;margin-top:20px;padding:14px;
+background:#25d366;color:white;border:0;border-radius:9px;
+font-size:15px;font-weight:bold;cursor:pointer
+}
+.send-order:hover{background:#16a34a}
+
+footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
+footer strong{color:#facc15}
+.whatsapp{
+position:fixed;bottom:20px;left:20px;background:#25d366;
+color:white;text-decoration:none;padding:13px 18px;
+border-radius:30px;font-weight:bold;z-index:8;
+box-shadow:0 4px 15px #00000025
+}
+
+@media(max-width:900px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+header{padding:13px 4%;justify-content:center}
+.header-actions{justify-content:center;gap:13px}
+.hero{padding:50px 15px}
+.hero h1{font-size:29px}
+.hero p{font-size:13px}
+section{padding:38px 4%}
+.section-heading h2{font-size:24px}
+.products{gap:11px}
+.product img{height:135px}
+.info{padding:11px}
+.product h3{font-size:14px}
+.price{font-size:13px}
+.quantity{padding:9px}
+.add-cart{font-size:12px;padding:11px}
+.cart-section{padding:15px}
+.cart-list li{font-size:12px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>POWER ZONE</h1>
-<p>قسم الماجنتك ليد وإكسسواراته</p>
+<div class="logo">⚡ POWER <span>ZONE</span></div>
+<div class="header-actions">
+<a class="home-link" href="index.html">← الرئيسية</a>
+<a class="cart-link" href="cart.html">🛒 السلة (<span id="cartCount">0</span>)</a>
+</div>
 </header>
 
-<div class="container">
+<div class="hero">
+<div class="hero-label">POWER ZONE COLLECTION</div>
+<h1>الماجنتك ليد</h1>
+<p>أنظمة إضاءة Magnetic LED وإكسسواراتها<br>اختار المنتج وحدد الكمية المطلوبة</p>
+</div>
 
-<a class="back" href="index.html">← العودة للأقسام الرئيسية</a>
-
-<h2>منتجات Magnetic LED</h2>
+<section>
+<div class="section-heading">
+<small>MAGNETIC LED</small>
+<h2>منتجات الماجنتك ليد</h2>
+<p>اختر المنتج والكمية المطلوبة وأضفها إلى سلة مشترياتك</p>
+</div>
 
 <div class="products">
 
 <div class="product">
-<img src="https://placehold.co/300x200?text=Magnetic+Track" alt="Magnetic Track">
+<img src="https://placehold.co/500x300?text=Magnetic+Track" alt="مسار ماجنتك">
+<div class="info">
 <h3>مسار ماجنتك</h3>
-<input type="number" min="1" value="1" id="q1">
-<button type="button" onclick="addToCart('مسار ماجنتك','q1')">إضافة للطلب</button>
-<p class="success-message" id="msg-q1"></p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" id="q1">
+<button class="add-cart" onclick="addToCart('مسار ماجنتك','q1',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
+</div>
 </div>
 
 <div class="product">
-<img src="https://placehold.co/300x200?text=Magnetic+Spot" alt="Magnetic Spot">
+<img src="https://placehold.co/500x300?text=Magnetic+Spot" alt="كشاف ماجنتك">
+<div class="info">
 <h3>كشاف ماجنتك</h3>
-<input type="number" min="1" value="1" id="q2">
-<button type="button" onclick="addToCart('كشاف ماجنتك','q2')">إضافة للطلب</button>
-<p class="success-message" id="msg-q2"></p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" id="q2">
+<button class="add-cart" onclick="addToCart('كشاف ماجنتك','q2',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
+</div>
 </div>
 
 <div class="product">
-<img src="https://placehold.co/300x200?text=Magnetic+Linear" alt="Magnetic Linear">
+<img src="https://placehold.co/500x300?text=Magnetic+Linear" alt="ماجنتك لاينر">
+<div class="info">
 <h3>ماجنتك لاينر</h3>
-<input type="number" min="1" value="1" id="q3">
-<button type="button" onclick="addToCart('ماجنتك لاينر','q3')">إضافة للطلب</button>
-<p class="success-message" id="msg-q3"></p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" id="q3">
+<button class="add-cart" onclick="addToCart('ماجنتك لاينر','q3',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
+</div>
 </div>
 
 <div class="product">
-<img src="https://placehold.co/300x200?text=Magnetic+Accessories" alt="Magnetic Accessories">
+<img src="https://placehold.co/500x300?text=Magnetic+Accessories" alt="إكسسوارات ماجنتك">
+<div class="info">
 <h3>إكسسوارات ماجنتك</h3>
-<input type="number" min="1" value="1" id="q4">
-<button type="button" onclick="addToCart('إكسسوارات ماجنتك','q4')">إضافة للطلب</button>
-<p class="success-message" id="msg-q4"></p>
+<div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" id="q4">
+<button class="add-cart" onclick="addToCart('إكسسوارات ماجنتك','q4',this)">🛒 أضف إلى السلة</button>
+<p class="success-message"></p>
+<p class="error-message"></p>
+</div>
 </div>
 
 </div>
+</section>
 
-<div class="cart">
-<h2>طلباتي</h2>
-<ul id="cartList"></ul>
-<button onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
+<section style="padding-top:0">
+<div class="cart-section">
+<h2>طلباتي من الماجنتك ليد</h2>
+<ul class="cart-list" id="cartList"></ul>
+<button class="send-order" onclick="sendOrder()">إرسال الطلب عبر واتساب 💬</button>
 </div>
-
-</div>
+</section>
 
 <footer>
-POWER ZONE - كل ما تحتاجه من الأدوات الكهربائية
+<p>© 2026 <strong>POWER ZONE</strong> - جميع الحقوق محفوظة</p>
+<p>متجرك للأدوات الكهربائية ⚡</p>
 </footer>
 
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">واتساب 💬</a>
+
 <script>
-const CART_KEY = "powerZoneCart";
+const CART_KEY="powerZoneCart";
+const magneticNames=[
+"مسار ماجنتك",
+"كشاف ماجنتك",
+"ماجنتك لاينر",
+"إكسسوارات ماجنتك"
+];
 
 function getCart(){
-  try{
-    const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-    return Array.isArray(saved) ? saved : [];
-  }catch(error){
-    return [];
-  }
+try{
+const saved=JSON.parse(localStorage.getItem(CART_KEY)||"[]");
+return Array.isArray(saved)?saved:[];
+}catch(error){
+return [];
+}
 }
 
 function saveCart(cart){
-  localStorage.setItem(CART_KEY,JSON.stringify(cart));
+localStorage.setItem(CART_KEY,JSON.stringify(cart));
 }
 
-function addToCart(name,inputId){
-  const quantity = Number(document.getElementById(inputId).value);
-  const message = document.getElementById("msg-" + inputId);
+function updateCartCount(){
+const cart=getCart();
+const count=cart.reduce((sum,item)=>{
+return sum+Number(item.quantity??item.qty??0);
+},0);
+document.getElementById("cartCount").textContent=count;
+}
 
-  message.textContent = "";
+function addToCart(name,inputId,button){
+const input=document.getElementById(inputId);
+const card=button.closest(".product");
+const success=card.querySelector(".success-message");
+const error=card.querySelector(".error-message");
+const quantity=Number(input.value);
 
-  if(!Number.isInteger(quantity) || quantity < 1){
-    message.style.color = "red";
-    message.textContent = "من فضلك أدخل كمية صحيحة";
-    return;
-  }
+success.style.display="none";
+error.style.display="none";
 
-  let cart = getCart();
-  let item = cart.find(p => p.name === name);
+if(!Number.isInteger(quantity)||quantity<1){
+error.textContent="من فضلك أدخل كمية صحيحة تبدأ من 1";
+error.style.display="block";
+input.focus();
+return;
+}
 
-  if(item){
-    item.quantity = Number(item.quantity || item.qty || 0) + quantity;
-    delete item.qty;
-  }else{
-    cart.push({name:name,quantity:quantity});
-  }
+let cart=getCart();
 
-  saveCart(cart);
-  renderCart();
+cart=cart.map(item=>({
+...item,
+quantity:Number(item.quantity??item.qty??0)
+}));
 
-  message.style.color = "green";
-  message.textContent = "تمت إضافة المنتج إلى السلة بنجاح ✅";
+let item=cart.find(p=>p.name===name);
+
+if(item){
+item.quantity+=quantity;
+}else{
+cart.push({name:name,quantity:quantity});
+}
+
+cart.forEach(item=>delete item.qty);
+
+saveCart(cart);
+updateCartCount();
+renderCart();
+
+success.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
+success.style.display="block";
+
+input.value=1;
 }
 
 function renderCart(){
-  const cart = getCart();
-  const list = document.getElementById("cartList");
-  list.innerHTML = "";
+const cart=getCart();
+const list=document.getElementById("cartList");
+list.innerHTML="";
 
-  const magneticItems = cart.filter(item =>
-    ["مسار ماجنتك","كشاف ماجنتك","ماجنتك لاينر","إكسسوارات ماجنتك"].includes(item.name)
-  );
+const magneticItems=cart.filter(item=>
+magneticNames.includes(item.name)
+);
 
-  if(magneticItems.length === 0){
-    list.innerHTML = "<li>لم تضف أي منتجات من هذا القسم حتى الآن.</li>";
-    return;
-  }
+if(magneticItems.length===0){
+const li=document.createElement("li");
+li.className="empty-cart";
+li.textContent="لم تضف أي منتجات من هذا القسم حتى الآن.";
+list.appendChild(li);
+return;
+}
 
-  magneticItems.forEach(item => {
-    const li = document.createElement("li");
-    li.appendChild(document.createTextNode(
-      item.name + " - الكمية: " + (item.quantity || item.qty || 0)
-    ));
+magneticItems.forEach(item=>{
+const li=document.createElement("li");
 
-    const remove = document.createElement("button");
-    remove.textContent = "حذف";
-    remove.className = "remove";
+const details=document.createElement("span");
+details.textContent=item.name+" - الكمية: "+Number(item.quantity??item.qty??0);
 
-    remove.onclick = function(){
-      let updatedCart = getCart().filter(p => p.name !== item.name);
-      saveCart(updatedCart);
-      renderCart();
-    };
+const remove=document.createElement("button");
+remove.textContent="حذف";
+remove.className="remove";
 
-    li.appendChild(remove);
-    list.appendChild(li);
-  });
+remove.onclick=function(){
+const updatedCart=getCart().filter(p=>p.name!==item.name);
+saveCart(updatedCart);
+updateCartCount();
+renderCart();
+};
+
+li.appendChild(details);
+li.appendChild(remove);
+list.appendChild(li);
+});
 }
 
 function sendOrder(){
-  const cart = getCart();
+const cart=getCart();
+const magneticItems=cart.filter(item=>
+magneticNames.includes(item.name)
+);
 
-  const magneticItems = cart.filter(item =>
-    ["مسار ماجنتك","كشاف ماجنتك","ماجنتك لاينر","إكسسوارات ماجنتك"].includes(item.name)
-  );
-
-  if(magneticItems.length === 0){
-    alert("أضف منتجات للطلب أولاً");
-    return;
-  }
-
-  let message = "طلب جديد من POWER ZONE - قسم ماجنتك ليد:\n";
-
-  magneticItems.forEach(item => {
-    message += "\n" + item.name +
-      " - الكمية: " + (item.quantity || item.qty || 0);
-  });
-
-  const phone = "201155284381";
-
-  window.open(
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
+if(magneticItems.length===0){
+alert("أضف منتجات للطلب أولاً");
+return;
 }
 
+let message="طلب جديد من POWER ZONE - قسم ماجنتك ليد:\n";
+
+magneticItems.forEach(item=>{
+message+="\n"+item.name+
+" - الكمية: "+Number(item.quantity??item.qty??0);
+});
+
+const phone="201155284381";
+
+window.open(
+"https://wa.me/"+phone+"?text="+encodeURIComponent(message),
+"_blank"
+);
+}
+
+window.addEventListener("storage",function(){
+updateCartCount();
+renderCart();
+});
+
+updateCartCount();
 renderCart();
 </script>
 
