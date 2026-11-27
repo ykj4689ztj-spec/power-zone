@@ -19,7 +19,6 @@ display:flex;justify-content:space-between;align-items:center;
 gap:15px;flex-wrap:wrap;box-shadow:0 4px 18px #00000018;
 position:sticky;top:0;z-index:10
 }
-
 .logo{font-size:25px;font-weight:900;color:#facc15;letter-spacing:.5px}
 .logo span{color:white}
 .header-actions{display:flex;align-items:center;gap:22px}
@@ -48,7 +47,6 @@ font-size:13px;margin-bottom:20px
 .hero h1{font-size:43px;line-height:1.4;margin-bottom:18px;font-weight:900}
 .hero h1 span{color:#facc15}
 .hero p{color:#d1d9e5;font-size:17px;line-height:2;max-width:620px;margin:auto}
-
 .hero-buttons{
 display:flex;justify-content:center;gap:12px;
 flex-wrap:wrap;margin-top:30px
@@ -63,9 +61,73 @@ text-decoration:none;font-weight:bold;transition:.2s
 .main-btn:hover{background:white}
 .secondary-btn:hover{background:#ffffff15}
 
+/* البحث */
+.search-section{
+max-width:850px;
+margin:35px auto 0;
+padding:0 5%;
+text-align:center;
+}
+.search-title{
+font-size:21px;
+color:#101827;
+font-weight:bold;
+margin-bottom:12px;
+}
+.search-box{
+display:flex;
+gap:8px;
+background:white;
+padding:9px;
+border-radius:13px;
+box-shadow:0 5px 22px #00000012;
+border:1px solid #e5e7eb;
+}
+.search-box input{
+flex:1;
+min-width:0;
+border:0;
+outline:0;
+padding:12px;
+font-size:15px;
+font-family:Arial;
+background:transparent;
+}
+.search-box button{
+background:#facc15;
+color:#101827;
+border:0;
+border-radius:9px;
+padding:0 20px;
+font-weight:bold;
+cursor:pointer;
+}
+.search-results{
+display:none;
+background:white;
+margin-top:10px;
+border-radius:12px;
+text-align:right;
+overflow:hidden;
+box-shadow:0 5px 20px #00000012;
+}
+.search-result{
+display:block;
+padding:12px 16px;
+color:#172033;
+text-decoration:none;
+border-bottom:1px solid #eee;
+}
+.search-result:hover{background:#fff8d9}
+.search-hint{
+color:#7b8492;
+font-size:13px;
+margin-top:9px;
+}
+
 .features{
 display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
-max-width:1000px;margin:-28px auto 0;padding:0 5%;
+max-width:1000px;margin:35px auto 0;padding:0 5%;
 position:relative;z-index:2
 }
 .feature{
@@ -117,7 +179,6 @@ font-size:13px;font-weight:bold
 .about{background:#101827;color:white;text-align:center;padding:55px 6%}
 .about h2{font-size:27px;margin-bottom:13px;color:#facc15}
 .about p{max-width:650px;margin:auto;color:#cbd5e1;line-height:2}
-
 .contact-strip{
 max-width:900px;margin:35px auto 0;background:#1d2d43;
 border:1px solid #ffffff16;border-radius:13px;padding:20px;
@@ -132,7 +193,6 @@ padding:10px 18px;border-radius:8px;font-weight:bold;font-size:13px
 
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px 15px;font-size:13px}
 footer strong{color:#facc15}
-
 .whatsapp{
 position:fixed;bottom:20px;left:20px;background:#25d366;
 color:white;text-decoration:none;padding:13px 18px;
@@ -167,11 +227,14 @@ section{padding:48px 4%}
 .about{padding:42px 5%}
 .about h2{font-size:23px}
 .contact-strip{justify-content:center;text-align:center}
+.search-section{padding:0 4%;margin-top:25px}
+.search-title{font-size:18px}
 }
 @media(max-width:360px){
 nav{gap:10px}
 nav a{font-size:12px}
 .hero h1{font-size:27px}
+.search-box button{padding:0 10px;font-size:12px}
 }
 </style>
 </head>
@@ -206,6 +269,17 @@ nav a{font-size:12px}
 </div>
 </div>
 
+<!-- مربع البحث -->
+<div class="search-section">
+<div class="search-title">🔍 بتدور على منتج معين؟</div>
+<div class="search-box">
+<input type="search" id="productSearch" placeholder="اكتب اسم المنتج... مثل شنيور أو لمبة">
+<button type="button" onclick="searchProducts()">بحث</button>
+</div>
+<div class="search-hint">ابحث عن منتجات فينوس والإضاءة والكابلات والأدوات والقواطع والخراطيم</div>
+<div class="search-results" id="searchResults"></div>
+</div>
+
 <div class="features">
 <div class="feature">
 <div class="feature-icon">⚡</div>
@@ -232,7 +306,6 @@ nav a{font-size:12px}
 </div>
 
 <div class="categories">
-
 <a class="category" href="Venus.html">
 <span class="emoji">🔘</span>
 <h3>منتجات فينوس</h3>
@@ -274,7 +347,6 @@ nav a{font-size:12px}
 <p>قواطع ومفاتيح حماية</p>
 <span class="more">عرض المنتجات ←</span>
 </a>
-
 </div>
 </section>
 
@@ -325,6 +397,92 @@ function updateCartCount(){
 }
 
 updateCartCount();
+
+/* قائمة المنتجات التي يمكن البحث عنها */
+const products = [
+  {name:"بريزة فينوس",page:"Venus.html"},
+  {name:"مفتاح فينوس",page:"Venus.html"},
+  {name:"شاسيه فينوس",page:"Venus.html"},
+
+  {name:"خرطوم كهرباء",page:"hoses.html"},
+  {name:"خرطوم مرن",page:"hoses.html"},
+  {name:"ماسورة كهرباء",page:"hoses.html"},
+
+  {name:"لمبة LED",page:"lighting.html"},
+  {name:"سبوت لايت",page:"lighting.html"},
+  {name:"بانل LED",page:"lighting.html"},
+  {name:"نجفة",page:"lighting.html"},
+
+  {name:"سلك كهرباء",page:"cables.html"},
+  {name:"كابل كهرباء",page:"cables.html"},
+  {name:"سلك نحاس",page:"cables.html"},
+  {name:"كابل مرن",page:"cables.html"},
+
+  {name:"شنيور كهربائي",page:"tools.html"},
+  {name:"صاروخ تجليخ",page:"tools.html"},
+  {name:"مفك كهربائي",page:"tools.html"},
+  {name:"أدوات قياس",page:"tools.html"},
+
+  {name:"قاطع أوتوماتيك MCB",page:"breakers.html"},
+  {name:"قاطع تسريب أرضي RCCB",page:"breakers.html"},
+  {name:"قاطع MCCB",page:"breakers.html"},
+  {name:"مفتاح تحويل",page:"breakers.html"}
+];
+
+/* توحيد بعض أشكال الحروف العربية */
+function normalizeText(text){
+  return text.toLowerCase()
+    .replace(/[أإآ]/g,"ا")
+    .replace(/ة/g,"ه")
+    .replace(/ى/g,"ي")
+    .trim();
+}
+
+function searchProducts(){
+  const input = document.getElementById("productSearch");
+  const results = document.getElementById("searchResults");
+  const query = normalizeText(input.value);
+
+  results.innerHTML = "";
+
+  if(!query){
+    results.style.display = "none";
+    return;
+  }
+
+  const matches = products.filter(product =>
+    normalizeText(product.name).includes(query)
+  );
+
+  results.style.display = "block";
+
+  if(matches.length === 0){
+    results.innerHTML =
+      '<div class="search-result">لا توجد منتجات مطابقة. جرب كتابة اسم آخر.</div>';
+    return;
+  }
+
+  matches.forEach(product=>{
+    const link = document.createElement("a");
+    link.className = "search-result";
+    link.href = product.page;
+    link.textContent = "⚡ " + product.name + " ←";
+    results.appendChild(link);
+  });
+}
+
+document.getElementById("productSearch")
+.addEventListener("input",searchProducts);
+
+document.getElementById("productSearch")
+.addEventListener("keydown",function(event){
+  if(event.key === "Enter"){
+    searchProducts();
+    const firstResult =
+      document.querySelector("#searchResults a");
+    if(firstResult) firstResult.click();
+  }
+});
 </script>
 
 </body>
