@@ -4,37 +4,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الخراطيم والمواسير | Power Zone</title>
+<meta name="theme-color" content="#101827">
+<title>الخراطيم والمواسير | POWER ZONE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f6f8;color:#172033}
-header{background:#101827;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.logo{font-size:25px;font-weight:bold;color:#facc15}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
+
+header{
+background:#101827;color:white;padding:15px 6%;
+display:flex;justify-content:space-between;align-items:center;
+flex-wrap:wrap;gap:14px;box-shadow:0 4px 18px #00000018;
+position:sticky;top:0;z-index:10
+}
+.logo{font-size:25px;font-weight:900;color:#facc15}
 .logo span{color:white}
-header a{color:white;text-decoration:none}
-.cart-link{background:#263b59;padding:9px 13px;border-radius:7px}
-.hero{background:linear-gradient(120deg,#101827,#263b59);color:white;text-align:center;padding:50px 20px}
-.hero h1{font-size:30px;margin-bottom:12px;color:#facc15}
-.hero p{color:#d1d5db;line-height:1.8}
-section{padding:30px 5%}
-.title{text-align:center;font-size:25px;margin-bottom:25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px}
-.product{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #0000000b}
-.product img{width:100%;height:165px;object-fit:cover;background:#eee}
-.info{padding:15px}
-.product h3{font-size:16px;margin-bottom:10px}
-.price{color:#c18b00;font-weight:bold;font-size:18px;margin-bottom:12px}
-.quantity{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;margin-bottom:10px;font-size:16px}
-.add-cart{display:block;width:100%;text-align:center;background:#101827;color:white;padding:11px;border:0;text-decoration:none;border-radius:7px;cursor:pointer;font-size:15px}
-.add-cart:hover{background:#facc15;color:#111827}
-footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:14px 18px;border-radius:30px;font-weight:bold}
+.header-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.header-actions a{text-decoration:none}
+.home-link{color:#e5e7eb;font-size:14px}
+.home-link:hover{color:#facc15}
+.cart-link{background:#facc15;color:#101827;padding:10px 15px;border-radius:9px;font-weight:bold;font-size:14px}
+
+.hero{
+background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),linear-gradient(120deg,#101827,#1d3554);
+color:white;text-align:center;padding:65px 20px
+}
+.hero-label{display:inline-block;color:#facc15;background:#facc1512;border:1px solid #facc1555;padding:6px 16px;border-radius:30px;font-size:13px;margin-bottom:15px}
+.hero h1{font-size:36px;color:#facc15;margin-bottom:10px}
+.hero p{color:#d1d9e5;line-height:2;font-size:15px}
+
+section{padding:50px 6%}
+.section-heading{text-align:center;margin-bottom:30px}
+.section-heading small{color:#a47c00;font-weight:bold}
+.section-heading h2{font-size:28px;color:#101827;margin:6px 0}
+.section-heading p{color:#7b8492;font-size:14px}
+
+.products{
+display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+gap:18px;max-width:1000px;margin:auto
+}
+.product{
+background:white;border:1px solid #e9edf2;border-radius:15px;
+overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
+}
+.product:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
+.product img{width:100%;height:190px;object-fit:cover;background:#eee;display:block}
+.info{padding:17px}
+.product h3{font-size:17px;color:#172033;margin-bottom:12px}
+.price{color:#a47c00;font-weight:bold;font-size:15px;margin-bottom:13px}
+.quantity-label{display:block;font-size:13px;color:#6b7280;margin-bottom:6px}
+.quantity{width:100%;padding:11px;border:1px solid #dce1e8;border-radius:8px;margin-bottom:12px;font-size:16px;outline:none}
+.quantity:focus{border-color:#d6a900}
+.add-cart{width:100%;background:#101827;color:white;padding:12px;border:0;border-radius:8px;cursor:pointer;font-size:14px;font-weight:bold;transition:.2s}
+.add-cart:hover{background:#facc15;color:#101827}
+
+footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
+footer strong{color:#facc15}
+.whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;z-index:8;box-shadow:0 4px 15px #00000025}
+
+@media(max-width:800px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media(max-width:600px){
-.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.product img{height:125px}
-.info{padding:10px}
+header{padding:13px 4%;justify-content:center}
+.header-actions{justify-content:center;gap:13px}
+.hero{padding:50px 15px}
+.hero h1{font-size:29px}
+.hero p{font-size:13px}
+section{padding:38px 4%}
+.section-heading h2{font-size:24px}
+.products{gap:11px}
+.product img{height:135px}
+.info{padding:11px}
 .product h3{font-size:14px}
+.price{font-size:13px}
+.quantity{padding:9px}
+.add-cart{font-size:12px;padding:11px}
 }
 </style>
 </head>
@@ -43,20 +89,24 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 
 <header>
 <div class="logo">⚡ POWER <span>ZONE</span></div>
-<div style="display:flex;gap:15px;align-items:center">
-<a href="index.html">← الرئيسية</a>
+<div class="header-actions">
+<a class="home-link" href="index.html">← الرئيسية</a>
 <a class="cart-link" href="cart.html">🛒 السلة (<span id="cartCount">0</span>)</a>
 </div>
 </header>
 
 <div class="hero">
+<div class="hero-label">POWER ZONE COLLECTION</div>
 <h1>الخراطيم والمواسير</h1>
-<p>كل احتياجاتك من خراطيم ومواسير الكهرباء<br>
-جودة عالية وأسعار مناسبة</p>
+<p>كل احتياجاتك من خراطيم ومواسير الكهرباء<br>جودة عالية ومقاسات متنوعة</p>
 </div>
 
 <section>
-<h2 class="title">منتجات الخراطيم</h2>
+<div class="section-heading">
+<small>HOSES & PIPES</small>
+<h2>منتجات الخراطيم والمواسير</h2>
+<p>اختر المنتج والكمية المطلوبة وأضفها إلى سلة مشترياتك</p>
+</div>
 
 <div class="products">
 
@@ -65,6 +115,7 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>خرطوم كهرباء</h3>
 <div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية خرطوم كهرباء">
 <button class="add-cart" onclick="addToCart('خرطوم كهرباء',this)">🛒 أضف إلى السلة</button>
 </div>
@@ -75,6 +126,7 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>خرطوم مرن</h3>
 <div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية خرطوم مرن">
 <button class="add-cart" onclick="addToCart('خرطوم مرن',this)">🛒 أضف إلى السلة</button>
 </div>
@@ -85,6 +137,7 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 <div class="info">
 <h3>ماسورة كهرباء</h3>
 <div class="price">السعر عند الطلب</div>
+<label class="quantity-label">الكمية المطلوبة</label>
 <input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية ماسورة كهرباء">
 <button class="add-cart" onclick="addToCart('ماسورة كهرباء',this)">🛒 أضف إلى السلة</button>
 </div>
@@ -94,54 +147,61 @@ footer{background:#080e18;color:#aaa;text-align:center;padding:25px}
 </section>
 
 <footer>
-<p>© 2026 POWER ZONE - جميع الحقوق محفوظة</p>
+<p>© 2026 <strong>POWER ZONE</strong> - جميع الحقوق محفوظة</p>
+<p>متجرك للأدوات الكهربائية ⚡</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201155284381" target="_blank">واتساب 💬</a>
+<a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">واتساب 💬</a>
 
 <script>
-const cartKey = "powerZoneCart";
+const cartKey="powerZoneCart";
 
 function getCart(){
-return JSON.parse(localStorage.getItem(cartKey) || "[]");
+let cart=[];
+
+try{
+cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
+}catch(error){
+cart=[];
+}
+
+if(!Array.isArray(cart)) cart=[];
+
+return cart;
+}
+
+function updateCartCount(){
+const cart=getCart();
+const count=cart.reduce((sum,item)=>sum+Number(item.quantity||item.qty||0),0);
+document.getElementById("cartCount").textContent=count;
 }
 
 function addToCart(name,button){
+const card=button.closest(".product");
+const input=card.querySelector(".quantity");
+const qty=Number(input.value);
 
-const card = button.closest(".product");
-const input = card.querySelector(".quantity");
-const qty = Number(input.value);
-
-if(!Number.isInteger(qty) || qty < 1){
+if(!Number.isInteger(qty)||qty<1){
 alert("من فضلك أدخل كمية صحيحة تبدأ من 1");
 input.focus();
 return;
 }
 
-let cart = getCart();
-let item = cart.find(product => product.name === name);
+let cart=getCart();
+let item=cart.find(product=>product.name===name);
 
 if(item){
-item.qty += qty;
+item.quantity=Number(item.quantity||item.qty||0)+qty;
+delete item.qty;
 }else{
-cart.push({name:name,qty:qty});
+cart.push({name:name,quantity:qty});
 }
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
-
 updateCartCount();
 
-alert("تم إضافة " + qty + " من " + name + " إلى السلة بنجاح 🛒");
-
-input.value = 1;
-}
-
-function updateCartCount(){
-
-let cart = getCart();
-let count = cart.reduce((sum,item)=>sum + item.qty,0);
-
-document.getElementById("cartCount").textContent = count;
+alert("تم إضافة "+qty+" من "+name+" إلى السلة بنجاح 🛒");
+input.value=1;
 }
 
 updateCartCount();
