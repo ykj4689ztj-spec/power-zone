@@ -20,6 +20,7 @@ h2{margin-bottom:20px;text-align:center}
 .product h3{margin-bottom:12px}
 .product input{width:100%;padding:10px;margin:10px 0;border:1px solid #cbd5e1;border-radius:7px}
 .product button{width:100%;padding:11px;border:none;border-radius:7px;background:#0284c7;color:white;font-weight:bold;cursor:pointer}
+.success-message{color:green;font-weight:bold;margin-top:10px}
 .cart{margin-top:25px;padding:20px;background:white;border-radius:12px}
 .cart li{padding:10px;border-bottom:1px solid #eee;list-style:none}
 .cart button{background:#16a34a;color:white;border:none;padding:12px;border-radius:7px;cursor:pointer;width:100%;margin-top:15px;font-weight:bold}
@@ -47,28 +48,32 @@ footer{margin-top:30px;padding:20px;text-align:center;background:#101827;color:w
 <img src="https://placehold.co/300x200?text=Magnetic+Track" alt="Magnetic Track">
 <h3>مسار ماجنتك</h3>
 <input type="number" min="1" value="1" id="q1">
-<button onclick="addToCart('مسار ماجنتك','q1')">إضافة للطلب</button>
+<button type="button" onclick="addToCart('مسار ماجنتك','q1')">إضافة للطلب</button>
+<p class="success-message" id="msg-q1"></p>
 </div>
 
 <div class="product">
 <img src="https://placehold.co/300x200?text=Magnetic+Spot" alt="Magnetic Spot">
 <h3>كشاف ماجنتك</h3>
 <input type="number" min="1" value="1" id="q2">
-<button onclick="addToCart('كشاف ماجنتك','q2')">إضافة للطلب</button>
+<button type="button" onclick="addToCart('كشاف ماجنتك','q2')">إضافة للطلب</button>
+<p class="success-message" id="msg-q2"></p>
 </div>
 
 <div class="product">
 <img src="https://placehold.co/300x200?text=Magnetic+Linear" alt="Magnetic Linear">
 <h3>ماجنتك لاينر</h3>
 <input type="number" min="1" value="1" id="q3">
-<button onclick="addToCart('ماجنتك لاينر','q3')">إضافة للطلب</button>
+<button type="button" onclick="addToCart('ماجنتك لاينر','q3')">إضافة للطلب</button>
+<p class="success-message" id="msg-q3"></p>
 </div>
 
 <div class="product">
 <img src="https://placehold.co/300x200?text=Magnetic+Accessories" alt="Magnetic Accessories">
 <h3>إكسسوارات ماجنتك</h3>
 <input type="number" min="1" value="1" id="q4">
-<button onclick="addToCart('إكسسوارات ماجنتك','q4')">إضافة للطلب</button>
+<button type="button" onclick="addToCart('إكسسوارات ماجنتك','q4')">إضافة للطلب</button>
+<p class="success-message" id="msg-q4"></p>
 </div>
 
 </div>
@@ -103,9 +108,13 @@ function saveCart(cart){
 
 function addToCart(name,inputId){
   const quantity = Number(document.getElementById(inputId).value);
+  const message = document.getElementById("msg-" + inputId);
+
+  message.textContent = "";
 
   if(!Number.isInteger(quantity) || quantity < 1){
-    alert("من فضلك أدخل كمية صحيحة");
+    message.style.color = "red";
+    message.textContent = "من فضلك أدخل كمية صحيحة";
     return;
   }
 
@@ -121,7 +130,9 @@ function addToCart(name,inputId){
 
   saveCart(cart);
   renderCart();
-  alert("تمت إضافة المنتج إلى السلة بنجاح ✅");
+
+  message.style.color = "green";
+  message.textContent = "تمت إضافة المنتج إلى السلة بنجاح ✅";
 }
 
 function renderCart(){
