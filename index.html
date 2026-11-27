@@ -6,216 +6,274 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="POWER ZONE متجر الأدوات الكهربائية والأسلاك والكابلات والإضاءة والقواطع.">
 <meta name="theme-color" content="#101827">
+
 <title>POWER ZONE | متجر الأدوات الكهربائية</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
-
-header{
-background:#101827;color:white;padding:15px 6%;
-display:flex;justify-content:space-between;align-items:center;
-gap:15px;flex-wrap:wrap;box-shadow:0 4px 18px #00000018;
-position:sticky;top:0;z-index:10
-}
-.logo{font-size:25px;font-weight:900;color:#facc15;letter-spacing:.5px}
-.logo span{color:white}
-.header-actions{display:flex;align-items:center;gap:22px}
-nav{display:flex;gap:22px;align-items:center}
-nav a{color:#e5e7eb;text-decoration:none;font-size:14px;transition:.2s}
-nav a:hover{color:#facc15}
-
-.cart-link{
-background:#facc15;color:#101827;text-decoration:none;
-padding:10px 17px;border-radius:9px;font-size:14px;
-font-weight:bold;transition:.2s;white-space:nowrap
-}
-.cart-link:hover{background:white;transform:translateY(-2px)}
-
-.hero{
-background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),
-linear-gradient(120deg,#101827,#1d3554);
-color:white;padding:85px 7%;position:relative;overflow:hidden
-}
-.hero-content{max-width:850px;margin:auto;text-align:center;position:relative;z-index:1}
-.hero-label{
-display:inline-block;color:#facc15;border:1px solid #facc1555;
-background:#facc1512;padding:7px 17px;border-radius:30px;
-font-size:13px;margin-bottom:20px
-}
-.hero h1{font-size:43px;line-height:1.4;margin-bottom:18px;font-weight:900}
-.hero h1 span{color:#facc15}
-.hero p{color:#d1d9e5;font-size:17px;line-height:2;max-width:620px;margin:auto}
-.hero-buttons{
-display:flex;justify-content:center;gap:12px;
-flex-wrap:wrap;margin-top:30px
-}
-.main-btn,.secondary-btn{
-display:inline-block;padding:13px 25px;border-radius:9px;
-text-decoration:none;font-weight:bold;transition:.2s
-}
-.main-btn{background:#facc15;color:#101827}
-.secondary-btn{border:1px solid #ffffff55;color:white}
-.main-btn:hover,.secondary-btn:hover{transform:translateY(-3px)}
-.main-btn:hover{background:white}
-.secondary-btn:hover{background:#ffffff15}
-
-/* البحث */
-.search-section{
-max-width:850px;margin:35px auto 0;padding:0 5%;
-text-align:center
-}
-.search-title{
-font-size:21px;color:#101827;font-weight:bold;margin-bottom:12px
-}
-.search-box{
-display:flex;gap:8px;background:white;padding:9px;
-border-radius:13px;box-shadow:0 5px 22px #00000012;
-border:1px solid #e5e7eb
-}
-.search-box input{
-flex:1;min-width:0;border:0;outline:0;padding:12px;
-font-size:15px;font-family:Arial;background:transparent
-}
-.search-box button{
-background:#facc15;color:#101827;border:0;border-radius:9px;
-padding:0 20px;font-weight:bold;cursor:pointer
-}
-.search-results{
-display:none;background:white;margin-top:10px;border-radius:12px;
-text-align:right;overflow:hidden;box-shadow:0 5px 20px #00000012
-}
-.search-result{
-display:block;padding:12px 16px;color:#172033;
-text-decoration:none;border-bottom:1px solid #eee
-}
-.search-result:hover{background:#fff8d9}
-.search-hint{color:#7b8492;font-size:13px;margin-top:9px}
-
-.features{
-display:grid;grid-template-columns:repeat(3,1fr);gap:15px;
-max-width:1000px;margin:35px auto 0;padding:0 5%;
-position:relative;z-index:2
-}
-.feature{
-background:white;border-radius:13px;padding:20px 12px;
-text-align:center;box-shadow:0 7px 25px #10182712;
-border:1px solid #edf0f4
-}
-.feature-icon{font-size:25px;margin-bottom:5px}
-.feature h3{font-size:14px;color:#101827}
-.feature p{font-size:12px;color:#7b8492;margin-top:3px}
-
-section{padding:65px 6%}
-.section-heading{text-align:center;margin-bottom:35px}
-.section-heading small{color:#b58b00;font-weight:bold;font-size:13px}
-.section-heading h2{font-size:29px;color:#101827;margin:7px 0}
-.section-heading p{color:#7b8492;font-size:14px}
-
-.categories{
-display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-gap:18px;max-width:1100px;margin:auto
-}
-.category{
-background:white;border:1px solid #e9edf2;border-radius:15px;
-padding:27px 17px;text-align:center;text-decoration:none;
-color:#172033;display:block;transition:.25s;
-box-shadow:0 3px 12px #10182708;position:relative;overflow:hidden
-}
-.category:before{
-content:"";position:absolute;top:0;right:0;width:100%;height:4px;
-background:#facc15;transform:scaleX(0);transition:.25s
-}
-.category:hover{
-transform:translateY(-6px);box-shadow:0 12px 28px #10182715;
-border-color:#facc15
-}
-.category:hover:before{transform:scaleX(1)}
-.category .emoji{
-width:65px;height:65px;display:flex;align-items:center;
-justify-content:center;margin:0 auto 13px;border-radius:17px;
-background:#fff8d9;font-size:32px
-}
-.category h3{font-size:17px;margin-bottom:5px}
-.category p{color:#89919e;font-size:12px}
-.category .more{
-display:inline-block;margin-top:14px;color:#a47c00;
-font-size:13px;font-weight:bold
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* العروض */
-.offers-section{
-background:linear-gradient(120deg,#101827,#1d3554);
-color:white;text-align:center;padding:55px 6%
-}
-.offers-section h2{font-size:29px;color:#facc15;margin-bottom:10px}
-.offers-section p{color:#d1d9e5;font-size:15px}
-.offer-label{
-display:inline-block;margin-top:20px;padding:10px 22px;
-background:#facc15;color:#101827;border-radius:30px;font-weight:bold
+html {
+  scroll-behavior: smooth;
 }
 
-.about{background:#101827;color:white;text-align:center;padding:55px 6%}
-.about h2{font-size:27px;margin-bottom:13px;color:#facc15}
-.about p{max-width:650px;margin:auto;color:#cbd5e1;line-height:2}
-.contact-strip{
-max-width:900px;margin:35px auto 0;background:#1d2d43;
-border:1px solid #ffffff16;border-radius:13px;padding:20px;
-display:flex;align-items:center;justify-content:space-between;
-gap:15px;flex-wrap:wrap
-}
-.contact-strip p{color:#e5e7eb;font-size:14px}
-.contact-strip a{
-background:#25d366;color:white;text-decoration:none;
-padding:10px 18px;border-radius:8px;font-weight:bold;font-size:13px
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172033;
+  line-height: 1.7;
 }
 
-footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px 15px;font-size:13px}
-footer strong{color:#facc15}
-.whatsapp{
-position:fixed;bottom:20px;left:20px;background:#25d366;
-color:white;text-decoration:none;padding:13px 18px;
-border-radius:30px;font-weight:bold;z-index:8;
-box-shadow:0 4px 15px #00000025
+header {
+  background: #101827;
+  color: white;
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-@media(max-width:700px){
-header{padding:13px 4%;justify-content:center;gap:12px}
-.logo{font-size:23px}
-.header-actions{width:100%;justify-content:center;gap:13px;flex-wrap:wrap}
-nav{gap:15px}
-nav a{font-size:13px}
-.cart-link{padding:9px 13px;font-size:13px}
-.hero{padding:65px 6%}
-.hero h1{font-size:31px}
-.hero p{font-size:14px}
-.hero-buttons{gap:9px}
-.main-btn,.secondary-btn{padding:12px 17px;font-size:13px}
-.features{padding:0 4%;gap:8px}
-.feature{padding:15px 6px}
-.feature h3{font-size:12px}
-.feature p{font-size:10px}
-section{padding:48px 4%}
-.section-heading h2{font-size:24px}
-.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.category{padding:21px 9px}
-.category .emoji{width:55px;height:55px;font-size:27px}
-.category h3{font-size:15px}
-.category p{font-size:11px}
-.category .more{font-size:12px}
-.about{padding:42px 5%}
-.about h2{font-size:23px}
-.contact-strip{justify-content:center;text-align:center}
-.search-section{padding:0 4%;margin-top:25px}
-.search-title{font-size:18px}
-.offers-section h2{font-size:24px}
+.logo {
+  color: #facc15;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
 }
-@media(max-width:360px){
-nav{gap:10px}
-nav a{font-size:12px}
-.hero h1{font-size:27px}
-.search-box button{padding:0 10px;font-size:12px}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #facc15;
+}
+
+.cart-link {
+  background: #facc15;
+  color: #101827 !important;
+  padding: 7px 13px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.hero {
+  background: linear-gradient(135deg, #101827, #243b5a);
+  color: white;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.hero h1 {
+  color: #facc15;
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 22px;
+}
+
+.main-btn {
+  display: inline-block;
+  background: #facc15;
+  color: #101827;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+section {
+  padding: 40px 5%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 27px;
+  margin-bottom: 25px;
+  color: #101827;
+}
+
+.search-box {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #eab308;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.category {
+  display: block;
+  background: white;
+  padding: 22px 15px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #172033;
+  border: 1px solid #e2e8f0;
+  transition: 0.2s;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  border-color: #facc15;
+  box-shadow: 0 5px 18px #00000012;
+}
+
+.emoji {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.category h3 {
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.category p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.more {
+  display: inline-block;
+  margin-top: 12px;
+  color: #b77900;
+  font-weight: bold;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.feature {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.feature h3 {
+  color: #101827;
+  margin-bottom: 5px;
+}
+
+.offers {
+  background: #101827;
+  color: white;
+  text-align: center;
+  border-radius: 14px;
+  padding: 30px 15px;
+}
+
+.offers h2 {
+  color: #facc15;
+  margin-bottom: 10px;
+}
+
+.offer-label {
+  display: inline-block;
+  margin-top: 15px;
+  background: #facc15;
+  color: #101827;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.about {
+  text-align: center;
+  max-width: 750px;
+  margin: auto;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #25d366;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 99;
+  box-shadow: 0 3px 10px #0003;
+}
+
+footer {
+  background: #101827;
+  color: white;
+  text-align: center;
+  padding: 22px 10px;
+  margin-top: 25px;
+}
+
+footer span {
+  color: #facc15;
+}
+
+.no-results {
+  display: none;
+  text-align: center;
+  color: #64748b;
+  padding: 20px;
+  grid-column: 1 / -1;
+}
+
+@media(max-width:600px) {
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
 }
 </style>
 </head>
@@ -223,287 +281,233 @@ nav a{font-size:12px}
 <body>
 
 <header>
-<div class="logo">⚡ POWER <span>ZONE</span></div>
-<div class="header-actions">
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="#categories">الأقسام</a>
-<a href="#offers">العروض</a>
-<a href="#about">من نحن</a>
-</nav>
-<a class="cart-link" href="cart.html">
-🛒 السلة (<span id="cartCount">0</span>)
-</a>
-</div>
+  <a class="logo" href="index.html">POWER ZONE ⚡</a>
+
+  <nav>
+    <a href="index.html">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#offers">العروض</a>
+    <a href="#about">من نحن</a>
+    <a class="cart-link" href="cart.html">
+      🛒 السلة (<span id="cart-count">0</span>)
+    </a>
+  </nav>
 </header>
 
-<main>
-
-<div class="hero" id="home">
-<div class="hero-content">
-<div class="hero-label">⚡ عالم الأدوات الكهربائية</div>
-<h1>كل احتياجاتك الكهربائية<br>في مكان واحد مع <span>POWER ZONE</span></h1>
-<p>اكتشف مجموعة متنوعة من الأدوات والمستلزمات الكهربائية بجودة مميزة وأسعار تنافسية.</p>
-<div class="hero-buttons">
-<a class="main-btn" href="#categories">تصفح المنتجات ←</a>
-<a class="secondary-btn" href="cart.html">🛒 سلة المشتريات</a>
-</div>
-</div>
+<div class="hero">
+  <h1>POWER ZONE</h1>
+  <p>كل احتياجاتك من الأدوات الكهربائية في مكان واحد</p>
+  <a class="main-btn" href="#categories">تصفح المنتجات</a>
 </div>
 
-<!-- البحث -->
-<div class="search-section">
-<div class="search-title">🔍 بتدور على منتج معين؟</div>
-<div class="search-box">
-<input type="search" id="productSearch" placeholder="اكتب اسم المنتج... مثل شنيور أو لمبة">
-<button type="button" onclick="searchProducts()">بحث</button>
-</div>
-<div class="search-hint">ابحث في جميع أقسام المتجر</div>
-<div class="search-results" id="searchResults"></div>
-</div>
+<section>
+  <h2 class="section-title">ابحث عن المنتج</h2>
 
-<div class="features">
-<div class="feature">
-<div class="feature-icon">⚡</div>
-<h3>منتجات متنوعة</h3>
-<p>كل مستلزماتك في مكان واحد</p>
-</div>
-<div class="feature">
-<div class="feature-icon">🛒</div>
-<h3>طلب سهل وسريع</h3>
-<p>اختر منتجاتك وأضفها للسلة</p>
-</div>
-<div class="feature">
-<div class="feature-icon">💬</div>
-<h3>تواصل مباشر</h3>
-<p>اطلب واستفسر عبر واتساب</p>
-</div>
-</div>
+  <div class="search-box">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="اكتب اسم المنتج أو القسم..."
+      oninput="searchProducts()"
+    >
+  </div>
+</section>
 
-<!-- الأقسام -->
 <section id="categories">
-<div class="section-heading">
-<small>POWER ZONE COLLECTION</small>
-<h2>أقسام المتجر</h2>
-<p>اختار القسم اللي بتدور عليه واكتشف منتجاتنا</p>
-</div>
+  <h2 class="section-title">أقسام POWER ZONE</h2>
 
-<div class="categories">
+  <div class="categories" id="categoriesList">
 
-<a class="category" href="Venus.html">
-<span class="emoji">🔘</span>
-<h3>منتجات فينوس</h3>
-<p>مفاتيح وبرايز وإكسسوارات</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="Venus.html" data-search="فينوس مفاتيح بريز شاسيه">
+      <span class="emoji">🔌</span>
+      <h3>فينوس</h3>
+      <p>مفاتيح وبرايز فينوس</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="Sanchi.html">
-<span class="emoji">🔧</span>
-<h3>منتجات سانشي</h3>
-<p>أدوات ومعدات كهربائية من سانشي</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="Sanchi.html" data-search="سانشي مفاتيح كهرباء">
+      <span class="emoji">⚡</span>
+      <h3>سانشي</h3>
+      <p>منتجات ومستلزمات سانشي</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="hoses.html">
-<span class="emoji">〰️</span>
-<h3>خراطيم ومواسير</h3>
-<p>خراطيم ومواسير كهربائية</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="kyon.html" data-search="كيون مفاتيح كهربائية">
+      <span class="emoji">🔘</span>
+      <h3>مفاتيح كيون</h3>
+      <p>مفاتيح كهربائية من كيون</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="lighting.html">
-<span class="emoji">💡</span>
-<h3>الإضاءة</h3>
-<p>منتجات وحلول الإضاءة</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="hoses.html" data-search="خراطيم خرطوم كهرباء ماسورة">
+      <span class="emoji">〰️</span>
+      <h3>الخراطيم</h3>
+      <p>خراطيم ومواسير كهرباء</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="cables.html">
-<span class="emoji">🔌</span>
-<h3>أسلاك وكابلات</h3>
-<p>أسلاك وكابلات كهربائية</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="lighting.html" data-search="إضاءة لمبات ليد سبوت بانل نجف">
+      <span class="emoji">💡</span>
+      <h3>الإضاءة</h3>
+      <p>لمبات وسبوتات ووحدات إضاءة</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="tools.html">
-<span class="emoji">🛠️</span>
-<h3>أدوات كهربائية</h3>
-<p>معدات وأدوات العمل</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="cables.html" data-search="أسلاك كابلات سلك نحاس كابل مرن">
+      <span class="emoji">🔋</span>
+      <h3>الأسلاك والكابلات</h3>
+      <p>أسلاك وكابلات كهربائية</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="breakers.html">
-<span class="emoji">⚡</span>
-<h3>القواطع الكهربائية</h3>
-<p>قواطع ومفاتيح حماية</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="tools.html" data-search="أدوات كهربائية شنيور صاروخ مفك قياس">
+      <span class="emoji">🛠️</span>
+      <h3>الأدوات الكهربائية</h3>
+      <p>عدد وأدوات كهربائية</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="magnetic-led.html">
-<span class="emoji">💡</span>
-<h3>ماجنتك ليد</h3>
-<p>أنظمة إضاءة ماجنتك وإكسسواراتها</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="breakers.html" data-search="قواطع كهربائية mcb rccb mccb مفتاح تحويل">
+      <span class="emoji">⚙️</span>
+      <h3>القواطع الكهربائية</h3>
+      <p>قواطع ومفاتيح حماية</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-<a class="category" href="profile.html">
-<span class="emoji">✨</span>
-<h3>بروفايل</h3>
-<p>بروفايلات إضاءة LED وإكسسواراتها</p>
-<span class="more">عرض المنتجات ←</span>
-</a>
+    <a class="category" href="magnetic-led.html" data-search="ماجنتك ليد magnetic led إضاءة">
+      <span class="emoji">✨</span>
+      <h3>ماجنتك ليد</h3>
+      <p>أنظمة إضاءة ماجنتك</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
 
-</div>
+    <a class="category" href="profile.html" data-search="بروفايل profile إضاءة ليد">
+      <span class="emoji">📏</span>
+      <h3>البروفايل</h3>
+      <p>بروفايلات إضاءة LED</p>
+      <span class="more">عرض المنتجات ←</span>
+    </a>
+
+    <div class="no-results" id="noResults">
+      لا توجد نتائج مطابقة للبحث.
+    </div>
+
+  </div>
 </section>
 
-<!-- العروض -->
-<section class="offers-section" id="offers">
-<h2>🎁 عروض POWER ZONE</h2>
-<p>استنوا عروضنا وخصوماتنا المميزة على الأدوات والمستلزمات الكهربائية.</p>
-<div class="offer-label">عروض قريبًا ⚡</div>
+<section id="offers">
+  <div class="offers">
+    <h2>🔥 عروض POWER ZONE</h2>
+    <p>استنوا عروضنا وخصوماتنا المميزة على المنتجات الكهربائية.</p>
+    <span class="offer-label">عروض قريبًا ⚡</span>
+  </div>
 </section>
 
-<!-- من نحن -->
-<section class="about" id="about">
-<h2>من نحن - POWER ZONE</h2>
-<p>
-وجهتك لشراء الأدوات والمستلزمات الكهربائية.
-نسعى لتوفير منتجات متنوعة بجودة ممتازة وأسعار مناسبة،
-مع تجربة تسوق سهلة وسريعة.
-</p>
-<div class="contact-strip">
-<p>عندك استفسار أو محتاج مساعدة في طلبك؟</p>
-<a href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">
-تواصل معنا عبر واتساب
-</a>
-</div>
+<section>
+  <h2 class="section-title">لماذا POWER ZONE؟</h2>
+
+  <div class="features">
+    <div class="feature">
+      <h3>⚡ منتجات متنوعة</h3>
+      <p>مجموعة متنوعة من الأدوات الكهربائية.</p>
+    </div>
+
+    <div class="feature">
+      <h3>🛒 طلب سهل</h3>
+      <p>اختار منتجاتك وأضفها إلى السلة.</p>
+    </div>
+
+    <div class="feature">
+      <h3>📱 تواصل مباشر</h3>
+      <p>تواصل معنا بسهولة عن طريق واتساب.</p>
+    </div>
+  </div>
 </section>
 
-</main>
+<section id="about">
+  <div class="about">
+    <h2 class="section-title">من نحن</h2>
+    <p>
+      POWER ZONE متجر متخصص في الأدوات والمستلزمات الكهربائية،
+      نوفر مجموعة متنوعة من المنتجات لتلبية احتياجاتك.
+      هدفنا تسهيل اختيار المنتجات وإرسال طلباتك بسهولة.
+    </p>
+  </div>
+</section>
 
 <footer>
-<p>© 2026 <strong>POWER ZONE</strong> - جميع الحقوق محفوظة</p>
-<p>متجرك للأدوات الكهربائية ⚡</p>
+  <p>جميع الحقوق محفوظة © <span>POWER ZONE</span></p>
+  <p>متجر الأدوات الكهربائية ⚡</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">
-واتساب 💬
+<a
+  class="whatsapp"
+  href="https://wa.me/201155284381"
+  target="_blank"
+>
+  تواصل واتساب
 </a>
 
 <script>
-const cartKey = "powerZoneCart";
-
-function updateCartCount(){
-  let cart = [];
-
-  try{
-    const saved = JSON.parse(localStorage.getItem(cartKey) || "[]");
-    cart = Array.isArray(saved) ? saved : [];
-  }catch(error){
-    cart = [];
-  }
-
-  const count = cart.reduce((total,item)=>{
-    return total + Math.max(0,Number(item.quantity ?? item.qty ?? 0));
-  },0);
-
-  document.getElementById("cartCount").textContent = count;
-}
-
-updateCartCount();
-
-/* المنتجات المتاحة للبحث */
-const products = [
-  {name:"منتجات فينوس",page:"Venus.html"},
-  {name:"بريزة فينوس",page:"Venus.html"},
-  {name:"مفتاح فينوس",page:"Venus.html"},
-  {name:"شاسيه فينوس",page:"Venus.html"},
-
-  {name:"منتجات سانشي",page:"Sanchi.html"},
-
-  {name:"خرطوم كهرباء",page:"hoses.html"},
-  {name:"خرطوم مرن",page:"hoses.html"},
-  {name:"ماسورة كهرباء",page:"hoses.html"},
-
-  {name:"لمبة LED",page:"lighting.html"},
-  {name:"سبوت لايت",page:"lighting.html"},
-  {name:"بانل LED",page:"lighting.html"},
-  {name:"نجفة",page:"lighting.html"},
-
-  {name:"سلك كهرباء",page:"cables.html"},
-  {name:"كابل كهرباء",page:"cables.html"},
-  {name:"سلك نحاس",page:"cables.html"},
-  {name:"كابل مرن",page:"cables.html"},
-
-  {name:"شنيور كهربائي",page:"tools.html"},
-  {name:"صاروخ تجليخ",page:"tools.html"},
-  {name:"مفك كهربائي",page:"tools.html"},
-  {name:"أدوات قياس",page:"tools.html"},
-
-  {name:"قاطع أوتوماتيك MCB",page:"breakers.html"},
-  {name:"قاطع تسريب أرضي RCCB",page:"breakers.html"},
-  {name:"قاطع MCCB",page:"breakers.html"},
-  {name:"مفتاح تحويل",page:"breakers.html"},
-
-  {name:"ماجنتك ليد",page:"magnetic-led.html"},
-  {name:"إضاءة ماجنتك",page:"magnetic-led.html"},
-
-  {name:"بروفايل",page:"profile.html"},
-  {name:"بروفايل LED",page:"profile.html"}
-];
-
-function normalizeText(text){
-  return text.toLowerCase()
-    .replace(/[أإآ]/g,"ا")
-    .replace(/ة/g,"ه")
-    .replace(/ى/g,"ي")
+function normalizeText(text) {
+  return String(text)
+    .toLowerCase()
+    .replace(/[أإآ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
     .trim();
 }
 
-function searchProducts(){
-  const input = document.getElementById("productSearch");
-  const results = document.getElementById("searchResults");
-  const query = normalizeText(input.value);
-
-  results.innerHTML = "";
-
-  if(!query){
-    results.style.display = "none";
-    return;
-  }
-
-  const matches = products.filter(product =>
-    normalizeText(product.name).includes(query)
+function searchProducts() {
+  const input = normalizeText(
+    document.getElementById("searchInput").value
   );
 
-  results.style.display = "block";
+  const categories = document.querySelectorAll(
+    "#categoriesList .category"
+  );
 
-  if(matches.length === 0){
-    results.innerHTML =
-      '<div class="search-result">لا توجد منتجات مطابقة. جرب كتابة اسم آخر.</div>';
-    return;
-  }
+  let visibleCount = 0;
 
-  matches.forEach(product=>{
-    const link = document.createElement("a");
-    link.className = "search-result";
-    link.href = product.page;
-    link.textContent = "⚡ " + product.name + " ←";
-    results.appendChild(link);
+  categories.forEach(category => {
+    const text = normalizeText(
+      category.innerText + " " +
+      (category.getAttribute("data-search") || "")
+    );
+
+    const match = text.includes(input);
+
+    category.style.display = match ? "block" : "none";
+
+    if (match) visibleCount++;
   });
+
+  document.getElementById("noResults").style.display =
+    visibleCount === 0 ? "block" : "none";
 }
 
-document.getElementById("productSearch")
-.addEventListener("input",searchProducts);
+function updateCartCount() {
+  let cart = [];
 
-document.getElementById("productSearch")
-.addEventListener("keydown",function(event){
-  if(event.key === "Enter"){
-    searchProducts();
-    const firstResult = document.querySelector("#searchResults a");
-    if(firstResult) firstResult.click();
+  try {
+    cart = JSON.parse(
+      localStorage.getItem("powerZoneCart") || "[]"
+    );
+
+    if (!Array.isArray(cart)) cart = [];
+  } catch (error) {
+    cart = [];
   }
-});
+
+  const count = cart.reduce((total, item) => {
+    return total + Number(item.quantity ?? item.qty ?? 0);
+  }, 0);
+
+  document.getElementById("cart-count").textContent = count;
+}
+
+updateCartCount();
+window.addEventListener("storage", updateCartCount);
 </script>
 
 </body>
