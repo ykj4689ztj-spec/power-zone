@@ -57,12 +57,20 @@ background:white;border:1px solid #e9edf2;border-radius:15px;
 overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
 }
 .product:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
-.product img{width:100%;height:180px;object-fit:contain;background:white;display:block;padding:10px}
+
+.product img{
+width:100%;height:190px;object-fit:contain;
+background:#fff;display:block;padding:8px
+}
+
 .info{padding:17px}
 .product h3{font-size:17px;color:#172033;margin-bottom:12px}
 .price{color:#a47c00;font-weight:bold;font-size:15px;margin-bottom:13px}
 .quantity-label{display:block;font-size:13px;color:#6b7280;margin-bottom:6px}
-.quantity{width:100%;padding:11px;border:1px solid #dce1e8;border-radius:8px;margin-bottom:12px;font-size:16px;outline:none}
+.quantity{
+width:100%;padding:11px;border:1px solid #dce1e8;
+border-radius:8px;margin-bottom:12px;font-size:16px;outline:none
+}
 .quantity:focus{border-color:#d6a900}
 
 .add-cart{
@@ -105,6 +113,7 @@ font-size:15px;font-weight:bold;cursor:pointer
 
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
+
 .whatsapp{
 position:fixed;bottom:20px;left:20px;background:#25d366;
 color:white;text-decoration:none;padding:13px 18px;
@@ -124,7 +133,7 @@ header{padding:13px 4%;justify-content:center}
 section{padding:38px 4%}
 .section-heading h2{font-size:24px}
 .products{gap:11px}
-.product img{height:135px}
+.product img{height:145px}
 .info{padding:11px}
 .product h3{font-size:14px}
 .price{font-size:13px}
@@ -149,10 +158,14 @@ section{padding:38px 4%}
 <div class="hero">
 <div class="hero-label">POWER ZONE COLLECTION</div>
 <h1>الماجنتك ليد</h1>
-<p>أنظمة إضاءة Magnetic LED وإكسسواراتها<br>اختار المنتج وحدد الكمية المطلوبة</p>
+<p>
+أنظمة إضاءة Magnetic LED وإكسسواراتها<br>
+اختار المنتج وحدد الكمية المطلوبة
+</p>
 </div>
 
 <section>
+
 <div class="section-heading">
 <small>MAGNETIC LED</small>
 <h2>منتجات الماجنتك ليد</h2>
@@ -161,8 +174,12 @@ section{padding:38px 4%}
 
 <div class="products">
 
+<!-- مسار ماجنتك -->
 <div class="product">
-<img src="https://placehold.co/500x300?text=Magnetic+Track" alt="مسار ماجنتك">
+<img
+src="https://media.adeo.com/mkp/92c980629fcfe2990c2d1e1d34515de4/media.png"
+alt="مسار ماجنتك LED"
+loading="lazy">
 <div class="info">
 <h3>مسار ماجنتك</h3>
 <div class="price">السعر عند الطلب</div>
@@ -174,8 +191,12 @@ section{padding:38px 4%}
 </div>
 </div>
 
+<!-- كشاف ماجنتك -->
 <div class="product">
-<img src="https://placehold.co/500x300?text=Magnetic+Spot" alt="كشاف ماجنتك">
+<img
+src="https://lovuslight.com/upload/20240123/115921_13101.png"
+alt="كشاف ماجنتك LED"
+loading="lazy">
 <div class="info">
 <h3>كشاف ماجنتك</h3>
 <div class="price">السعر عند الطلب</div>
@@ -187,8 +208,12 @@ section{padding:38px 4%}
 </div>
 </div>
 
+<!-- ماجنتك لاينر -->
 <div class="product">
-<img src="https://placehold.co/500x300?text=Magnetic+Linear" alt="ماجنتك لاينر">
+<img
+src="https://image.made-in-china.com/2f0j00oSnlUrBgnFqQ/DC48V-Mainless-Lighting-Design-Decoration-Mini-Linear-Magnet-Track-Lighting-Magnetic-Track-Lights.jpg"
+alt="ماجنتك لاينر LED"
+loading="lazy">
 <div class="info">
 <h3>ماجنتك لاينر</h3>
 <div class="price">السعر عند الطلب</div>
@@ -200,8 +225,12 @@ section{padding:38px 4%}
 </div>
 </div>
 
+<!-- إكسسوارات ماجنتك -->
 <div class="product">
-<img src="https://placehold.co/500x300?text=Magnetic+Accessories" alt="إكسسوارات ماجنتك">
+<img
+src="https://www.ledeastlighting.com/uploads/magnet-track-rail-10.jpg"
+alt="إكسسوارات مسار الماجنتك"
+loading="lazy">
 <div class="info">
 <h3>إكسسوارات ماجنتك</h3>
 <div class="price">السعر عند الطلب</div>
@@ -233,6 +262,7 @@ section{padding:38px 4%}
 
 <script>
 const CART_KEY="powerZoneCart";
+
 const magneticNames=[
 "مسار ماجنتك",
 "كشاف ماجنتك",
@@ -255,9 +285,11 @@ localStorage.setItem(CART_KEY,JSON.stringify(cart));
 
 function updateCartCount(){
 const cart=getCart();
+
 const count=cart.reduce((sum,item)=>{
 return sum+Number(item.quantity??item.qty??0);
 },0);
+
 document.getElementById("cartCount").textContent=count;
 }
 
@@ -347,6 +379,7 @@ list.appendChild(li);
 
 function sendOrder(){
 const cart=getCart();
+
 const magneticItems=cart.filter(item=>
 magneticNames.includes(item.name)
 );
