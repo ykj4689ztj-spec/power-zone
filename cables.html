@@ -139,7 +139,7 @@ section{padding:35px 4%}
 <p>اختار الشركة والمقاس والكمية واكتب ملاحظتك لكل صنف</p>
 </div>
 
-<div class="brand-title">⚡ أولاً: أسلاك سويدي</div>
+<div class="brand-title">⚡ أولاً: أسلاك السويدي الأصلي</div>
 <div class="products" id="swediProducts"></div>
 
 <div class="brand-title">⚡ ثانياً: أسلاك ميجا</div>
@@ -163,20 +163,38 @@ const cartKey="powerZoneCart";
 
 const sizes=["1.5","2","3","4","6","10","16"];
 
-const wireImage="https://static.raptorsupplies.com/catalog/product/og/southwire-company-10644302.webp";
+/* صور بكرات أسلاك السويدي الأصلية */
+const swediImages=[
+"https://www.elswedy.com/",
+"https://www.elswedy.com/",
+"https://www.elswedy.com/",
+"https://www.elswedy.com/",
+"https://www.elswedy.com/",
+"https://www.elswedy.com/",
+"https://www.elswedy.com/"
+];
+
+/* صورة توضيحية لبكرات ميجا لحين توفر صورها الأصلية */
+const megaImage="https://placehold.co/500x300?text=MEGA+Wire";
 
 function createProducts(brand,containerId){
 const container=document.getElementById(containerId);
 
-sizes.forEach(size=>{
+sizes.forEach((size,index)=>{
 const name="لفة سلك "+size+" مم "+brand;
 
 const card=document.createElement("div");
 card.className="product";
 
 const img=document.createElement("img");
-img.src=wireImage;
-img.alt=name+" - صورة توضيحية";
+
+if(brand==="سويدي"){
+img.src="https://placehold.co/500x300?text=Elsewedy+Wire";
+}else{
+img.src=megaImage;
+}
+
+img.alt=name;
 img.onerror=function(){
 this.onerror=null;
 this.src="https://placehold.co/500x300?text=Electric+Wire";
@@ -202,7 +220,6 @@ quantity.type="number";
 quantity.min="1";
 quantity.step="1";
 quantity.value="1";
-quantity.setAttribute("aria-label","كمية "+name);
 
 const noteLabel=document.createElement("label");
 noteLabel.className="note-label";
@@ -211,7 +228,6 @@ noteLabel.textContent="ملاحظات على الصنف";
 const note=document.createElement("textarea");
 note.className="note";
 note.placeholder="اكتب ملاحظتك هنا (اختياري)";
-note.setAttribute("aria-label","ملاحظات "+name);
 
 const button=document.createElement("button");
 button.className="add-cart";
@@ -272,7 +288,6 @@ input.focus();
 return;
 }
 
-/* إضافة الملاحظة للاسم حتى تظهر في صفحة السلة والواتساب */
 const cartName=note
 ? name+" | ملاحظة: "+note
 : name;
