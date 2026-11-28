@@ -34,11 +34,17 @@ color:white;text-align:center;padding:65px 20px
 .hero h1{font-size:36px;color:#facc15;margin-bottom:10px}
 .hero p{color:#d1d9e5;line-height:2;font-size:15px}
 
-section{padding:50px 6%}
-.section-heading{text-align:center;margin-bottom:30px}
+section{padding:45px 6%}
+.section-heading{text-align:center;margin-bottom:25px}
 .section-heading small{color:#a47c00;font-weight:bold}
-.section-heading h2{font-size:28px;color:#101827;margin:6px 0}
+.section-heading h2{font-size:27px;color:#101827;margin:6px 0}
 .section-heading p{color:#7b8492;font-size:14px}
+
+.brand-title{
+max-width:1100px;margin:35px auto 18px;
+padding:12px 17px;background:#101827;color:#facc15;
+border-radius:10px;font-size:19px;font-weight:bold
+}
 
 .products{
 display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
@@ -48,29 +54,43 @@ gap:18px;max-width:1100px;margin:auto
 background:white;border:1px solid #e9edf2;border-radius:15px;
 overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
 }
-.product:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
-.product img{width:100%;height:175px;object-fit:cover;background:#eee;display:block}
-.info{padding:16px}
-.product h3{font-size:16px;color:#172033;margin-bottom:12px}
+.product:hover{transform:translateY(-4px);box-shadow:0 12px 28px #10182715}
+.product img{width:100%;height:165px;object-fit:contain;background:#fff;padding:10px;display:block}
+.info{padding:15px}
+.product h3{font-size:16px;color:#172033;margin-bottom:8px}
 .price{color:#a47c00;font-weight:bold;font-size:15px;margin-bottom:13px}
-.quantity-label{display:block;font-size:13px;color:#6b7280;margin-bottom:6px}
-.quantity{width:100%;padding:11px;border:1px solid #dce1e8;border-radius:8px;margin-bottom:12px;font-size:16px;outline:none}
-.quantity:focus{border-color:#d6a900}
-.add-cart{width:100%;background:#101827;color:white;padding:12px;border:0;border-radius:8px;cursor:pointer;font-size:14px;font-weight:bold;transition:.2s}
+.quantity-label,.note-label{display:block;font-size:13px;color:#6b7280;margin-bottom:6px}
+.quantity,.note{
+width:100%;padding:10px;border:1px solid #dce1e8;
+border-radius:8px;margin-bottom:12px;font-size:14px;outline:none;
+font-family:Arial,sans-serif
+}
+.quantity:focus,.note:focus{border-color:#d6a900}
+.note{resize:vertical;min-height:65px}
+.add-cart{
+width:100%;background:#101827;color:white;padding:12px;
+border:0;border-radius:8px;cursor:pointer;font-size:14px;
+font-weight:bold;transition:.2s
+}
 .add-cart:hover{background:#facc15;color:#101827}
-
 .message{
-color:#15803d;
-font-weight:bold;
-font-size:13px;
-margin-top:12px;
-text-align:center;
-line-height:1.6;
+color:#15803d;font-weight:bold;font-size:13px;
+margin-top:10px;text-align:center;line-height:1.6;min-height:0
+}
+.price-note{
+max-width:1100px;margin:25px auto 0;
+background:#fff8db;border:1px solid #f5df91;
+padding:14px;border-radius:10px;color:#715500;
+text-align:center;font-size:14px
 }
 
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#25d366;color:white;text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;z-index:8;box-shadow:0 4px 15px #00000025}
+.whatsapp{
+position:fixed;bottom:20px;left:20px;background:#25d366;color:white;
+text-decoration:none;padding:13px 18px;border-radius:30px;
+font-weight:bold;z-index:8;box-shadow:0 4px 15px #00000025
+}
 
 @media(max-width:900px){
 .products{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -81,15 +101,16 @@ header{padding:13px 4%;justify-content:center}
 .hero{padding:50px 15px}
 .hero h1{font-size:29px}
 .hero p{font-size:13px}
-section{padding:38px 4%}
-.section-heading h2{font-size:24px}
+section{padding:35px 4%}
+.section-heading h2{font-size:23px}
 .products{gap:11px}
-.product img{height:135px}
-.info{padding:11px}
+.product img{height:125px}
+.info{padding:10px}
 .product h3{font-size:14px}
 .price{font-size:13px}
-.quantity{padding:9px}
+.quantity,.note{padding:9px;font-size:13px}
 .add-cart{font-size:12px;padding:11px}
+.brand-title{font-size:17px;margin-top:27px}
 }
 </style>
 </head>
@@ -107,67 +128,27 @@ section{padding:38px 4%}
 <div class="hero">
 <div class="hero-label">POWER ZONE COLLECTION</div>
 <h1>الأسلاك والكابلات</h1>
-<p>جميع أنواع الأسلاك والكابلات الكهربائية<br>جودة عالية ومقاسات متنوعة</p>
+<p>أسلاك سويدي وميجا بمقاسات مختلفة<br>السعر حسب سعر اليوم</p>
 </div>
 
 <section>
+
 <div class="section-heading">
 <small>WIRES & CABLES</small>
-<h2>منتجات الأسلاك والكابلات</h2>
-<p>اختر المنتج والكمية المطلوبة وأضفها إلى سلة مشترياتك</p>
+<h2>منتجات الأسلاك</h2>
+<p>اختار الشركة والمقاس والكمية واكتب ملاحظتك لكل صنف</p>
 </div>
 
-<div class="products">
+<div class="brand-title">⚡ أولاً: أسلاك سويدي</div>
+<div class="products" id="swediProducts"></div>
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=Electric+Wire" alt="سلك كهرباء">
-<div class="info">
-<h3>سلك كهرباء</h3>
-<div class="price">السعر عند الطلب</div>
-<label class="quantity-label">الكمية المطلوبة</label>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سلك كهرباء">
-<button class="add-cart" onclick="addToCart('سلك كهرباء',this)">🛒 أضف إلى السلة</button>
-<p class="message" aria-live="polite"></p>
-</div>
+<div class="brand-title">⚡ ثانياً: أسلاك ميجا</div>
+<div class="products" id="megaProducts"></div>
+
+<div class="price-note">
+📌 أسعار الأسلاك متغيرة حسب سعر اليوم، برجاء التواصل معنا لتأكيد السعر قبل الطلب.
 </div>
 
-<div class="product">
-<img src="https://placehold.co/500x300?text=Electric+Cable" alt="كابل كهرباء">
-<div class="info">
-<h3>كابل كهرباء</h3>
-<div class="price">السعر عند الطلب</div>
-<label class="quantity-label">الكمية المطلوبة</label>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية كابل كهرباء">
-<button class="add-cart" onclick="addToCart('كابل كهرباء',this)">🛒 أضف إلى السلة</button>
-<p class="message" aria-live="polite"></p>
-</div>
-</div>
-
-<div class="product">
-<img src="https://placehold.co/500x300?text=Copper+Wire" alt="سلك نحاس">
-<div class="info">
-<h3>سلك نحاس</h3>
-<div class="price">السعر عند الطلب</div>
-<label class="quantity-label">الكمية المطلوبة</label>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية سلك نحاس">
-<button class="add-cart" onclick="addToCart('سلك نحاس',this)">🛒 أضف إلى السلة</button>
-<p class="message" aria-live="polite"></p>
-</div>
-</div>
-
-<div class="product">
-<img src="https://placehold.co/500x300?text=Flexible+Cable" alt="كابل مرن">
-<div class="info">
-<h3>كابل مرن</h3>
-<div class="price">السعر عند الطلب</div>
-<label class="quantity-label">الكمية المطلوبة</label>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية كابل مرن">
-<button class="add-cart" onclick="addToCart('كابل مرن',this)">🛒 أضف إلى السلة</button>
-<p class="message" aria-live="polite"></p>
-</div>
-</div>
-
-</div>
 </section>
 
 <footer>
@@ -180,6 +161,81 @@ section{padding:38px 4%}
 <script>
 const cartKey="powerZoneCart";
 
+const sizes=["1.5","2","3","4","6","10","16"];
+
+const wireImage="https://static.raptorsupplies.com/catalog/product/og/southwire-company-10644302.webp";
+
+function createProducts(brand,containerId){
+const container=document.getElementById(containerId);
+
+sizes.forEach(size=>{
+const name="لفة سلك "+size+" مم "+brand;
+
+const card=document.createElement("div");
+card.className="product";
+
+const img=document.createElement("img");
+img.src=wireImage;
+img.alt=name+" - صورة توضيحية";
+img.onerror=function(){
+this.onerror=null;
+this.src="https://placehold.co/500x300?text=Electric+Wire";
+};
+
+const info=document.createElement("div");
+info.className="info";
+
+const title=document.createElement("h3");
+title.textContent=name;
+
+const price=document.createElement("div");
+price.className="price";
+price.textContent="السعر حسب سعر اليوم";
+
+const quantityLabel=document.createElement("label");
+quantityLabel.className="quantity-label";
+quantityLabel.textContent="عدد اللفات المطلوبة";
+
+const quantity=document.createElement("input");
+quantity.className="quantity";
+quantity.type="number";
+quantity.min="1";
+quantity.step="1";
+quantity.value="1";
+quantity.setAttribute("aria-label","كمية "+name);
+
+const noteLabel=document.createElement("label");
+noteLabel.className="note-label";
+noteLabel.textContent="ملاحظات على الصنف";
+
+const note=document.createElement("textarea");
+note.className="note";
+note.placeholder="اكتب ملاحظتك هنا (اختياري)";
+note.setAttribute("aria-label","ملاحظات "+name);
+
+const button=document.createElement("button");
+button.className="add-cart";
+button.type="button";
+button.textContent="🛒 أضف إلى السلة";
+
+const message=document.createElement("p");
+message.className="message";
+message.setAttribute("aria-live","polite");
+
+button.addEventListener("click",function(){
+addToCart(name,this);
+});
+
+info.append(
+title,price,quantityLabel,quantity,
+noteLabel,note,button,message
+);
+
+card.append(img,info);
+container.appendChild(card);
+});
+}
+
 function getCart(){
 try{
 const cart=JSON.parse(localStorage.getItem(cartKey)||"[]");
@@ -191,15 +247,20 @@ return [];
 
 function updateCartCount(){
 const cart=getCart();
-const count=cart.reduce((sum,item)=>sum+Number(item.quantity||item.qty||0),0);
+const count=cart.reduce((sum,item)=>{
+return sum+Number(item.quantity||item.qty||0);
+},0);
 document.getElementById("cartCount").textContent=count;
 }
 
 function addToCart(name,button){
 const card=button.closest(".product");
 const input=card.querySelector(".quantity");
+const noteInput=card.querySelector(".note");
 const message=card.querySelector(".message");
+
 const qty=Number(input.value);
+const note=noteInput.value.trim();
 
 message.textContent="";
 message.style.color="#15803d";
@@ -211,14 +272,22 @@ input.focus();
 return;
 }
 
+/* إضافة الملاحظة للاسم حتى تظهر في صفحة السلة والواتساب */
+const cartName=note
+? name+" | ملاحظة: "+note
+: name;
+
 let cart=getCart();
-let item=cart.find(product=>product.name===name);
+let item=cart.find(product=>product.name===cartName);
 
 if(item){
 item.quantity=Number(item.quantity||item.qty||0)+qty;
 delete item.qty;
 }else{
-cart.push({name:name,quantity:qty});
+cart.push({
+name:cartName,
+quantity:qty
+});
 }
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
@@ -226,8 +295,11 @@ updateCartCount();
 
 message.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
 input.value=1;
+noteInput.value="";
 }
 
+createProducts("سويدي","swediProducts");
+createProducts("ميجا","megaProducts");
 updateCartCount();
 </script>
 
