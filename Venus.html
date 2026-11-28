@@ -11,6 +11,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:#f4f6f9;color:#172033;line-height:1.7}
+
 header{
 background:#101827;color:white;padding:15px 6%;
 display:flex;justify-content:space-between;align-items:center;
@@ -22,7 +23,9 @@ position:sticky;top:0;z-index:10
 .header-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
 .header-actions a{text-decoration:none}
 .home-link{color:#e5e7eb;font-size:14px}
+.home-link:hover{color:#facc15}
 .cart-link{background:#facc15;color:#101827;padding:10px 15px;border-radius:9px;font-weight:bold;font-size:14px}
+
 .hero{
 background:radial-gradient(circle at 15% 20%,#facc1520,transparent 30%),linear-gradient(120deg,#101827,#1d3554);
 color:white;text-align:center;padding:65px 20px
@@ -30,11 +33,13 @@ color:white;text-align:center;padding:65px 20px
 .hero-label{display:inline-block;color:#facc15;background:#facc1512;border:1px solid #facc1555;padding:6px 16px;border-radius:30px;font-size:13px;margin-bottom:15px}
 .hero h1{font-size:36px;color:#facc15;margin-bottom:10px}
 .hero p{color:#d1d9e5;line-height:2;font-size:15px}
+
 section{padding:50px 6%}
 .section-heading{text-align:center;margin-bottom:30px}
 .section-heading small{color:#a47c00;font-weight:bold}
 .section-heading h2{font-size:28px;color:#101827;margin:6px 0}
 .section-heading p{color:#7b8492;font-size:14px}
+
 .products{
 display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
 gap:20px;max-width:1100px;margin:auto
@@ -44,7 +49,7 @@ background:white;border:1px solid #e9edf2;border-radius:15px;
 overflow:hidden;box-shadow:0 4px 15px #10182709;transition:.25s
 }
 .product:hover{transform:translateY(-5px);box-shadow:0 12px 28px #10182715}
-.product img{width:100%;height:190px;object-fit:contain;padding:10px;background:#fff;display:block}
+.product img{width:100%;height:190px;object-fit:cover;background:#eee;display:block}
 .info{padding:17px}
 .product h3{font-size:17px;color:#172033;margin-bottom:8px}
 .price{color:#a47c00;font-weight:bold;font-size:19px;margin-bottom:13px}
@@ -56,7 +61,16 @@ width:100%;border:0;background:#101827;color:white;
 padding:12px;border-radius:8px;font-size:14px;font-weight:bold;cursor:pointer;transition:.2s
 }
 .add-btn:hover{background:#facc15;color:#101827}
-.message{color:#15803d;font-weight:bold;font-size:14px;margin-top:12px;text-align:center;min-height:0}
+
+.message{
+color:#15803d;
+font-weight:bold;
+font-size:14px;
+margin-top:12px;
+text-align:center;
+min-height:0;
+}
+
 footer{background:#080e18;color:#9ca3af;text-align:center;padding:25px;font-size:13px}
 footer strong{color:#facc15}
 .whatsapp{
@@ -64,6 +78,7 @@ position:fixed;bottom:20px;left:20px;background:#25d366;color:white;
 text-decoration:none;padding:13px 18px;border-radius:30px;font-weight:bold;
 z-index:8;box-shadow:0 4px 15px #00000025
 }
+
 @media(max-width:700px){
 header{padding:13px 4%;justify-content:center}
 .header-actions{justify-content:center;gap:13px}
@@ -106,7 +121,45 @@ section{padding:38px 4%}
 <p>اختر المنتج والكمية المطلوبة وأضفها إلى سلة مشترياتك</p>
 </div>
 
-<div class="products" id="products"></div>
+<div class="products">
+
+<div class="product">
+<img src="https://placehold.co/500x300?text=Venus+Socket" alt="بريزة فينوس">
+<div class="info">
+<h3>بريزة فينوس</h3>
+<div class="price">28 جنيه</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية بريزة فينوس">
+<button class="add-btn" onclick="addToCart('بريزة فينوس',28,this)">إضافة إلى السلة 🛒</button>
+<p class="message" aria-live="polite"></p>
+</div>
+</div>
+
+<div class="product">
+<img src="https://placehold.co/500x300?text=Venus+Switch" alt="مفتاح فينوس">
+<div class="info">
+<h3>مفتاح فينوس</h3>
+<div class="price">28 جنيه</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية مفتاح فينوس">
+<button class="add-btn" onclick="addToCart('مفتاح فينوس',28,this)">إضافة إلى السلة 🛒</button>
+<p class="message" aria-live="polite"></p>
+</div>
+</div>
+
+<div class="product">
+<img src="https://placehold.co/500x300?text=Venus+Chassis" alt="شاسيه فينوس">
+<div class="info">
+<h3>شاسيه فينوس</h3>
+<div class="price">12 جنيه</div>
+<label class="quantity-label">الكمية المطلوبة</label>
+<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية شاسيه فينوس">
+<button class="add-btn" onclick="addToCart('شاسيه فينوس',12,this)">إضافة إلى السلة 🛒</button>
+<p class="message" aria-live="polite"></p>
+</div>
+</div>
+
+</div>
 </section>
 
 <footer>
@@ -117,55 +170,13 @@ section{padding:38px 4%}
 <a class="whatsapp" href="https://wa.me/201155284381" target="_blank" rel="noopener noreferrer">واتساب 💬</a>
 
 <script>
-const products = [
-{name:"بريزة فينوس",price:28,image:"https://www.venus-electric.net/Upload/images_Products/500_500/db4fba2f49044bbca93fc191878b4978_500_500.png"},
-{name:"مفتاح فينوس",price:28,image:"https://www.venus-electric.net/Upload/images_Products/500_500/db4fba2f49044bbca93fc191878b4978_500_500.png"},
-{name:"شاسيه فينوس",price:12,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-
-{name:"وش أبيض",price:18,image:"https://www.venus-electric.net/Upload/images_Products/500_500/bffd3fbf79e94eb4980452a29f201cca_500_500.png"},
-{name:"وش أسود",price:18,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-{name:"وش بيج",price:18,image:"https://venus-electric.net/Upload/images_Products/500_500/919ebeb4babe410b95c2030964eda87a_500_500.png"},
-
-{name:"دش",price:45,image:"https://www.venus-electric.net/Upload/images_Products/500_500/db4fba2f49044bbca93fc191878b4978_500_500.png"},
-{name:"دش أسود",price:45,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-
-{name:"تلفلون",price:45,image:"https://www.venus-electric.net/Upload/images_Products/500_500/db4fba2f49044bbca93fc191878b4978_500_500.png"},
-{name:"تلفلون أسود",price:45,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-
-{name:"دفياتير",price:45,image:"https://www.venus-electric.net/Upload/images_Products/500_500/24b9508ee9a243daa4ee420915ff85a8_500_500.png"},
-{name:"دفياتير أسود",price:45,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-
-{name:"زر جرس",price:45,image:"https://www.venus-electric.net/Upload/images_Products/500_500/24b9508ee9a243daa4ee420915ff85a8_500_500.png"},
-{name:"زر جرس أسود",price:50,image:"https://venus-electric.net/Upload/images_Products/500_500/e98b1672c72241d1b331f950b3a89854_500_500.png"},
-{name:"زر جرس عريض",price:125,image:"https://www.venus-electric.net/Upload/images_Products/500_500/3dbbb452e96a43b09e6f879e1c66b19e_500_500.png"}
-];
-
-const productsContainer=document.getElementById("products");
-
-products.forEach((product,index)=>{
-const card=document.createElement("div");
-card.className="product";
-card.innerHTML=`
-<img src="${product.image}" alt="${product.name}" onerror="this.onerror=null;this.src='https://placehold.co/500x300?text=Venus+Product'">
-<div class="info">
-<h3>${product.name}</h3>
-<div class="price">${product.price} جنيه</div>
-<label class="quantity-label">الكمية المطلوبة</label>
-<input class="quantity" type="number" min="1" step="1" value="1" aria-label="كمية ${product.name}">
-<button class="add-btn" type="button">إضافة إلى السلة 🛒</button>
-<p class="message" aria-live="polite"></p>
-</div>`;
-card.querySelector(".add-btn").addEventListener("click",function(){
-addToCart(product.name,product.price,this);
-});
-productsContainer.appendChild(card);
-});
-
 function getCart(){
 try{
-const cart=JSON.parse(localStorage.getItem("powerZoneCart")||"[]");
-return Array.isArray(cart)?cart:[];
-}catch(e){return [];}
+const cart=JSON.parse(localStorage.getItem('powerZoneCart') || '[]');
+return Array.isArray(cart) ? cart : [];
+}catch(e){
+return [];
+}
 }
 
 function updateCartCount(){
@@ -173,19 +184,20 @@ const cart=getCart();
 const count=cart.reduce((total,item)=>{
 return total+Number(item.quantity||item.qty||0);
 },0);
-document.getElementById("cartCount").textContent=count;
+document.getElementById('cartCount').textContent=count;
 }
 
 function addToCart(name,price,button){
 const info=button.parentElement;
-const quantityInput=info.querySelector(".quantity");
-const message=info.querySelector(".message");
+const quantityInput=info.querySelector('.quantity');
+const message=info.querySelector('.message');
 const quantity=Number(quantityInput.value);
-message.textContent="";
+
+message.textContent='';
 
 if(!Number.isInteger(quantity)||quantity<1){
-message.textContent="من فضلك أدخل كمية صحيحة";
-message.style.color="#dc2626";
+message.textContent='من فضلك أدخل كمية صحيحة';
+message.style.color='#dc2626';
 return;
 }
 
@@ -194,17 +206,21 @@ const existing=cart.find(item=>item.name===name);
 
 if(existing){
 existing.quantity=Number(existing.quantity||existing.qty||0)+quantity;
-existing.price=price;
 delete existing.qty;
 }else{
-cart.push({name:name,price:price,quantity:quantity});
+cart.push({
+name:name,
+price:price,
+quantity:quantity
+});
 }
 
-localStorage.setItem("powerZoneCart",JSON.stringify(cart));
+localStorage.setItem('powerZoneCart',JSON.stringify(cart));
 updateCartCount();
 
-message.style.color="#15803d";
-message.textContent="تمت إضافة المنتج إلى السلة بنجاح ✅";
+message.style.color='#15803d';
+message.textContent='تمت إضافة المنتج إلى السلة بنجاح ✅';
+
 quantityInput.value=1;
 }
 
